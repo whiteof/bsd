@@ -1,0 +1,6 @@
+framework module Pods_BSD {
+  umbrella header "Pods-BSD-umbrella.h"
+
+  export *
+  module * { export * }
+}
