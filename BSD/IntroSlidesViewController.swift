@@ -23,10 +23,10 @@ class IntroSlidesViewController: UIPageViewController, UIPageViewControllerDataS
         // Do any additional setup after loading the view.
         dataSource = self
         setViewControllers([pageViewControllers[0]], direction: .Forward, animated: false, completion: nil)
-        let frame = CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height)
-        for viewController in self.pageViewControllers {
-            viewController.view.frame = frame
-        }
+        //let frame = CGRectMake(0, 0, self.view.frame.size.width - 40, self.view.frame.size.height)
+        //for viewController in self.pageViewControllers {
+        //    viewController.view.frame = frame
+        //}
     }
     
     override func viewDidLayoutSubviews() {

@@ -18,6 +18,9 @@
 		A859BE521D02117E00C1DBD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A859BE501D02117E00C1DBD3 /* LaunchScreen.storyboard */; };
 		A859BE5D1D02117E00C1DBD3 /* BSDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859BE5C1D02117E00C1DBD3 /* BSDTests.swift */; };
 		A859BE681D02117E00C1DBD3 /* BSDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859BE671D02117E00C1DBD3 /* BSDUITests.swift */; };
+		A86BE8931D0870EB007461E6 /* HealthDataStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BE8921D0870EB007461E6 /* HealthDataStep.swift */; };
+		A86BE8951D0870FD007461E6 /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BE8941D0870FD007461E6 /* ConsentDocument.swift */; };
+		A86BE8BD1D08B60F007461E6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BE8BC1D08B60F007461E6 /* Settings.swift */; };
 		DEA1E88AE501F33B5675A9DA /* Pods_BSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C8B95A4824AF82461A49C9 /* Pods_BSD.framework */; };
 		FDA3AD2BA5C32795643F201A /* Pods_BSDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6103AA771E757FE09E209D94 /* Pods_BSDTests.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +68,9 @@
 		A859BE631D02117E00C1DBD3 /* BSDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BSDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A859BE671D02117E00C1DBD3 /* BSDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSDUITests.swift; sourceTree = "<group>"; };
 		A859BE691D02117E00C1DBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A86BE8921D0870EB007461E6 /* HealthDataStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDataStep.swift; sourceTree = "<group>"; };
+		A86BE8941D0870FD007461E6 /* ConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
+		A86BE8BC1D08B60F007461E6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BEFDC44D71F92DA9476BB4B8 /* Pods-BSD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BSD/Pods-BSD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,7 +156,9 @@
 			children = (
 				A802A06E1D05B09B00F663FA /* Controller */,
 				57D32D021D076EB800AC0FA2 /* View */,
+				A86BE8911D0870D0007461E6 /* Steps */,
 				A859BE441D02117E00C1DBD3 /* AppDelegate.swift */,
+				A86BE8BC1D08B60F007461E6 /* Settings.swift */,
 				A859BE481D02117E00C1DBD3 /* Main.storyboard */,
 				A859BE4E1D02117E00C1DBD3 /* Assets.xcassets */,
 				A859BE501D02117E00C1DBD3 /* LaunchScreen.storyboard */,
@@ -177,6 +185,15 @@
 				A859BE691D02117E00C1DBD3 /* Info.plist */,
 			);
 			path = BSDUITests;
+			sourceTree = "<group>";
+		};
+		A86BE8911D0870D0007461E6 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				A86BE8921D0870EB007461E6 /* HealthDataStep.swift */,
+				A86BE8941D0870FD007461E6 /* ConsentDocument.swift */,
+			);
+			name = Steps;
 			sourceTree = "<group>";
 		};
 		F0586898499297828CA27535 /* Pods */ = {
@@ -456,9 +473,12 @@
 			files = (
 				A859BE471D02117E00C1DBD3 /* ViewController.swift in Sources */,
 				57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */,
+				A86BE8BD1D08B60F007461E6 /* Settings.swift in Sources */,
 				A859BE451D02117E00C1DBD3 /* AppDelegate.swift in Sources */,
 				A859BE4D1D02117E00C1DBD3 /* BSD.xcdatamodeld in Sources */,
 				A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */,
+				A86BE8951D0870FD007461E6 /* ConsentDocument.swift in Sources */,
+				A86BE8931D0870EB007461E6 /* HealthDataStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
