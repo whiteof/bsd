@@ -13,6 +13,7 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Settings.sharedInstance.completedSurvey = true
         // Do any additional setup after loading the view.
     }
 
@@ -22,8 +23,8 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if Settings.sharedInstance.completedIntro {
-            
+        
+        if (Settings.sharedInstance.completedIntro == true && Settings.sharedInstance.completedSurvey == false) {
             
             var steps = [ORKStep]()
             /*
@@ -253,16 +254,26 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
             let task = ORKOrderedTask(identifier: "task", steps: steps)
             let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
             taskViewController.delegate = self
+            presentViewController(taskViewController, animated: true, completion: setCompletedSurvey)
+            
+        }
+        
+        
+        if (Settings.sharedInstance.completedSurvey) {
+            let scaleStepIntro = ORKInstructionStep(identifier: "scaleStepIntro")
+            scaleStepIntro.title = "Other things to think about"
+            scaleStepIntro.text = "Every woman's feelings and concerns are different, and it may be helpful to think about what's important to you. The statements and questions below will give you a chance to explore your feelings about screening mammograms and breast cancer. There is no right or wrong answer."
+            
+            // The first step is a scale control with 10 discrete ticks.
+            var scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
+            scaleStep = ORKQuestionStep(identifier: "scaleQuestion1", title: "I'm willing to do anything to detect breast cancer as early as possible.", answer: scaleFormat)
+            steps += [step1]
+
+            
+            let task = ORKOrderedTask(identifier: "scaleTask1", steps: [questionStep1])
+            let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
+            taskViewController.delegate = self
             presentViewController(taskViewController, animated: true, completion: nil)
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
         
     }
@@ -327,11 +338,15 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
         let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
         taskViewController.delegate = self
         
-        presentViewController(taskViewController, animated: true, completion: setCompleted)
+        presentViewController(taskViewController, animated: true, completion: setCompletedIntro)
         
     }
     
-    func setCompleted() {
+    func setCompletedIntro() {
         Settings.sharedInstance.completedIntro = true
+    }
+    
+    func setCompletedSurvey() {
+        Settings.sharedInstance.completedSurvey = true
     }
 }

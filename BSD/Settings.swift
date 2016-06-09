@@ -12,4 +12,5 @@ class Settings {
     static let sharedInstance = Settings()
     
     var completedIntro: Bool = false
+    var completedSurvey: Bool = false
 }
