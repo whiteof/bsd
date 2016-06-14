@@ -13,4 +13,5 @@ class Settings {
     
     var completedIntro: Bool = false
     var completedSurvey: Bool = false
+    var completedValues: Bool = false
 }

@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		577435021D0F95AA00980850 /* YourRiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435011D0F95AA00980850 /* YourRiskViewController.swift */; };
+		577435041D0F999500980850 /* ScreeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435031D0F999500980850 /* ScreeningViewController.swift */; };
+		577435061D0F99E000980850 /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435051D0F99E000980850 /* ValuesViewController.swift */; };
+		577435081D0F9CDF00980850 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435071D0F9CDF00980850 /* SummaryViewController.swift */; };
 		57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D32CEE1D074B2B00AC0FA2 /* IntroSlidesViewController.swift */; };
 		9152DF96F75BAE50F974FB4C /* Pods_BSDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722273229EC9686F857022C /* Pods_BSDUITests.framework */; };
 		A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802A0721D05CB8100F663FA /* IntroViewController.swift */; };
 		A859BE451D02117E00C1DBD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859BE441D02117E00C1DBD3 /* AppDelegate.swift */; };
-		A859BE471D02117E00C1DBD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859BE461D02117E00C1DBD3 /* ViewController.swift */; };
 		A859BE4A1D02117E00C1DBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A859BE481D02117E00C1DBD3 /* Main.storyboard */; };
 		A859BE4D1D02117E00C1DBD3 /* BSD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A859BE4B1D02117E00C1DBD3 /* BSD.xcdatamodeld */; };
 		A859BE4F1D02117E00C1DBD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A859BE4E1D02117E00C1DBD3 /* Assets.xcassets */; };
@@ -46,6 +49,10 @@
 		19B4571CE7BF2C54D41B87CA /* Pods-BSDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSDTests/Pods-BSDTests.release.xcconfig"; sourceTree = "<group>"; };
 		23C8B95A4824AF82461A49C9 /* Pods_BSD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA984942842EF8B11835842 /* Pods-BSDUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSDUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BSDUITests/Pods-BSDUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		577435011D0F95AA00980850 /* YourRiskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRiskViewController.swift; sourceTree = "<group>"; };
+		577435031D0F999500980850 /* ScreeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningViewController.swift; sourceTree = "<group>"; };
+		577435051D0F99E000980850 /* ValuesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
+		577435071D0F9CDF00980850 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		57D32CEE1D074B2B00AC0FA2 /* IntroSlidesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroSlidesViewController.swift; sourceTree = "<group>"; };
 		6103AA771E757FE09E209D94 /* Pods_BSDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BC192845FEB0C0A34B47715 /* Pods-BSD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSD.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSD/Pods-BSD.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,7 +63,6 @@
 		A802A0721D05CB8100F663FA /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A859BE411D02117E00C1DBD3 /* BSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A859BE441D02117E00C1DBD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A859BE461D02117E00C1DBD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A859BE491D02117E00C1DBD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A859BE4C1D02117E00C1DBD3 /* BSD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BSD.xcdatamodel; sourceTree = "<group>"; };
 		A859BE4E1D02117E00C1DBD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,7 +130,10 @@
 			children = (
 				A802A0721D05CB8100F663FA /* IntroViewController.swift */,
 				57D32CEE1D074B2B00AC0FA2 /* IntroSlidesViewController.swift */,
-				A859BE461D02117E00C1DBD3 /* ViewController.swift */,
+				577435011D0F95AA00980850 /* YourRiskViewController.swift */,
+				577435031D0F999500980850 /* ScreeningViewController.swift */,
+				577435051D0F99E000980850 /* ValuesViewController.swift */,
+				577435071D0F9CDF00980850 /* SummaryViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -471,13 +480,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A859BE471D02117E00C1DBD3 /* ViewController.swift in Sources */,
+				577435061D0F99E000980850 /* ValuesViewController.swift in Sources */,
 				57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */,
 				A86BE8BD1D08B60F007461E6 /* Settings.swift in Sources */,
 				A859BE451D02117E00C1DBD3 /* AppDelegate.swift in Sources */,
+				577435081D0F9CDF00980850 /* SummaryViewController.swift in Sources */,
 				A859BE4D1D02117E00C1DBD3 /* BSD.xcdatamodeld in Sources */,
+				577435041D0F999500980850 /* ScreeningViewController.swift in Sources */,
 				A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */,
 				A86BE8951D0870FD007461E6 /* ConsentDocument.swift in Sources */,
+				577435021D0F95AA00980850 /* YourRiskViewController.swift in Sources */,
 				A86BE8931D0870EB007461E6 /* HealthDataStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
