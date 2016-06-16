@@ -11,13 +11,14 @@ import ResearchKit
 
 class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
-    @IBOutlet weak var pieChart: ORKPieChartView!
+    @IBOutlet weak var pieChart: UIView!
+    //ORKPieChartView
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.pieChart.dataSource = pieChartDataSource
+        //self.pieChart.dataSource = pieChartDataSource
     }
 
     let pieChartDataSource = PieChartDataSource()
@@ -33,6 +34,19 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        // Draw chart
+        if (Settings.sharedInstance.completedSurvey == true) {
+            for j in 0...39 {
+                for i in 0...24 {
+                    let image = UIImage(named: "Chart Figure")
+                    let imageView = UIImageView(image: image!)
+                    imageView.frame = CGRect(x: i*10, y: j*16, width: 9, height: 15)
+                    self.pieChart.addSubview(imageView)
+                    
+                }
+            }
+        }
         
         if(Settings.sharedInstance.completedIntro == false) {
             let IntroViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("IntroViewController")
