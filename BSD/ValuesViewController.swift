@@ -21,6 +21,16 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
         "How worried are you about getting breast cancer?",
         "How concerned are you about the possible harms of screening mammograms?"
     ]
+    let answers = [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        5,
+        8
+    ]
     @IBOutlet weak var answersTable: UITableView!
     
     override func viewDidLoad() {
@@ -28,7 +38,7 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
 
         // Do any additional setup after loading the view.
         self.answersTable.separatorStyle = .None
-        self.answersTable.rowHeight = 60.0
+        self.answersTable.rowHeight = 80.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,13 +137,14 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
         for view in cell.contentView.subviews {
             if view.isKindOfClass(UILabel) {
                 let question = view as! UILabel
-                question.text = self.questions[indexPath.row]
+                if question.restorationIdentifier == "cellTitle" {
+                    question.text = self.questions[indexPath.row]
+                }
             }
             if view.isKindOfClass(UIProgressView) {
                 let answer = view as! UIProgressView
-                //answer.progress = Float(indexPath.row / 10)
-                let random = Float(arc4random_uniform(10))/10
-                answer.progress = random
+                let value = (Float(self.answers[indexPath.row]) / 10)
+                answer.progress = Float(value)
             }
         }
 
@@ -145,6 +156,16 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
             //cell.textLabel?.text = "Unit testing: 03/23/2016 5:05am"
         }
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if sender is UITableViewCell {
+            let nextScene = segue.destinationViewController as! ValuesDetailViewController
+            if let indexPath = self.answersTable.indexPathForSelectedRow {
+                nextScene.question = self.questions[indexPath.row]
+                nextScene.value = self.answers[indexPath.row]
+            }
+        }
     }
     
 }

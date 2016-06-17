@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -107,7 +106,82 @@
                     <view key="view" contentMode="scaleToFill" id="ohZ-qm-25P">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd0-MY-J2z">
+                                <rect key="frame" x="20" y="40" width="560" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="acF-8e-f0x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p9h-cx-g3U">
+                                <rect key="frame" x="20" y="85" width="560" height="135"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="nqR-iy-cJK"/>
+                                </constraints>
+                                <string key="text">You have completed all sections of Breast ScreeningDecisions. We hope this tool has provided an opportunity to learn about your breast cancer risk and the benefits and harms of breast cancer screening for women like you. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You email address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQM-cQ-QAX">
+                                <rect key="frame" x="25" y="350" width="555" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="785-hc-cjx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NPY-zr-hEx">
+                                <rect key="frame" x="20" y="230" width="560" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="SCg-TY-X7m"/>
+                                </constraints>
+                                <string key="text">You can keep a copy of this information to save for your records. We encourage you to print it and share with your doctor at your next visit.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5Q-EC-NgI">
+                                <rect key="frame" x="25" y="416" width="96" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qtH-0f-JmJ"/>
+                                    <constraint firstAttribute="width" constant="96" id="ucU-dS-UMC"/>
+                                </constraints>
+                                <state key="normal" title="Send PDF File"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iO1-XS-TMa">
+                                <rect key="frame" x="25" y="376" width="555" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6XU-gY-DzM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iO1-XS-TMa" firstAttribute="leading" secondItem="ohZ-qm-25P" secondAttribute="leadingMargin" constant="5" id="43N-M5-NQu"/>
+                            <constraint firstItem="C5Q-EC-NgI" firstAttribute="leading" secondItem="ohZ-qm-25P" secondAttribute="leadingMargin" constant="5" id="8kt-b4-7q6"/>
+                            <constraint firstItem="jQM-cQ-QAX" firstAttribute="leading" secondItem="ohZ-qm-25P" secondAttribute="leadingMargin" constant="5" id="HGZ-Eb-lUk"/>
+                            <constraint firstItem="jQM-cQ-QAX" firstAttribute="top" secondItem="NPY-zr-hEx" secondAttribute="bottom" constant="20" id="Jkf-Mr-hpT"/>
+                            <constraint firstItem="NPY-zr-hEx" firstAttribute="leading" secondItem="ohZ-qm-25P" secondAttribute="leadingMargin" id="MaL-Fz-htg"/>
+                            <constraint firstItem="C5Q-EC-NgI" firstAttribute="top" secondItem="iO1-XS-TMa" secondAttribute="bottom" constant="10" id="TIV-8o-x5K"/>
+                            <constraint firstItem="p9h-cx-g3U" firstAttribute="top" secondItem="wd0-MY-J2z" secondAttribute="bottom" constant="10" id="X0p-Jk-ExR"/>
+                            <constraint firstItem="wd0-MY-J2z" firstAttribute="leading" secondItem="ohZ-qm-25P" secondAttribute="leadingMargin" id="Z73-qi-d66"/>
+                            <constraint firstItem="wd0-MY-J2z" firstAttribute="top" secondItem="Qn4-eq-Dso" secondAttribute="bottom" constant="20" id="cAY-ri-tCu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jQM-cQ-QAX" secondAttribute="trailing" id="fpS-2Y-lGg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NPY-zr-hEx" secondAttribute="trailing" id="jO0-Pw-s5p"/>
+                            <constraint firstItem="NPY-zr-hEx" firstAttribute="top" secondItem="p9h-cx-g3U" secondAttribute="bottom" constant="10" id="lEd-cj-lxK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iO1-XS-TMa" secondAttribute="trailing" id="mSZ-UB-h24"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wd0-MY-J2z" secondAttribute="trailing" id="nH0-Ab-Zgf"/>
+                            <constraint firstItem="iO1-XS-TMa" firstAttribute="top" secondItem="jQM-cQ-QAX" secondAttribute="bottom" constant="5" id="nkx-cD-FgV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p9h-cx-g3U" secondAttribute="trailing" id="w26-rt-HQV"/>
+                            <constraint firstItem="p9h-cx-g3U" firstAttribute="leading" secondItem="ohZ-qm-25P" secondAttribute="leadingMargin" id="w8P-UD-Z9H"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Summary" image="Icon Summary" id="elD-NP-HpM"/>
                 </viewController>
@@ -173,18 +247,18 @@
                                 <rect key="frame" x="20" y="85" width="560" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="valuesCell" rowHeight="139" id="WKZ-OH-aEU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="valuesCell" rowHeight="139" id="WKZ-OH-aEU">
                                         <rect key="frame" x="0.0" y="28" width="560" height="139"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WKZ-OH-aEU" id="wdz-ei-rg9">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="138"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="527" height="138"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-ak-m2e">
-                                                    <rect key="frame" x="8" y="43" width="524" height="2"/>
+                                                    <rect key="frame" x="8" y="43" width="491" height="2"/>
                                                 </progressView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6z-q6-Ymg">
-                                                    <rect key="frame" x="8" y="13" width="544" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="cellTitle" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6z-q6-Ymg">
+                                                    <rect key="frame" x="8" y="13" width="511" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="fG1-dJ-kh3"/>
                                                     </constraints>
@@ -192,14 +266,38 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Agree" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qn3-pe-sux">
+                                                    <rect key="frame" x="8" y="47" width="80" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="IcB-qr-VCc"/>
+                                                        <constraint firstAttribute="width" constant="80" id="dLG-41-JXF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strongly Disagree" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utK-pM-bBz">
+                                                    <rect key="frame" x="399" y="47" width="100" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="T8c-29-lat"/>
+                                                        <constraint firstAttribute="width" constant="100" id="mX8-pi-IVP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="utK-pM-bBz" firstAttribute="trailing" secondItem="c7R-ak-m2e" secondAttribute="trailing" id="CUQ-D8-2mh"/>
+                                                <constraint firstItem="Qn3-pe-sux" firstAttribute="top" secondItem="c7R-ak-m2e" secondAttribute="bottom" constant="2" id="DQD-am-6mA"/>
                                                 <constraint firstItem="w6z-q6-Ymg" firstAttribute="top" secondItem="wdz-ei-rg9" secondAttribute="topMargin" constant="5" id="JQI-DY-yWO"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="c7R-ak-m2e" secondAttribute="trailing" constant="20" id="OjS-c1-D51"/>
                                                 <constraint firstItem="c7R-ak-m2e" firstAttribute="top" secondItem="w6z-q6-Ymg" secondAttribute="bottom" constant="10" id="Uw6-af-I2F"/>
+                                                <constraint firstItem="Qn3-pe-sux" firstAttribute="leading" secondItem="wdz-ei-rg9" secondAttribute="leadingMargin" id="YgJ-Tj-T9v"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="w6z-q6-Ymg" secondAttribute="trailing" id="qa1-1M-sTc"/>
                                                 <constraint firstItem="c7R-ak-m2e" firstAttribute="centerY" secondItem="wdz-ei-rg9" secondAttribute="centerY" id="rQQ-TJ-Ehu"/>
                                                 <constraint firstItem="c7R-ak-m2e" firstAttribute="leading" secondItem="wdz-ei-rg9" secondAttribute="leadingMargin" id="sBS-zO-IuA"/>
+                                                <constraint firstItem="utK-pM-bBz" firstAttribute="top" secondItem="c7R-ak-m2e" secondAttribute="bottom" constant="2" id="sOm-Yh-jMh"/>
                                                 <constraint firstItem="w6z-q6-Ymg" firstAttribute="leading" secondItem="wdz-ei-rg9" secondAttribute="leadingMargin" id="tTz-sP-ebm"/>
                                             </constraints>
                                             <variation key="default">
@@ -208,6 +306,9 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="K2R-dd-X4B" kind="showDetail" id="Gaw-lH-bve"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -269,19 +370,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ym-6i-1qV" customClass="UIScrollView">
-                                <rect key="frame" x="20" y="275" width="560" height="206"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="8dK-UI-7DE"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8dK-UI-7DE"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Risk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjA-e7-bdh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Risk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjA-e7-bdh">
                                 <rect key="frame" x="20" y="40" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ZuX-p6-x3k"/>
@@ -339,43 +428,38 @@
                                     <action selector="resetAction:" destination="rA5-om-Zwf" eventType="touchUpInside" id="jrb-01-WJ0"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wf-Sv-l9x">
+                                <rect key="frame" x="20" y="280" width="560" height="201"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6bG-yX-ZJf" firstAttribute="centerX" secondItem="iwA-vE-nEn" secondAttribute="centerX" id="13W-5n-uY4"/>
-                            <constraint firstItem="6ym-6i-1qV" firstAttribute="bottom" secondItem="TIx-Bc-axo" secondAttribute="top" id="260-iu-cVM"/>
-                            <constraint firstItem="6bG-yX-ZJf" firstAttribute="top" secondItem="6ym-6i-1qV" secondAttribute="bottom" constant="20" id="7f0-yz-0mv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jeQ-RB-qvf" secondAttribute="trailing" id="8Zx-fv-vwT"/>
+                            <constraint firstItem="1wf-Sv-l9x" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="C5d-Og-oWC"/>
                             <constraint firstItem="Vpj-oQ-fhA" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="EgB-e5-NDZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vpj-oQ-fhA" secondAttribute="trailing" id="MXL-CL-6zq"/>
                             <constraint firstItem="TIx-Bc-axo" firstAttribute="top" secondItem="6bG-yX-ZJf" secondAttribute="bottom" constant="20" id="MrI-CQ-llB"/>
                             <constraint firstItem="GjA-e7-bdh" firstAttribute="top" secondItem="XdR-br-ZvJ" secondAttribute="bottom" constant="20" id="NDr-dp-O7w"/>
                             <constraint firstItem="vkc-jD-sgh" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="Opt-u9-J33"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GjA-e7-bdh" secondAttribute="trailing" id="Uk4-Jz-to6"/>
+                            <constraint firstItem="1wf-Sv-l9x" firstAttribute="top" secondItem="vkc-jD-sgh" secondAttribute="bottom" constant="10" id="Xdg-yV-I68"/>
                             <constraint firstAttribute="trailingMargin" secondItem="z4i-Kq-eNi" secondAttribute="trailing" id="ag4-PS-F9f"/>
                             <constraint firstItem="Vpj-oQ-fhA" firstAttribute="top" secondItem="GjA-e7-bdh" secondAttribute="bottom" constant="10" id="azD-Y3-z8N"/>
-                            <constraint firstItem="6ym-6i-1qV" firstAttribute="bottom" secondItem="iwA-vE-nEn" secondAttribute="centerY" id="dV8-uc-WuF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1wf-Sv-l9x" secondAttribute="trailing" id="e1U-ke-90C"/>
                             <constraint firstItem="GjA-e7-bdh" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="efe-N2-Tim"/>
-                            <constraint firstItem="6ym-6i-1qV" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="iWB-00-Vhu"/>
+                            <constraint firstItem="6bG-yX-ZJf" firstAttribute="top" secondItem="1wf-Sv-l9x" secondAttribute="bottom" constant="20" id="jzd-9Z-erw"/>
                             <constraint firstItem="jeQ-RB-qvf" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="mcf-cb-hxq"/>
                             <constraint firstItem="jeQ-RB-qvf" firstAttribute="top" secondItem="z4i-Kq-eNi" secondAttribute="bottom" constant="5" id="n9t-Jc-Pyv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6ym-6i-1qV" secondAttribute="trailing" id="oBZ-TD-tgZ"/>
                             <constraint firstItem="vkc-jD-sgh" firstAttribute="top" secondItem="jeQ-RB-qvf" secondAttribute="bottom" constant="5" id="q6U-K5-Ljc"/>
                             <constraint firstItem="z4i-Kq-eNi" firstAttribute="top" secondItem="Vpj-oQ-fhA" secondAttribute="bottom" constant="10" id="qGC-pn-qRF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vkc-jD-sgh" secondAttribute="trailing" id="ry2-CJ-ktx"/>
                             <constraint firstItem="z4i-Kq-eNi" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="sXG-bZ-WuL"/>
-                            <constraint firstItem="6ym-6i-1qV" firstAttribute="top" secondItem="vkc-jD-sgh" secondAttribute="bottom" constant="5" id="vIQ-6a-igz"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="260-iu-cVM"/>
-                                <exclude reference="dV8-uc-WuF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Your Risk" image="Icon Your Risk" id="u3L-Vs-7X6"/>
                     <connections>
-                        <outlet property="pieChart" destination="6ym-6i-1qV" id="d1P-3N-8PT"/>
+                        <outlet property="pieChart" destination="1wf-Sv-l9x" id="Thr-Qa-tpq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZZ-Ie-Hd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -391,6 +475,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7PY-zG-hWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1689" y="1477"/>
+        </scene>
+        <!--Values Detail View Controller-->
+        <scene sceneID="BV7-FB-Hm3">
+            <objects>
+                <viewController id="K2R-dd-X4B" customClass="ValuesDetailViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2rY-rs-rNf"/>
+                        <viewControllerLayoutGuide type="bottom" id="4a5-VN-aU0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MbE-YC-gxo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-py-VIn">
+                                <rect key="frame" x="20" y="50" width="560" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="tnO-Na-FnR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4A-pT-p7T">
+                                <rect key="frame" x="541" y="20" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="lT3-ik-s00"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeAction:" destination="K2R-dd-X4B" eventType="touchUpInside" id="JHx-Qd-zrb"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Wg-DL-xV0">
+                                <rect key="frame" x="20" y="140" width="560" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="8O1-Bs-MNc"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8O1-Bs-MNc"/>
+                                    </mask>
+                                </variation>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVq-2F-Maa">
+                                <rect key="frame" x="20" y="172" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DnX-Tw-WVR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Wg-DL-xV0" secondAttribute="trailing" id="2aE-xx-1lm"/>
+                            <constraint firstItem="vVq-2F-Maa" firstAttribute="leading" secondItem="MbE-YC-gxo" secondAttribute="leadingMargin" id="7F2-a3-gKD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V4A-pT-p7T" secondAttribute="trailing" id="9nT-XA-BY6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vVq-2F-Maa" secondAttribute="trailing" id="D3y-fI-GHx"/>
+                            <constraint firstItem="cOF-py-VIn" firstAttribute="top" secondItem="V4A-pT-p7T" secondAttribute="bottom" id="RBa-NB-luZ"/>
+                            <constraint firstItem="0Wg-DL-xV0" firstAttribute="top" secondItem="cOF-py-VIn" secondAttribute="bottom" constant="10" id="Tf5-YG-O5D"/>
+                            <constraint firstItem="V4A-pT-p7T" firstAttribute="top" secondItem="2rY-rs-rNf" secondAttribute="bottom" id="Vef-1e-yx6"/>
+                            <constraint firstItem="vVq-2F-Maa" firstAttribute="top" secondItem="0Wg-DL-xV0" secondAttribute="bottom" constant="30" id="ebi-DD-s4D"/>
+                            <constraint firstItem="cOF-py-VIn" firstAttribute="leading" secondItem="MbE-YC-gxo" secondAttribute="leadingMargin" id="ofL-pt-Erc"/>
+                            <constraint firstItem="0Wg-DL-xV0" firstAttribute="leading" secondItem="MbE-YC-gxo" secondAttribute="leadingMargin" id="pQC-q6-bwy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cOF-py-VIn" secondAttribute="trailing" id="pbJ-td-Z4u"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="0Wg-DL-xV0" id="xdB-VQ-sb4"/>
+                        <outlet property="titleLabel" destination="cOF-py-VIn" id="rFh-gS-d7x"/>
+                        <outlet property="valueLabel" destination="vVq-2F-Maa" id="bdm-EQ-zjB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayc-4A-Op1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1689" y="2130"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qvh-g1-Fpd">
@@ -413,12 +574,62 @@
                                 <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4zd-zW-5cK">
+                                <rect key="frame" x="20" y="340" width="560" height="140"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">A screening mammogram is an x-ray that looks for breast cancer in a healthy woman who has no signs or symptoms of breast cancer.
+
+Screening mammograms do not prevent breast cancer. Their purpose is to detect breast cancer before it is large enough to be felt or cause symptoms. If you have any breast symptoms, you should see your doctor.
+
+A diagnostic mammogram is performed when a woman feels a lump or has breast symptoms or if her screening mammogram is abnormal.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screening" translatesAutoresizingMaskIntoConstraints="NO" id="zYs-Qt-mbp">
+                                <rect key="frame" x="0.0" y="115" width="600" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ZHj-L2-Mv6"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmD-U7-rqx">
+                                <rect key="frame" x="20" y="270" width="249" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ADf-lY-vbG"/>
+                                    <constraint firstAttribute="width" constant="249" id="T3p-AX-bmx"/>
+                                </constraints>
+                                <state key="normal" title="What is it like to get a mammogram?"/>
+                                <connections>
+                                    <segue destination="TG9-df-PBH" kind="showDetail" id="Rua-NB-FEq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nak-ja-Zp3">
+                                <rect key="frame" x="20" y="300" width="134" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OGD-YG-OM7"/>
+                                    <constraint firstAttribute="width" constant="134" id="bfs-Ml-AgQ"/>
+                                </constraints>
+                                <state key="normal" title="Signs or Symptoms"/>
+                                <connections>
+                                    <segue destination="O8F-3W-FPg" kind="showDetail" id="SBY-v7-07t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="76f-n9-Z16" firstAttribute="top" secondItem="RIx-ka-ChZ" secondAttribute="bottom" constant="20" id="7qk-HX-Qpx"/>
+                            <constraint firstItem="zYs-Qt-mbp" firstAttribute="top" secondItem="76f-n9-Z16" secondAttribute="bottom" constant="5" id="8Sb-eV-bDE"/>
+                            <constraint firstItem="nak-ja-Zp3" firstAttribute="top" secondItem="nmD-U7-rqx" secondAttribute="bottom" id="BGa-bF-9yE"/>
+                            <constraint firstItem="4zd-zW-5cK" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="E8S-vw-Y3B"/>
+                            <constraint firstItem="4zd-zW-5cK" firstAttribute="top" secondItem="nak-ja-Zp3" secondAttribute="bottom" constant="10" id="MLs-vJ-3Iv"/>
+                            <constraint firstItem="nmD-U7-rqx" firstAttribute="top" secondItem="zYs-Qt-mbp" secondAttribute="bottom" constant="5" id="RnL-12-9JH"/>
+                            <constraint firstItem="zYs-Qt-mbp" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leading" id="YDI-9f-Xin"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4zd-zW-5cK" secondAttribute="trailing" id="bYD-xp-mlC"/>
+                            <constraint firstItem="nak-ja-Zp3" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="cRF-e4-ssI"/>
+                            <constraint firstItem="Nhp-oB-hsy" firstAttribute="top" secondItem="4zd-zW-5cK" secondAttribute="bottom" constant="120" id="oG7-yy-fmK"/>
+                            <constraint firstAttribute="trailing" secondItem="zYs-Qt-mbp" secondAttribute="trailing" id="wpi-aa-d00"/>
                             <constraint firstItem="76f-n9-Z16" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="y5Q-fB-1rO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="76f-n9-Z16" secondAttribute="trailing" id="zJM-gJ-OKt"/>
+                            <constraint firstItem="nmD-U7-rqx" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="zvM-nS-IMY"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -447,12 +658,38 @@
                                 <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-1K-Q5U">
+                                <rect key="frame" x="20" y="120" width="560" height="360"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">There are benefits and harms of screening mammograms for women at any age.
+Benefits of screening mammograms
+
+    Mammograms reduce the chance of dying from breast cancer. By finding breast cancer at an early stage, mammograms allow for early cancer treatment that can increase the chance of a cure.
+        Mammograms are more effective in older than younger women. Women in their 40's tend to have denser breasts, making it more difficult to find breast cancers in women in this age group compared to older women.
+        Mammograms do not prevent all breast cancer deaths. Some fast-growing breast cancers may have already spread to other parts of the body by the time they are found by a mammogram.
+
+Possible harms of screening mammograms
+
+    False-positive results. A false-positive result occurs when a mammogram is abnormal but there is no cancer. An abnormal mammogram usually requires additional imaging (diagnostic mammogram, ultrasound or MRI) and possibly a breast biopsy. If an abnormal mammogram is not cancer, this additional testing may seem unnecessary, inconvenient and physically uncomfortable.
+    Overdiagnosis and unnecessary treatment. Screening mammograms often find slow-growing breast cancers and non-invasive breast cancers. These cancers have a very small chance of causing death, so treating them - with surgery, chemotherapy and radiation - may seem unnecessary. However, it is very difficult to predict whether a cancer will be life-threatening, so almost all cancers that are found will be treated.
+    False-negative results. A false-negative result occurs when a mammogram is normal but a woman truly has breast cancer. Mammograms are not perfect. Some breast cancers will be missed by screening.
+    Radiation exposure. Mammograms use radiation, but the risk of harm from screening mammograms is extremely low.
+
+
+It's hard to know who will benefit from mammograms and who will experience harm. What we can tell you is how mammograms perform in women like you and how starting screening at different ages may affect a woman's chance of dying from breast cancer. </mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QGd-kP-5G4" firstAttribute="leading" secondItem="dRR-bp-6pF" secondAttribute="leadingMargin" id="1PY-Uy-61C"/>
+                            <constraint firstItem="hrE-1K-Q5U" firstAttribute="top" secondItem="QGd-kP-5G4" secondAttribute="bottom" constant="10" id="69k-f1-96d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hrE-1K-Q5U" secondAttribute="trailing" id="kht-Yb-aDX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QGd-kP-5G4" secondAttribute="trailing" id="ljh-iL-WPQ"/>
                             <constraint firstItem="QGd-kP-5G4" firstAttribute="top" secondItem="ts8-0T-ulP" secondAttribute="bottom" constant="20" id="oJC-PZ-v0g"/>
+                            <constraint firstItem="u4o-cN-WyZ" firstAttribute="top" secondItem="hrE-1K-Q5U" secondAttribute="bottom" constant="120" id="wII-B1-9rd"/>
+                            <constraint firstItem="hrE-1K-Q5U" firstAttribute="leading" secondItem="dRR-bp-6pF" secondAttribute="leadingMargin" id="yqA-01-Yqi"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -725,6 +962,135 @@ None of these choices is wrong. One of them will be right for you.</string>
             </objects>
             <point key="canvasLocation" x="1542" y="-252"/>
         </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="sOz-gA-2aA">
+            <objects>
+                <viewController storyboardIdentifier="popupWindow" id="TG9-df-PBH" customClass="PopUpViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T6K-gZ-pCC"/>
+                        <viewControllerLayoutGuide type="bottom" id="DXx-r5-hKd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tYv-mq-CFP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOT-wQ-YVA">
+                                <rect key="frame" x="541" y="20" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="554-8I-eM5"/>
+                                    <constraint firstAttribute="height" constant="30" id="aqx-JO-OU7"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeWindow:" destination="TG9-df-PBH" eventType="touchUpInside" id="d7a-ZX-6jF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Is It Like To Get A Mammogram?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmZ-eZ-07X">
+                                <rect key="frame" x="20" y="60" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Okv-sU-iRq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wxc-59-Sj0">
+                                <rect key="frame" x="20" y="110" width="560" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">You will be asked to undress from the waist up. An x-ray technician will escort you to the mammogram machine. While you are standing, the technician will place your breasts, one at a time, between two plates - an x-ray plate and a plastic plate. These plates are used to flatten the breast tissue so that the image will be of good quality. This may feel uncomfortable, and for some women, painful - but it will only take a few seconds. Usually, two x-rays are taken of each breast from different angles. Having a mammogram takes about 20 minutes.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="zOT-wQ-YVA" secondAttribute="trailing" id="C9j-jf-3uc"/>
+                            <constraint firstItem="Wxc-59-Sj0" firstAttribute="leading" secondItem="tYv-mq-CFP" secondAttribute="leadingMargin" id="HME-Qz-DCG"/>
+                            <constraint firstItem="YmZ-eZ-07X" firstAttribute="top" secondItem="zOT-wQ-YVA" secondAttribute="bottom" constant="10" id="Pfy-Cw-hqP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wxc-59-Sj0" secondAttribute="trailing" id="V8Q-c4-ZSA"/>
+                            <constraint firstItem="zOT-wQ-YVA" firstAttribute="top" secondItem="T6K-gZ-pCC" secondAttribute="bottom" id="cDA-P3-yBp"/>
+                            <constraint firstItem="YmZ-eZ-07X" firstAttribute="leading" secondItem="tYv-mq-CFP" secondAttribute="leadingMargin" id="ujo-EF-0oE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YmZ-eZ-07X" secondAttribute="trailing" id="vaI-9E-TSG"/>
+                            <constraint firstItem="DXx-r5-hKd" firstAttribute="top" secondItem="Wxc-59-Sj0" secondAttribute="bottom" constant="20" id="viS-NQ-v6n"/>
+                            <constraint firstItem="Wxc-59-Sj0" firstAttribute="top" secondItem="YmZ-eZ-07X" secondAttribute="bottom" constant="20" id="wdT-2Q-h1l"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="windowText" destination="Wxc-59-Sj0" id="LFA-ih-qWi"/>
+                        <outlet property="windowTitle" destination="YmZ-eZ-07X" id="Khb-AB-fhi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLI-1G-noF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1998" y="804"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="xOl-Ac-gx2">
+            <objects>
+                <viewController id="O8F-3W-FPg" customClass="PopUpViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fPP-8U-wPh"/>
+                        <viewControllerLayoutGuide type="bottom" id="BAQ-up-BkM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z16-3a-DGq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvr-cb-CQ0">
+                                <rect key="frame" x="541" y="28" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1a9-qc-EzP"/>
+                                    <constraint firstAttribute="width" constant="39" id="1p1-KP-8Jx"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeWindow:" destination="TG9-df-PBH" eventType="touchUpInside" id="8Zc-2t-M9n"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signs &amp; Symptoms of Breast Cancer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6Z-TM-FS0">
+                                <rect key="frame" x="20" y="68" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tKv-96-VxQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-xj-VgF">
+                                <rect key="frame" x="20" y="118" width="560" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">    Breast lump or thickening
+    Clear or bloody nipple discharge
+    Breast changes such as skin dimpling or a newly inverted nipple
+    Redness and thickening of the skin over the breast
+    Peeling, flaking or crusting of the nipple
+    Swelling or lump in the armpit
+    Breast pain
+
+Most of the time, these symptoms are NOT breast cancer but it's important to see your doctor to be sure.
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="trailing" secondItem="hbx-xj-VgF" secondAttribute="trailing" id="1Ay-AD-cmr"/>
+                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="top" secondItem="yvr-cb-CQ0" secondAttribute="bottom" constant="10" id="FIv-M5-Npo"/>
+                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="leading" secondItem="z16-3a-DGq" secondAttribute="leadingMargin" id="IcT-cM-xUV"/>
+                            <constraint firstItem="hbx-xj-VgF" firstAttribute="top" secondItem="M6Z-TM-FS0" secondAttribute="bottom" constant="20" id="NgR-E8-oDn"/>
+                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="leading" secondItem="hbx-xj-VgF" secondAttribute="leading" id="UnD-LP-c03"/>
+                            <constraint firstItem="yvr-cb-CQ0" firstAttribute="trailing" secondItem="M6Z-TM-FS0" secondAttribute="trailing" id="cJ9-DM-1fE"/>
+                            <constraint firstItem="yvr-cb-CQ0" firstAttribute="trailing" secondItem="z16-3a-DGq" secondAttribute="trailingMargin" id="cnn-I0-HmJ"/>
+                            <constraint firstItem="BAQ-up-BkM" firstAttribute="top" secondItem="hbx-xj-VgF" secondAttribute="bottom" constant="12" id="gpk-eV-dRN"/>
+                            <constraint firstItem="yvr-cb-CQ0" firstAttribute="top" secondItem="fPP-8U-wPh" secondAttribute="bottom" constant="8" symbolic="YES" id="ks8-jr-70X"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOi-iU-2xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2672" y="804"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="Ub9-W0-Iq3">
             <objects>
@@ -839,5 +1205,6 @@ None of these choices is wrong. One of them will be right for you.</string>
         <image name="Icon Summary" width="24" height="24"/>
         <image name="Icon Values" width="23" height="23"/>
         <image name="Icon Your Risk" width="29" height="21"/>
+        <image name="Screening" width="631" height="425"/>
     </resources>
 </document>
