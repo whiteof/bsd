@@ -11,6 +11,12 @@ import ResearchKit
 
 class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
+    var contentHidden = false {
+        didSet {
+            guard contentHidden != oldValue && isViewLoaded() else { return }
+            childViewControllers.first?.view.hidden = contentHidden
+        }
+    }
     
     @IBOutlet weak var pieChart: UIScrollView!
     
@@ -19,6 +25,16 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
         // Do any additional setup after loading the view.
         //self.pieChart.dataSource = pieChartDataSource
+        
+        // Check for keychain
+        
+        if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
+            print("Yes")
+        }else {
+            print("No")
+        }
+        
+        
     }
 
     let pieChartDataSource = PieChartDataSource()
@@ -29,14 +45,17 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
     }
     
     @IBAction func resetAction(sender: AnyObject) {
-        Settings.sharedInstance.completedSurvey = false
+        Settings.sharedInstance.completedRisk = false
         self.startSurvey()
     }
     
     override func viewDidAppear(animated: Bool) {
+
+        //let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to ResearchKit Sample App", delegate: self) as! ORKPasscodeViewController
+        //presentViewController(passcodeViewController, animated: false, completion: nil)
         
         // Draw chart
-        if (Settings.sharedInstance.completedSurvey == true) {
+        if (Settings.sharedInstance.completedRisk == true) {
             let width = self.pieChart.frame.size.width
             let figureWidth = (Float(width)/50)
             let figureHeight = figureWidth*1.6
@@ -81,7 +100,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             presentViewController(IntroViewController, animated: true, completion: nil)
         }
         
-        if (Settings.sharedInstance.completedIntro == true && Settings.sharedInstance.completedSurvey == false) {
+        if (Settings.sharedInstance.completedIntro == true && Settings.sharedInstance.completedRisk == false) {
             self.startSurvey()
         }
         
@@ -91,6 +110,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         var steps = [ORKStep]()
         
         let step1 = ORKFormStep(identifier: "question1", title: NSLocalizedString("How Old Are You?", comment: ""), text: nil)
+        step1.optional = false
         let format1 = ORKAnswerFormat.decimalAnswerFormatWithUnit(NSLocalizedString("Your age", comment: ""))
         let item1 = ORKFormItem(identifier: "item1", text: "", answerFormat: format1)
         step1.formItems = [item1]
@@ -112,6 +132,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         var step = ORKFormStep(identifier: "question2", title: NSLocalizedString("What is your race/ethnicity?", comment: ""), text: nil)
+        step.optional = false
         var format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         var item = ORKFormItem(identifier: "item2", text: "", answerFormat: format)
         step.formItems = [item]
@@ -131,6 +152,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question3", title: NSLocalizedString("How old were you at your first menstrual period?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item3", text: "", answerFormat: format)
         step.formItems = [item]
@@ -148,6 +170,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question4", title: NSLocalizedString("Have you had any children?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item4", text: "", answerFormat: format)
         step.formItems = [item]
@@ -166,6 +189,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question5", title: NSLocalizedString("Have you ever had a breast biopsy?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item5", text: "", answerFormat: format)
         step.formItems = [item]
@@ -184,6 +208,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question6", title: NSLocalizedString("Have you ever been diagnosed with atypical ductal hyperplasia of the breast?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item6", text: "", answerFormat: format)
         step.formItems = [item]
@@ -204,6 +229,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question7", title: NSLocalizedString("How many of your first-degree relatives (mother, sisters, daughters) have had breast cancer?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item7", text: "", answerFormat: format)
         step.formItems = [item]
@@ -222,6 +248,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question8", title: NSLocalizedString("Have any of your first degree relatives (mother, sisters, daughters) had ovarian cancer?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item8", text: "", answerFormat: format)
         step.formItems = [item]
@@ -240,6 +267,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question9", title: NSLocalizedString("Have you ever been diagnosed with breast cancer?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item9", text: "", answerFormat: format)
         step.formItems = [item]
@@ -258,6 +286,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question10", title: NSLocalizedString("Have you ever been diagnosed with ductal carcinoma in situ (DCIS) or lobular carcinoma in situ (LCIS)?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item10", text: "", answerFormat: format)
         step.formItems = [item]
@@ -276,6 +305,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question11", title: NSLocalizedString("Have you ever been told that you carry a genetic mutation for the BRCA1 or BRCA2 gene?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item11", text: "", answerFormat: format)
         step.formItems = [item]
@@ -294,6 +324,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             choices.append(ORKTextChoice(text: textChoice, value: "choice_\(i)"))
         }
         step = ORKFormStep(identifier: "question12", title: NSLocalizedString("Have you ever had radiation therapy to the chest for another medical condition?", comment: ""), text: nil)
+        step.optional = false
         format = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: choices)
         item = ORKFormItem(identifier: "item12", text: "", answerFormat: format)
         step.formItems = [item]
@@ -304,22 +335,32 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         let task = ORKOrderedTask(identifier: "task", steps: steps)
         let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
         taskViewController.delegate = self
-        presentViewController(taskViewController, animated: true, completion: setCompletedSurvey)
+        presentViewController(taskViewController, animated: true, completion: nil)
     }
     
     func taskViewController(taskViewController: ORKTaskViewController,
                             didFinishWithReason reason: ORKTaskViewControllerFinishReason,
                                                 error: NSError?) {
         let taskResult = taskViewController.result
-        print(taskResult)
-        // You could do something with the result here.
+        let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
+        let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
+        
+        // Retreive RiskSurvey from database
+        let riskSurveyModel = ServiceManager.get("RiskSurveyModel") as! RiskSurveyModel
+        riskSurveyModel.save(taskResultDict!)
+        
+        // Update Settings
+        self.setCompletedSurvey()
         
         // Then, dismiss the task view controller.
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
     func setCompletedSurvey() {
-        Settings.sharedInstance.completedSurvey = true
+        Settings.sharedInstance.completedRisk = true
+        let userDataModel = ServiceManager.get("UserDataModel") as! UserDataModel
+        userDataModel.setCompletedRisk()
     }
     
 }

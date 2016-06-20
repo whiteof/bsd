@@ -47,7 +47,7 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
     }
     
     override func viewDidAppear(animated: Bool) {
-        if (Settings.sharedInstance.completedSurvey == true && Settings.sharedInstance.completedValues == false) {
+        if (Settings.sharedInstance.completedRisk == true && Settings.sharedInstance.completedValues == false) {
             self.startSurvey()
         }
     }

@@ -22,6 +22,13 @@
 		A859BE5D1D02117E00C1DBD3 /* BSDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859BE5C1D02117E00C1DBD3 /* BSDTests.swift */; };
 		A859BE681D02117E00C1DBD3 /* BSDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859BE671D02117E00C1DBD3 /* BSDUITests.swift */; };
 		A86BE8BD1D08B60F007461E6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BE8BC1D08B60F007461E6 /* Settings.swift */; };
+		A8747C9E1D18322B00622088 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747C9D1D18322B00622088 /* ServiceManager.swift */; };
+		A8747CA11D18326000622088 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CA01D18326000622088 /* CoreDataHelper.swift */; };
+		A8747CA41D18343900622088 /* RiskSurveyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CA31D18343900622088 /* RiskSurveyModel.swift */; };
+		A8747CA71D184AE000622088 /* ORKQuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CA61D184AE000622088 /* ORKQuestionType.swift */; };
+		A8747CA91D184B9C00622088 /* ORKQuestionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CA81D184B9C00622088 /* ORKQuestionResult.swift */; };
+		A8747CAB1D1853E500622088 /* ResearchKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CAA1D1853E500622088 /* ResearchKitHelper.swift */; };
+		A8747CAD1D18716200622088 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CAC1D18716200622088 /* UserDataModel.swift */; };
 		A89A4C4C1D1048E7008FF06B /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */; };
 		A8A7A7841D143F0B00DA5298 /* ValuesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */; };
 		A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */; };
@@ -83,6 +90,13 @@
 		A859BE671D02117E00C1DBD3 /* BSDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSDUITests.swift; sourceTree = "<group>"; };
 		A859BE691D02117E00C1DBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86BE8BC1D08B60F007461E6 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A8747C9D1D18322B00622088 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		A8747CA01D18326000622088 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		A8747CA31D18343900622088 /* RiskSurveyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskSurveyModel.swift; sourceTree = "<group>"; };
+		A8747CA61D184AE000622088 /* ORKQuestionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ORKQuestionType.swift; sourceTree = "<group>"; };
+		A8747CA81D184B9C00622088 /* ORKQuestionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ORKQuestionResult.swift; sourceTree = "<group>"; };
+		A8747CAA1D1853E500622088 /* ResearchKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchKitHelper.swift; sourceTree = "<group>"; };
+		A8747CAC1D18716200622088 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
 		A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesDetailViewController.swift; sourceTree = "<group>"; };
 		A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -184,9 +198,12 @@
 			isa = PBXGroup;
 			children = (
 				A802A06E1D05B09B00F663FA /* Controller */,
+				A8747CA21D18340A00622088 /* Model */,
 				57D32D021D076EB800AC0FA2 /* View */,
 				A8A7A7871D14868C00DA5298 /* Entity */,
+				A8747C9F1D18324D00622088 /* Helper */,
 				A859BE441D02117E00C1DBD3 /* AppDelegate.swift */,
+				A8747C9D1D18322B00622088 /* ServiceManager.swift */,
 				A86BE8BC1D08B60F007461E6 /* Settings.swift */,
 				A859BE481D02117E00C1DBD3 /* Main.storyboard */,
 				A859BE4E1D02117E00C1DBD3 /* Assets.xcassets */,
@@ -214,6 +231,26 @@
 				A859BE691D02117E00C1DBD3 /* Info.plist */,
 			);
 			path = BSDUITests;
+			sourceTree = "<group>";
+		};
+		A8747C9F1D18324D00622088 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A8747CA01D18326000622088 /* CoreDataHelper.swift */,
+				A8747CA61D184AE000622088 /* ORKQuestionType.swift */,
+				A8747CA81D184B9C00622088 /* ORKQuestionResult.swift */,
+				A8747CAA1D1853E500622088 /* ResearchKitHelper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		A8747CA21D18340A00622088 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8747CA31D18343900622088 /* RiskSurveyModel.swift */,
+				A8747CAC1D18716200622088 /* UserDataModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		A8A7A7871D14868C00DA5298 /* Entity */ = {
@@ -504,9 +541,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8747CA41D18343900622088 /* RiskSurveyModel.swift in Sources */,
 				A8A7A7DA1D1491D500DA5298 /* UserData+CoreDataProperties.swift in Sources */,
 				A8A7A7841D143F0B00DA5298 /* ValuesDetailViewController.swift in Sources */,
 				A8A7A7DD1D1491D500DA5298 /* RiskSurvey.swift in Sources */,
+				A8747CA11D18326000622088 /* CoreDataHelper.swift in Sources */,
+				A8747CAB1D1853E500622088 /* ResearchKitHelper.swift in Sources */,
 				A8A7A7D81D1491D500DA5298 /* ValuesSurvey+CoreDataProperties.swift in Sources */,
 				577435061D0F99E000980850 /* ValuesViewController.swift in Sources */,
 				57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */,
@@ -521,8 +561,12 @@
 				A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */,
 				A8A7A7DB1D1491D500DA5298 /* UserData.swift in Sources */,
 				577435021D0F95AA00980850 /* YourRiskViewController.swift in Sources */,
+				A8747CA71D184AE000622088 /* ORKQuestionType.swift in Sources */,
 				A8EDA6AF1D108D920027178B /* ScreeningSlidesPageViewController.swift in Sources */,
+				A8747CA91D184B9C00622088 /* ORKQuestionResult.swift in Sources */,
 				A89A4C4C1D1048E7008FF06B /* PieChartDataSource.swift in Sources */,
+				A8747CAD1D18716200622088 /* UserDataModel.swift in Sources */,
+				A8747C9E1D18322B00622088 /* ServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

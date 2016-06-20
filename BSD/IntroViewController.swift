@@ -35,6 +35,7 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
         let taskResult = taskViewController.result
         print(taskResult)
         // You could do something with the result here.
+        self.setCompletedIntro()
         
         // Then, dismiss the task view controller.
         dismissViewControllerAnimated(true, completion: nil)
@@ -69,12 +70,14 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
         let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
         taskViewController.delegate = self
         
-        presentViewController(taskViewController, animated: true, completion: setCompletedIntro)
+        presentViewController(taskViewController, animated: true, completion: nil)
         
     }
     
     func setCompletedIntro() {
         Settings.sharedInstance.completedIntro = true
+        let userDataModel = ServiceManager.get("UserDataModel") as! UserDataModel
+        userDataModel.setCompletedIntro()
     }
     
 }

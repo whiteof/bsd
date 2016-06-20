@@ -11,7 +11,7 @@ import Foundation
 class Settings {
     static let sharedInstance = Settings()
     
-    var completedIntro: Bool = true
-    var completedSurvey: Bool = true
-    var completedValues: Bool = true
+    var completedIntro: Bool = false
+    var completedRisk: Bool = false
+    var completedValues: Bool = false
 }
