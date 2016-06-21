@@ -34,11 +34,15 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
                                                 error: NSError?) {
         let taskResult = taskViewController.result
         print(taskResult)
-        // You could do something with the result here.
-        self.setCompletedIntro()
         
-        // Then, dismiss the task view controller.
-        dismissViewControllerAnimated(true, completion: nil)
+        switch reason {
+        case .Completed:
+            self.setCompletedIntro()
+            dismissViewControllerAnimated(true, completion: nil)
+        case .Discarded, .Failed, .Saved:
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        
     }
     
     @IBAction func enterAction(sender: AnyObject) {

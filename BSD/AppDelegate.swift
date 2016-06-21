@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var containerViewController: YourRiskViewController? {
-        return window?.rootViewController as? YourRiskViewController
+    var containerViewController: IndexViewController? {
+        return window?.rootViewController as? IndexViewController
     }
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {

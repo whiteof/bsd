@@ -11,12 +11,6 @@ import ResearchKit
 
 class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
-    var contentHidden = false {
-        didSet {
-            guard contentHidden != oldValue && isViewLoaded() else { return }
-            childViewControllers.first?.view.hidden = contentHidden
-        }
-    }
     
     @IBOutlet weak var pieChart: UIScrollView!
     
@@ -25,15 +19,6 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
         // Do any additional setup after loading the view.
         //self.pieChart.dataSource = pieChartDataSource
-        
-        // Check for keychain
-        
-        if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
-            print("Yes")
-        }else {
-            print("No")
-        }
-        
         
     }
 

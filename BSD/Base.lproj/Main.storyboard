@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0WY-L2-GDZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e4x-pR-CJb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -798,6 +798,28 @@ It's hard to know who will benefit from mammograms and who will experience harm.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQF-vj-V8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4871" y="1477"/>
+        </scene>
+        <!--Index View Controller-->
+        <scene sceneID="9aD-kH-SDH">
+            <objects>
+                <viewController id="e4x-pR-CJb" customClass="IndexViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VXW-bE-Wxv"/>
+                        <viewControllerLayoutGuide type="bottom" id="sXC-FM-cCF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4LM-T8-Xfd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="0WY-L2-GDZ" kind="custom" identifier="toDashboard" customClass="IndexSegue" customModule="BSD" customModuleProvider="target" id="ix7-y1-6o0"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="toIntro" customClass="IndexSegue" customModule="BSD" customModuleProvider="target" id="3nd-Ld-z9G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="87D-Ql-MQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-641" y="804"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vbg-0H-22M">
