@@ -12,13 +12,43 @@ import ResearchKit
 class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
     
-    @IBOutlet weak var pieChart: UIScrollView!
+    @IBOutlet weak var accessButton: UIButton!
+    @IBOutlet weak var viewContainer: UIScrollView!
+    
+    let riskSurveyModel = ServiceManager.get("RiskSurveyModel") as! RiskSurveyModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         //self.pieChart.dataSource = pieChartDataSource
+        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+        // Draw chart
+        if (riskSurveyEntity.completed == true) {
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewCompleted")
+            viewController.view.frame = self.viewContainer.frame
+            for view in viewController.view.subviews {
+                if view.isKindOfClass(UIButton) {
+                    let button = view as! UIButton
+                    button.addTarget(self, action: #selector(self.resetAction(_:)), forControlEvents: .TouchUpInside)
+                }
+            }
+            self.viewContainer.addSubview(viewController.view)
+        }else {
+            if (riskSurveyEntity.started == true) {
+                let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewStarted")
+                viewController.view.frame = self.viewContainer.frame
+                for view in viewController.view.subviews {
+                    if view.isKindOfClass(UIButton) {
+                        let button = view as! UIButton
+                        button.addTarget(self, action: #selector(self.restartSurvey(_:)), forControlEvents: .TouchUpInside)
+                    }
+                }
+                self.viewContainer.addSubview(viewController.view)
+            }else {
+                self.startSurvey()
+            }
+        }
         
     }
 
@@ -29,69 +59,24 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func resetAction(sender: AnyObject) {
-        Settings.sharedInstance.completedRisk = false
+    func resetAction(sender: UIButton) {
         self.startSurvey()
     }
     
     override func viewDidAppear(animated: Bool) {
-
-        //let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to ResearchKit Sample App", delegate: self) as! ORKPasscodeViewController
-        //presentViewController(passcodeViewController, animated: false, completion: nil)
-        
-        // Draw chart
-        if (Settings.sharedInstance.completedRisk == true) {
-            let width = self.pieChart.frame.size.width
-            let figureWidth = (Float(width)/50)
-            let figureHeight = figureWidth*1.6
-            for j in 0...19 {
-                for i in 0...49 {
-                    var image: UIImage!
-                    if j == 0 && i < 8 {
-                        image = UIImage(named: "Chart Figure Active")
-                    }else {
-                        image = UIImage(named: "Chart Figure")
-                    }
-                    let imageView = UIImageView(image: image)
-                    imageView.frame = CGRect(x: (i*Int(figureWidth)), y: j*Int(figureHeight+1.0), width: Int(figureWidth-1.0), height: Int(figureHeight))
-                    self.pieChart.addSubview(imageView)
-                }
-            }
-
-            // Add Labels
-            let labelY = CGFloat((figureHeight+1.0)*19.0)
-            let label1 = UILabel(frame: CGRectMake(0, labelY, width, 20))
-            label1.font = UIFont(name: label1.font.fontName, size: 14)
-            label1.text = "In the next 5 years:"
-            self.pieChart.addSubview(label1)
-
-            let label2 = UILabel(frame: CGRectMake(20, (labelY + 20.0), width, 20))
-            label2.font = UIFont(name: label2.font.fontName, size: 12)
-            label2.text = "992 will not get breast cancer"
-            self.pieChart.addSubview(label2)
-
-            let label3 = UILabel(frame: CGRectMake(20, (labelY + 35.0), width, 20))
-            label3.font = UIFont(name: label3.font.fontName, size: 12)
-            label3.text = "8 will get breast cancer"
-            label3.textColor = UIColor.redColor()
-            self.pieChart.addSubview(label3)
-
-            let someView = UIView(frame: CGRect(x: 0, y: 0, width: Int(width), height: Int((figureHeight+1.0)*19.0+60.0)))
-            self.pieChart.contentSize = someView.frame.size
-        }
-        
-        if(Settings.sharedInstance.completedIntro == false) {
-            let IntroViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("IntroViewController")
-            presentViewController(IntroViewController, animated: true, completion: nil)
-        }
-        
-        if (Settings.sharedInstance.completedIntro == true && Settings.sharedInstance.completedRisk == false) {
-            self.startSurvey()
-        }
         
     }
     
+    func restartSurvey(sender: UIButton!) {
+        self.startSurvey()
+    }
+    
     func startSurvey() {
+        
+        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+        riskSurveyEntity.started = true
+        self.riskSurveyModel.setRiskSurvey(riskSurveyEntity)
+        
         var steps = [ORKStep]()
         
         let step1 = ORKFormStep(identifier: "question1", title: NSLocalizedString("How Old Are You?", comment: ""), text: nil)
@@ -323,29 +308,20 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         presentViewController(taskViewController, animated: true, completion: nil)
     }
     
-    func taskViewController(taskViewController: ORKTaskViewController,
-                            didFinishWithReason reason: ORKTaskViewControllerFinishReason,
-                                                error: NSError?) {
-        let taskResult = taskViewController.result
-        let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
-        let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
+    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         
-        // Retreive RiskSurvey from database
-        let riskSurveyModel = ServiceManager.get("RiskSurveyModel") as! RiskSurveyModel
-        riskSurveyModel.save(taskResultDict!)
-        
-        // Update Settings
-        self.setCompletedSurvey()
+        switch reason {
+        case .Completed:
+            let taskResult = taskViewController.result
+            let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
+            let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
+            self.riskSurveyModel.saveTaskResult(taskResultDict!)
+        default:
+            print("Not completed!")
+        }
         
         // Then, dismiss the task view controller.
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
-    func setCompletedSurvey() {
-        Settings.sharedInstance.completedRisk = true
-        let userDataModel = ServiceManager.get("UserDataModel") as! UserDataModel
-        userDataModel.setCompletedRisk()
     }
     
 }

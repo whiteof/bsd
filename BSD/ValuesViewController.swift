@@ -47,9 +47,7 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
     }
     
     override func viewDidAppear(animated: Bool) {
-        if (Settings.sharedInstance.completedRisk == true && Settings.sharedInstance.completedValues == false) {
-            self.startSurvey()
-        }
+        self.startSurvey()
     }
     
     @IBAction func resetSelections(sender: AnyObject) {
@@ -99,7 +97,7 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
         let task = ORKOrderedTask(identifier: "scaleTask1", steps: scaleSteps)
         let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
         taskViewController.delegate = self
-        presentViewController(taskViewController, animated: true, completion: setCompletedValues)
+        presentViewController(taskViewController, animated: true, completion: nil)
     }
 
     func taskViewController(taskViewController: ORKTaskViewController,
@@ -112,11 +110,6 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
         // Then, dismiss the task view controller.
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func setCompletedValues() {
-        Settings.sharedInstance.completedValues = true
-    }
-    
     
     // TableView functions
     

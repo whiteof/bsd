@@ -16,17 +16,11 @@ class ServiceManager {
             
         // Models
         case "RiskSurveyModel":
-            let coreDataHelper = self.get("CoreDataHelper") as! CoreDataHelper
-            let contextLoc = coreDataHelper.getContextManager()
-            return RiskSurveyModel(contextLoc: contextLoc)
+            return RiskSurveyModel()
         case "UserDataModel":
-            let coreDataHelper = self.get("CoreDataHelper") as! CoreDataHelper
-            let contextLoc = coreDataHelper.getContextManager()            
-            return UserDataModel(contextLoc: contextLoc)
+            return UserDataModel()
 
         //Helpers
-        case "CoreDataHelper":
-            return CoreDataHelper()
         case "ResearchKitHelper":
             return ResearchKitHelper()
             

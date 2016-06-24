@@ -10,8 +10,4 @@ import Foundation
 
 class Settings {
     static let sharedInstance = Settings()
-    
-    var completedIntro: Bool = false
-    var completedRisk: Bool = false
-    var completedValues: Bool = false
 }

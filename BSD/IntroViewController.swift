@@ -23,10 +23,6 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
-        if (Settings.sharedInstance.completedIntro == true) {
-            self.dismissViewControllerAnimated(false, completion: nil)
-        }
-
     }
     
     func taskViewController(taskViewController: ORKTaskViewController,
@@ -34,15 +30,15 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
                                                 error: NSError?) {
         let taskResult = taskViewController.result
         print(taskResult)
-        
+        /*
         switch reason {
         case .Completed:
-            self.setCompletedIntro()
-            dismissViewControllerAnimated(true, completion: nil)
+            
         case .Discarded, .Failed, .Saved:
             dismissViewControllerAnimated(true, completion: nil)
         }
-        
+        */
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func enterAction(sender: AnyObject) {
@@ -76,12 +72,6 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
         
         presentViewController(taskViewController, animated: true, completion: nil)
         
-    }
-    
-    func setCompletedIntro() {
-        Settings.sharedInstance.completedIntro = true
-        let userDataModel = ServiceManager.get("UserDataModel") as! UserDataModel
-        userDataModel.setCompletedIntro()
     }
     
 }

@@ -7,11 +7,16 @@
 //
 
 import Foundation
-import CoreData
 
+class ValuesSurvey {
 
-class ValuesSurvey: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    var question1: Int!
+    var question2: Int!
+    var question3: Int!
+    var question4: Int!
+    var question5: Int!
+    var question6: Int!
+    var question7: Int!
+    var question8: Int!
+    
 }

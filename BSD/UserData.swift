@@ -7,11 +7,9 @@
 //
 
 import Foundation
-import CoreData
 
 
-class UserData: NSManagedObject {
+class UserData {
 
-// Insert code here to add functionality to your managed object subclass
 
 }
