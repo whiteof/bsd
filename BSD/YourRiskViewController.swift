@@ -22,37 +22,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
 
         // Do any additional setup after loading the view.
         //self.pieChart.dataSource = pieChartDataSource
-        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
-        // Draw chart
-        if (riskSurveyEntity.completed == true) {
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewCompleted")
-            viewController.view.frame = self.viewContainer.frame
-            for view in viewController.view.subviews {
-                if view.isKindOfClass(UIButton) {
-                    let button = view as! UIButton
-                    button.addTarget(self, action: #selector(self.resetAction(_:)), forControlEvents: .TouchUpInside)
-                }
-            }
-            self.viewContainer.addSubview(viewController.view)
-        }else {
-            if (riskSurveyEntity.started == true) {
-                let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewStarted")
-                viewController.view.frame = self.viewContainer.frame
-                for view in viewController.view.subviews {
-                    if view.isKindOfClass(UIButton) {
-                        let button = view as! UIButton
-                        button.addTarget(self, action: #selector(self.restartSurvey(_:)), forControlEvents: .TouchUpInside)
-                    }
-                }
-                self.viewContainer.addSubview(viewController.view)
-            }else {
-                self.startSurvey()
-            }
-        }
-        
     }
-
-    let pieChartDataSource = PieChartDataSource()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,6 +35,40 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
+        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+        if (riskSurveyEntity.completed == true) {
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewCompleted") as! YourRiskCompletedViewController
+            for view in viewController.view.subviews {
+                if view.isKindOfClass(UIButton) {
+                    let button = view as! UIButton
+                    button.addTarget(self, action: #selector(self.resetAction(_:)), forControlEvents: .TouchUpInside)
+                }
+            }
+            viewController.view.frame.size.width = self.viewContainer.frame.size.width
+            viewController.view.frame.size.height = self.viewContainer.frame.size.height
+            addChildViewController(viewController)
+            self.viewContainer.addSubview(viewController.view)
+            viewController.didMoveToParentViewController(self)
+            viewController.buildChart(self.viewContainer.frame.size.width)
+        }else {
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewStarted") as! YourRiskStartedViewController
+            if (riskSurveyEntity.started == true) {
+                for view in viewController.view.subviews {
+                    if view.isKindOfClass(UIButton) {
+                        let button = view as! UIButton
+                        button.addTarget(self, action: #selector(self.restartSurvey(_:)), forControlEvents: .TouchUpInside)
+                    }
+                }
+                viewController.view.frame.size.width = self.viewContainer.frame.size.width
+                viewController.view.frame.size.height = self.viewContainer.frame.size.height
+                addChildViewController(viewController)
+                self.viewContainer.addSubview(viewController.view)
+                viewController.didMoveToParentViewController(self)
+            }else {
+                self.startSurvey()
+            }
+        }
+ 
     }
     
     func restartSurvey(sender: UIButton!) {
@@ -300,11 +304,10 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         step.formItems = [item]
         steps += [step]
         
-        
-        
         let task = ORKOrderedTask(identifier: "task", steps: steps)
         let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
         taskViewController.delegate = self
+        taskViewController.modalPresentationStyle = .OverCurrentContext
         presentViewController(taskViewController, animated: true, completion: nil)
     }
     
@@ -321,7 +324,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         }
         
         // Then, dismiss the task view controller.
-        dismissViewControllerAnimated(true, completion: nil)
+        taskViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

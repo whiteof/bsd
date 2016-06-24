@@ -21,9 +21,18 @@ class YourRiskCompletedViewController: UIViewController {
         
         //let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
         
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func buildChart(frameWidth: CGFloat) {
         // Draw chart
         
-        let width = self.pieChart.frame.size.width
+        //let width = self.pieChart.frame.size.width
+        let width = CGFloat(frameWidth-30.0)
         let figureWidth = (Float(width)/50)
         let figureHeight = figureWidth*1.6
         for j in 0...19 {
@@ -41,7 +50,7 @@ class YourRiskCompletedViewController: UIViewController {
         }
         
         // Add Labels
-        let labelY = CGFloat((figureHeight+1.0)*19.0)
+        let labelY = CGFloat((figureHeight+1.0)*20.0)
         let label1 = UILabel(frame: CGRectMake(0, labelY, width, 20))
         label1.font = UIFont(name: label1.font.fontName, size: 14)
         label1.text = "In the next 5 years:"
@@ -60,11 +69,6 @@ class YourRiskCompletedViewController: UIViewController {
         
         let someView = UIView(frame: CGRect(x: 0, y: 0, width: Int(width), height: Int((figureHeight+1.0)*19.0+60.0)))
         self.pieChart.contentSize = someView.frame.size
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

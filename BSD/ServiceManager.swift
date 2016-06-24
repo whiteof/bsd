@@ -19,6 +19,8 @@ class ServiceManager {
             return RiskSurveyModel()
         case "UserDataModel":
             return UserDataModel()
+        case "ValuesSurveyModel":
+            return ValuesSurveyModel()
 
         //Helpers
         case "ResearchKitHelper":

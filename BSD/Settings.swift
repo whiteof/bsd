@@ -10,4 +10,6 @@ import Foundation
 
 class Settings {
     static let sharedInstance = Settings()
+    
+    var activeSlide: Int = 0
 }

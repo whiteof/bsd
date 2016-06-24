@@ -1,21 +1,20 @@
 //
-//  ScreeningViewController.swift
+//  MainTabBarController.swift
 //  BSD
 //
-//  Created by Viktar Yurkin on 6/13/16.
+//  Created by Victor Yurkin on 6/24/16.
 //  Copyright © 2016 WCM. All rights reserved.
 //
 
 import UIKit
 
-class ScreeningViewController: UIViewController {
-
+class MainTabBarController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

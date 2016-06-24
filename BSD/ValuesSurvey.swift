@@ -18,5 +18,7 @@ class ValuesSurvey {
     var question6: Int!
     var question7: Int!
     var question8: Int!
+    var started: Bool = false
+    var completed: Bool = false
     
 }

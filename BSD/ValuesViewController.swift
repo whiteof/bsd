@@ -9,7 +9,7 @@
 import UIKit
 import ResearchKit
 
-class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UITableViewDelegate, UITableViewDataSource  {
+class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate {
     
     let questions = [
         "I'm willing to do anything to detect breast cancer as early as possible.",
@@ -31,14 +31,10 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
         5,
         8
     ]
-    @IBOutlet weak var answersTable: UITableView!
+    let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.answersTable.separatorStyle = .None
-        self.answersTable.rowHeight = 80.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +43,16 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.startSurvey()
+        self.updateView()
+    }
+    
+    func updateView() {
+        let valuesSurveyEntity = self.valuesSurveyModel.getValuesSurvey()
+        
+        if (valuesSurveyEntity.completed == false && valuesSurveyEntity.started == false) {
+            self.startSurvey()
+        }
+
     }
     
     @IBAction func resetSelections(sender: AnyObject) {
@@ -55,47 +60,12 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
     }
     
     func startSurvey() {
-        var scaleSteps = [ORKStep]()
         
-        let scaleStepIntro = ORKInstructionStep(identifier: "scaleStepIntro")
-        scaleStepIntro.title = "Other things to think about"
-        scaleStepIntro.text = "Every woman's feelings and concerns are different, and it may be helpful to think about what's important to you. The statements and questions below will give you a chance to explore your feelings about screening mammograms and breast cancer. There is no right or wrong answer."
-        scaleSteps += [scaleStepIntro]
+        let valuesSurveyEntity = self.valuesSurveyModel.getValuesSurvey()
+        valuesSurveyEntity.started = true
+        self.valuesSurveyModel.setValuesSurvey(valuesSurveyEntity)
         
-        var scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        var scaleStep = ORKQuestionStep(identifier: "scaleQuestion1", title: "I'm willing to do anything to detect breast cancer as early as possible.", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion2", title: "Screening mammograms are painful and inconvenient.", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion3", title: "I only want to have mammograms if I am at high risk for breast cancer.", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion4", title: "I want my doctor to tell me when to have mammograms.", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion5", title: "I have enough information to make a decision about screening mammograms.", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion6", title: "Making a decision about when to start and how often to have mammograms is stressful.", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion7", title: "How worried are you about getting breast cancer?", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        scaleFormat = ORKAnswerFormat.scaleAnswerFormatWithMaximumValue(10, minimumValue: 1, defaultValue: NSIntegerMax, step: 1, vertical: false, maximumValueDescription: "Strongly Agree", minimumValueDescription: "Strongly Disagree")
-        scaleStep = ORKQuestionStep(identifier: "scaleQuestion8", title: "How concerned are you about the possible harms of screening mammograms?", answer: scaleFormat)
-        scaleSteps += [scaleStep]
-        
-        let task = ORKOrderedTask(identifier: "scaleTask1", steps: scaleSteps)
-        let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
+        let taskViewController = ValuesSurveyTask.getTaskViewController()
         taskViewController.delegate = self
         presentViewController(taskViewController, animated: true, completion: nil)
     }
@@ -103,62 +73,20 @@ class ValuesViewController: UIViewController, ORKTaskViewControllerDelegate, UIT
     func taskViewController(taskViewController: ORKTaskViewController,
                             didFinishWithReason reason: ORKTaskViewControllerFinishReason,
                                                 error: NSError?) {
-        let taskResult = taskViewController.result
-        print(taskResult)
-        // You could do something with the result here.
+        switch reason {
+        case .Completed:
+            let taskResult = taskViewController.result
+            let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
+            let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
+            self.valuesSurveyModel.saveTaskResult(taskResultDict!)
+        default:
+            print("Not completed!")
+        }
         
         // Then, dismiss the task view controller.
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    // TableView functions
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.questions.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //taskViewController.dismissViewControllerAnimated(true, completion: nil)
+        taskViewController.dismissViewControllerAnimated(true, completion: updateView)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("valuesCell", forIndexPath: indexPath)
-        
-        for view in cell.contentView.subviews {
-            if view.isKindOfClass(UILabel) {
-                let question = view as! UILabel
-                if question.restorationIdentifier == "cellTitle" {
-                    question.text = self.questions[indexPath.row]
-                }
-            }
-            if view.isKindOfClass(UIProgressView) {
-                let answer = view as! UIProgressView
-                let value = (Float(self.answers[indexPath.row]) / 10)
-                answer.progress = Float(value)
-            }
-        }
-
-        
-        if(indexPath.row == 0) {
-            //let cellImg = UIImageView(frame: CGRectMake(5, 5, 50, 50))
-            //cellImg.image = UIImage(named: "Figure")
-            //cell.addSubview(cellImg)
-            //cell.textLabel?.text = "Unit testing: 03/23/2016 5:05am"
-        }
-        return cell
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if sender is UITableViewCell {
-            let nextScene = segue.destinationViewController as! ValuesDetailViewController
-            if let indexPath = self.answersTable.indexPathForSelectedRow {
-                nextScene.question = self.questions[indexPath.row]
-                nextScene.value = self.answers[indexPath.row]
-            }
-        }
     }
     
 }

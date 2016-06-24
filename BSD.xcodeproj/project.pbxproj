@@ -33,6 +33,11 @@
 		A8747CA91D184B9C00622088 /* ORKQuestionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CA81D184B9C00622088 /* ORKQuestionResult.swift */; };
 		A8747CAB1D1853E500622088 /* ResearchKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CAA1D1853E500622088 /* ResearchKitHelper.swift */; };
 		A8747CAD1D18716200622088 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747CAC1D18716200622088 /* UserDataModel.swift */; };
+		A890363F1D1DB5480007447D /* ValuesCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A890363E1D1DB5480007447D /* ValuesCompletedViewController.swift */; };
+		A89036411D1DB6760007447D /* ValuesSurveyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036401D1DB6760007447D /* ValuesSurveyModel.swift */; };
+		A89036431D1DC1400007447D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036421D1DC1400007447D /* MainTabBarController.swift */; };
+		A89036451D1DCD640007447D /* ValuesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036441D1DCD640007447D /* ValuesPageViewController.swift */; };
+		A89036471D1DD2BA0007447D /* ValuesSurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */; };
 		A89A4C4C1D1048E7008FF06B /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */; };
 		A8A7A7841D143F0B00DA5298 /* ValuesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */; };
 		A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */; };
@@ -102,6 +107,11 @@
 		A8747CA81D184B9C00622088 /* ORKQuestionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ORKQuestionResult.swift; sourceTree = "<group>"; };
 		A8747CAA1D1853E500622088 /* ResearchKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchKitHelper.swift; sourceTree = "<group>"; };
 		A8747CAC1D18716200622088 /* UserDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		A890363E1D1DB5480007447D /* ValuesCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesCompletedViewController.swift; sourceTree = "<group>"; };
+		A89036401D1DB6760007447D /* ValuesSurveyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesSurveyModel.swift; sourceTree = "<group>"; };
+		A89036421D1DC1400007447D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		A89036441D1DCD640007447D /* ValuesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesPageViewController.swift; sourceTree = "<group>"; };
+		A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesSurveyTask.swift; sourceTree = "<group>"; };
 		A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
 		A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesDetailViewController.swift; sourceTree = "<group>"; };
 		A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +165,7 @@
 			children = (
 				A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */,
 				A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */,
+				A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -172,8 +183,11 @@
 				577435031D0F999500980850 /* ScreeningViewController.swift */,
 				A8EDA6AE1D108D920027178B /* ScreeningSlidesPageViewController.swift */,
 				577435051D0F99E000980850 /* ValuesViewController.swift */,
+				A89036441D1DCD640007447D /* ValuesPageViewController.swift */,
+				A890363E1D1DB5480007447D /* ValuesCompletedViewController.swift */,
 				A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */,
 				577435071D0F9CDF00980850 /* SummaryViewController.swift */,
+				A89036421D1DC1400007447D /* MainTabBarController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -255,6 +269,7 @@
 			children = (
 				A8747CA31D18343900622088 /* RiskSurveyModel.swift */,
 				A8747CAC1D18716200622088 /* UserDataModel.swift */,
+				A89036401D1DB6760007447D /* ValuesSurveyModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -546,6 +561,8 @@
 			files = (
 				A8747CA41D18343900622088 /* RiskSurveyModel.swift in Sources */,
 				A8A7A7841D143F0B00DA5298 /* ValuesDetailViewController.swift in Sources */,
+				A89036471D1DD2BA0007447D /* ValuesSurveyTask.swift in Sources */,
+				A89036431D1DC1400007447D /* MainTabBarController.swift in Sources */,
 				A8A7A7DD1D1491D500DA5298 /* RiskSurvey.swift in Sources */,
 				A8747CA11D18326000622088 /* CoreDataHelper.swift in Sources */,
 				A8747CAB1D1853E500622088 /* ResearchKitHelper.swift in Sources */,
@@ -556,14 +573,17 @@
 				A8A7A7D91D1491D500DA5298 /* ValuesSurvey.swift in Sources */,
 				A859BE451D02117E00C1DBD3 /* AppDelegate.swift in Sources */,
 				577435081D0F9CDF00980850 /* SummaryViewController.swift in Sources */,
+				A89036451D1DCD640007447D /* ValuesPageViewController.swift in Sources */,
 				A859BE4D1D02117E00C1DBD3 /* BSD.xcdatamodeld in Sources */,
 				577435041D0F999500980850 /* ScreeningViewController.swift in Sources */,
 				5798C3771D1CD5A40061DAFE /* YourRiskStartedViewController.swift in Sources */,
 				A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */,
 				A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */,
 				A8A7A7DB1D1491D500DA5298 /* UserData.swift in Sources */,
+				A890363F1D1DB5480007447D /* ValuesCompletedViewController.swift in Sources */,
 				577435021D0F95AA00980850 /* YourRiskViewController.swift in Sources */,
 				5798C3751D1CD3980061DAFE /* YourRiskCompletedViewController.swift in Sources */,
+				A89036411D1DB6760007447D /* ValuesSurveyModel.swift in Sources */,
 				A8294FDF1D1978290094A196 /* IndexViewController.swift in Sources */,
 				A8747CA71D184AE000622088 /* ORKQuestionType.swift in Sources */,
 				A8EDA6AF1D108D920027178B /* ScreeningSlidesPageViewController.swift in Sources */,
