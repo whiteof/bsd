@@ -319,6 +319,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
             self.riskSurveyModel.saveTaskResult(taskResultDict!)
+            self.viewDidAppear(false)
         default:
             print("Not completed!")
         }

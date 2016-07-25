@@ -11,6 +11,8 @@ import ResearchKit
 
 class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ORKTaskViewControllerDelegate {
 
+    let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
+    
     let questions = [
         "I'm willing to do anything to detect breast cancer as early as possible.",
         "Screening mammograms are painful and inconvenient.",
@@ -21,18 +23,31 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
         "How worried are you about getting breast cancer?",
         "How concerned are you about the possible harms of screening mammograms?"
     ]
-    let answers = [
-        3,
-        4,
-        5,
-        6,
-        7,
-        9,
-        5,
-        8
-    ]
     
-    let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
+    /*
+    let answers: [Int] = {
+        let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
+        let valuesSurveyEntity = valuesSurveyModel.getValuesSurvey()
+        var returnArray = [Int]()
+        if valuesSurveyEntity.completed == true {
+            returnArray = [valuesSurveyEntity.question1, valuesSurveyEntity.question2, valuesSurveyEntity.question3, valuesSurveyEntity.question4, valuesSurveyEntity.question5, valuesSurveyEntity.question6, valuesSurveyEntity.question7, valuesSurveyEntity.question8]
+        }else {
+            returnArray = [0, 0, 0, 0, 0, 0, 0, 0]
+        }
+        return returnArray
+    }()
+    */
+    
+    var answers = [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ]
     
     @IBOutlet weak var answersTable: UITableView!
     
@@ -49,6 +64,11 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
         self.answersTable.separatorStyle = .None
         self.answersTable.rowHeight = 80.0
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let valuesSurveyEntity = self.valuesSurveyModel.getValuesSurvey()
+        self.answers = [valuesSurveyEntity.question1, valuesSurveyEntity.question2, valuesSurveyEntity.question3, valuesSurveyEntity.question4, valuesSurveyEntity.question5, valuesSurveyEntity.question6, valuesSurveyEntity.question7, valuesSurveyEntity.question8]
     }
 
     // TableView functions
@@ -81,7 +101,6 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
             }
         }
         
-        
         if(indexPath.row == 0) {
             //let cellImg = UIImageView(frame: CGRectMake(5, 5, 50, 50))
             //cellImg.image = UIImage(named: "Figure")
@@ -90,7 +109,7 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
         }
         return cell
     }
-    
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if sender is UITableViewCell {
             let nextScene = segue.destinationViewController as! ValuesDetailViewController
@@ -100,23 +119,29 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
             }
         }
     }
+    */
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("valuesDetailViewController") as! ValuesDetailViewController
+        detailViewController.modalPresentationStyle = .OverCurrentContext
+        detailViewController.question = self.questions[indexPath.row]
+        detailViewController.value = self.answers[indexPath.row]
+        presentViewController(detailViewController, animated: true, completion: nil)
+    }
     
-    func taskViewController(taskViewController: ORKTaskViewController,
-                            didFinishWithReason reason: ORKTaskViewControllerFinishReason,
-                                                error: NSError?) {
+    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         switch reason {
         case .Completed:
             let taskResult = taskViewController.result
             let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
             self.valuesSurveyModel.saveTaskResult(taskResultDict!)
+            self.parentViewController?.viewDidAppear(false)
         default:
             print("Not completed!")
         }
         
         // Then, dismiss the task view controller.
-        //taskViewController.dismissViewControllerAnimated(true, completion: nil)
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         
     }

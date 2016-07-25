@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e4x-pR-CJb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e4x-pR-CJb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -225,7 +225,7 @@
         <!--Values-->
         <scene sceneID="wjL-vM-Ufu">
             <objects>
-                <viewController id="qXa-4v-NWf" customClass="ValuesViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="valuesViewController" id="qXa-4v-NWf" customClass="ValuesViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Ax-Eh-x20"/>
                         <viewControllerLayoutGuide type="bottom" id="EQ7-uj-h1P"/>
@@ -342,14 +342,11 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="K2R-dd-X4B" kind="showDetail" id="UDx-UE-xAI"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="qXa-4v-NWf" id="pn1-us-e25"/>
-                                    <outlet property="delegate" destination="qXa-4v-NWf" id="eYt-9U-8VY"/>
+                                    <outlet property="dataSource" destination="qu9-VV-gsV" id="awK-3A-GD7"/>
+                                    <outlet property="delegate" destination="qu9-VV-gsV" id="7Wa-ev-m8X"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxR-iD-gOE">
@@ -385,10 +382,10 @@
             </objects>
             <point key="canvasLocation" x="1351" y="2820"/>
         </scene>
-        <!--View Controller-->
+        <!--Values Started View Controller-->
         <scene sceneID="mYE-c0-TVn">
             <objects>
-                <viewController storyboardIdentifier="valuesStartedViewController" id="Gd3-gB-ZJF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="valuesStartedViewController" id="Gd3-gB-ZJF" customClass="ValuesStartedViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x1S-5j-7u5"/>
                         <viewControllerLayoutGuide type="bottom" id="ncc-sb-Ui3"/>
@@ -404,6 +401,9 @@
                                     <constraint firstAttribute="width" constant="85" id="qej-Ef-pUL"/>
                                 </constraints>
                                 <state key="normal" title="Start Survey"/>
+                                <connections>
+                                    <action selector="startSurveyAction:" destination="Gd3-gB-ZJF" eventType="touchUpInside" id="WgL-TQ-2cl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -583,7 +583,7 @@
         <!--Values Detail View Controller-->
         <scene sceneID="BV7-FB-Hm3">
             <objects>
-                <viewController id="K2R-dd-X4B" customClass="ValuesDetailViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="valuesDetailViewController" id="K2R-dd-X4B" customClass="ValuesDetailViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2rY-rs-rNf"/>
                         <viewControllerLayoutGuide type="bottom" id="4a5-VN-aU0"/>

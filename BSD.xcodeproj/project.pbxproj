@@ -39,6 +39,7 @@
 		A89036451D1DCD640007447D /* ValuesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036441D1DCD640007447D /* ValuesPageViewController.swift */; };
 		A89036471D1DD2BA0007447D /* ValuesSurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */; };
 		A89A4C4C1D1048E7008FF06B /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */; };
+		A89F1E921D46903100F83AFE /* ValuesStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89F1E911D46903100F83AFE /* ValuesStartedViewController.swift */; };
 		A8A7A7841D143F0B00DA5298 /* ValuesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */; };
 		A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */; };
 		A8A7A7D91D1491D500DA5298 /* ValuesSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7D31D1491D500DA5298 /* ValuesSurvey.swift */; };
@@ -113,6 +114,7 @@
 		A89036441D1DCD640007447D /* ValuesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesPageViewController.swift; sourceTree = "<group>"; };
 		A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesSurveyTask.swift; sourceTree = "<group>"; };
 		A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
+		A89F1E911D46903100F83AFE /* ValuesStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesStartedViewController.swift; sourceTree = "<group>"; };
 		A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesDetailViewController.swift; sourceTree = "<group>"; };
 		A8A7A7851D147E4400DA5298 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		A8A7A7D31D1491D500DA5298 /* ValuesSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesSurvey.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				577435051D0F99E000980850 /* ValuesViewController.swift */,
 				A89036441D1DCD640007447D /* ValuesPageViewController.swift */,
 				A890363E1D1DB5480007447D /* ValuesCompletedViewController.swift */,
+				A89F1E911D46903100F83AFE /* ValuesStartedViewController.swift */,
 				A8A7A7831D143F0B00DA5298 /* ValuesDetailViewController.swift */,
 				577435071D0F9CDF00980850 /* SummaryViewController.swift */,
 				A89036421D1DC1400007447D /* MainTabBarController.swift */,
@@ -561,6 +564,7 @@
 			files = (
 				A8747CA41D18343900622088 /* RiskSurveyModel.swift in Sources */,
 				A8A7A7841D143F0B00DA5298 /* ValuesDetailViewController.swift in Sources */,
+				A89F1E921D46903100F83AFE /* ValuesStartedViewController.swift in Sources */,
 				A89036471D1DD2BA0007447D /* ValuesSurveyTask.swift in Sources */,
 				A89036431D1DC1400007447D /* MainTabBarController.swift in Sources */,
 				A8A7A7DD1D1491D500DA5298 /* RiskSurvey.swift in Sources */,
