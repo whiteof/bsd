@@ -11,8 +11,8 @@ import UIKit
 class ValuesPageViewController: UIPageViewController {
     
     let pageViewControllers: [UIViewController] = {
-        let pageOne = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("valuesCompletedViewController")
-        let pageTwo = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("valuesStartedViewController")
+        let pageOne = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("valuesCompletedViewController") as! ValuesCompletedViewController
+        let pageTwo = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("valuesStartedViewController") as! ValuesStartedViewController
         return [pageOne, pageTwo]
     }()
     

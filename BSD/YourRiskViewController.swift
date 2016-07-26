@@ -52,19 +52,18 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
             viewController.buildChart(self.viewContainer.frame.size.width)
         }else {
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewStarted") as! YourRiskStartedViewController
-            if (riskSurveyEntity.started == true) {
-                for view in viewController.view.subviews {
-                    if view.isKindOfClass(UIButton) {
-                        let button = view as! UIButton
-                        button.addTarget(self, action: #selector(self.restartSurvey(_:)), forControlEvents: .TouchUpInside)
-                    }
+            for view in viewController.view.subviews {
+                if view.isKindOfClass(UIButton) {
+                    let button = view as! UIButton
+                    button.addTarget(self, action: #selector(self.restartSurvey(_:)), forControlEvents: .TouchUpInside)
                 }
-                viewController.view.frame.size.width = self.viewContainer.frame.size.width
-                viewController.view.frame.size.height = self.viewContainer.frame.size.height
-                addChildViewController(viewController)
-                self.viewContainer.addSubview(viewController.view)
-                viewController.didMoveToParentViewController(self)
-            }else {
+            }
+            viewController.view.frame.size.width = self.viewContainer.frame.size.width
+            viewController.view.frame.size.height = self.viewContainer.frame.size.height
+            addChildViewController(viewController)
+            self.viewContainer.addSubview(viewController.view)
+            viewController.didMoveToParentViewController(self)
+            if (riskSurveyEntity.started == false) {
                 self.startSurvey()
             }
         }

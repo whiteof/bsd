@@ -44,7 +44,7 @@ class ValuesStartedViewController: UIViewController, ORKTaskViewControllerDelega
             let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
             self.valuesSurveyModel.saveTaskResult(taskResultDict!)
-            self.viewDidAppear(false)
+            self.parentViewController?.viewDidAppear(false)
         default:
             print("Not completed")
         }

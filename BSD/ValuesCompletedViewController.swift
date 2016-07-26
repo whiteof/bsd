@@ -10,7 +10,7 @@ import UIKit
 import ResearchKit
 
 class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ORKTaskViewControllerDelegate {
-
+    
     let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
     
     let questions = [
@@ -24,8 +24,7 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
         "How concerned are you about the possible harms of screening mammograms?"
     ]
     
-    /*
-    let answers: [Int] = {
+    var answers: [Int] = {
         let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
         let valuesSurveyEntity = valuesSurveyModel.getValuesSurvey()
         var returnArray = [Int]()
@@ -36,28 +35,15 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
         }
         return returnArray
     }()
-    */
-    
-    var answers = [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-    ]
-    
+
     @IBOutlet weak var answersTable: UITableView!
     
     @IBAction func resetAction(sender: AnyObject) {
-        
-            let taskViewController = ValuesSurveyTask.getTaskViewController()
-            taskViewController.delegate = self
-            presentViewController(taskViewController, animated: true, completion: nil)
-        
+        let taskViewController = ValuesSurveyTask.getTaskViewController()
+        taskViewController.delegate = self
+        presentViewController(taskViewController, animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,11 +52,12 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
         self.answersTable.rowHeight = 80.0
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         let valuesSurveyEntity = self.valuesSurveyModel.getValuesSurvey()
         self.answers = [valuesSurveyEntity.question1, valuesSurveyEntity.question2, valuesSurveyEntity.question3, valuesSurveyEntity.question4, valuesSurveyEntity.question5, valuesSurveyEntity.question6, valuesSurveyEntity.question7, valuesSurveyEntity.question8]
+        self.answersTable.reloadData()
     }
-
+    
     // TableView functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -100,26 +87,9 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
                 answer.progress = Float(value)
             }
         }
-        
-        if(indexPath.row == 0) {
-            //let cellImg = UIImageView(frame: CGRectMake(5, 5, 50, 50))
-            //cellImg.image = UIImage(named: "Figure")
-            //cell.addSubview(cellImg)
-            //cell.textLabel?.text = "Unit testing: 03/23/2016 5:05am"
-        }
+
         return cell
     }
-    /*
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if sender is UITableViewCell {
-            let nextScene = segue.destinationViewController as! ValuesDetailViewController
-            if let indexPath = self.answersTable.indexPathForSelectedRow {
-                nextScene.question = self.questions[indexPath.row]
-                nextScene.value = self.answers[indexPath.row]
-            }
-        }
-    }
-    */
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("valuesDetailViewController") as! ValuesDetailViewController
@@ -136,7 +106,11 @@ class ValuesCompletedViewController: UIViewController, UITableViewDelegate, UITa
             let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
             self.valuesSurveyModel.saveTaskResult(taskResultDict!)
-            self.parentViewController?.viewDidAppear(false)
+
+            let valuesSurveyEntity = self.valuesSurveyModel.getValuesSurvey()
+            self.answers = [valuesSurveyEntity.question1, valuesSurveyEntity.question2, valuesSurveyEntity.question3, valuesSurveyEntity.question4, valuesSurveyEntity.question5, valuesSurveyEntity.question6, valuesSurveyEntity.question7, valuesSurveyEntity.question8]
+            
+            self.answersTable.reloadData()
         default:
             print("Not completed!")
         }
