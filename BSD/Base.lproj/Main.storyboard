@@ -801,10 +801,10 @@ It's hard to know who will benefit from mammograms and who will experience harm.
             </objects>
             <point key="canvasLocation" x="2966" y="1477"/>
         </scene>
-        <!--View Controller-->
+        <!--Screening Slide Three View Controller-->
         <scene sceneID="l6P-E0-c7p">
             <objects>
-                <viewController storyboardIdentifier="ScreeningSlide3" id="8e6-kx-utr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScreeningSlide3" id="8e6-kx-utr" customClass="ScreeningSlideThreeViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Df4-im-K1h"/>
                         <viewControllerLayoutGuide type="bottom" id="q4B-fs-N5w"/>
@@ -813,23 +813,22 @@ It's hard to know who will benefit from mammograms and who will experience harm.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How well do mammograms perform in women like me?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHJ-si-nnK">
-                                <rect key="frame" x="20" y="40" width="560" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Ff1-Uv-p6j"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOF-L6-TrB">
+                                <rect key="frame" x="20" y="20" width="560" height="460"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IHJ-si-nnK" firstAttribute="leading" secondItem="eRe-Jx-5pl" secondAttribute="leadingMargin" id="7ou-9p-jOC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IHJ-si-nnK" secondAttribute="trailing" id="NFC-Bb-If1"/>
-                            <constraint firstItem="IHJ-si-nnK" firstAttribute="top" secondItem="Df4-im-K1h" secondAttribute="bottom" constant="20" id="thM-gG-MgV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AOF-L6-TrB" secondAttribute="trailing" id="gPh-sy-TEW"/>
+                            <constraint firstItem="q4B-fs-N5w" firstAttribute="top" secondItem="AOF-L6-TrB" secondAttribute="bottom" constant="120" id="qUb-in-fYh"/>
+                            <constraint firstItem="AOF-L6-TrB" firstAttribute="top" secondItem="Df4-im-K1h" secondAttribute="bottom" id="r1D-Dp-DuX"/>
+                            <constraint firstItem="AOF-L6-TrB" firstAttribute="leading" secondItem="eRe-Jx-5pl" secondAttribute="leadingMargin" id="tc6-fq-Pgv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="AOF-L6-TrB" id="LEJ-Cg-EOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pqg-wD-rWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -945,10 +944,10 @@ It's hard to know who will benefit from mammograms and who will experience harm.
             </objects>
             <point key="canvasLocation" x="194" y="1119"/>
         </scene>
-        <!--View Controller-->
+        <!--Intro Slide Three View Controller-->
         <scene sceneID="Fvo-jh-18z">
             <objects>
-                <viewController storyboardIdentifier="introThreeViewController" id="6HU-3k-EBL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="introThreeViewController" id="6HU-3k-EBL" customClass="IntroSlideThreeViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d92-9a-8lJ"/>
                         <viewControllerLayoutGuide type="bottom" id="mY8-B6-xLy"/>
@@ -957,69 +956,34 @@ It's hard to know who will benefit from mammograms and who will experience harm.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1P-c1-LvY">
-                                <rect key="frame" x="40" y="20" width="480" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="zoc-Lr-lhZ"/>
-                                </constraints>
-                                <string key="text">This is an application for women ages 40-49. It is designed to give you unbiased information that can help you and your doctor decide when you should start and how often you should have screening mammograms</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZh-kG-nnX">
-                                <rect key="frame" x="40" y="145" width="480" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="tqa-Ia-uVS"/>
-                                </constraints>
-                                <string key="text">This app allows you to:
-
-Assess your personal risk of breast cancer
-See the benefits and harms of screening mammograms for women like you
-Explore your personal values about breast cancer screening
-Create a summary to share with your doctor
-
-Information you enter here is anonymous, and we never ask your name or email address. </string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeX-Li-WNL">
-                                <rect key="frame" x="40" y="280" width="78" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="78" id="DbO-lV-oUc"/>
-                                    <constraint firstAttribute="height" constant="30" id="v6a-3i-KfO"/>
-                                    <constraint firstAttribute="width" constant="100" id="yPg-Em-1wa"/>
-                                </constraints>
-                                <state key="normal" title="Learn more"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="yPg-Em-1wa"/>
-                                    </mask>
-                                </variation>
-                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hL5-BZ-mC8">
+                                <rect key="frame" x="20" y="20" width="530" height="195"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6HU-3k-EBL" id="6yr-2e-KYn"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gZh-kG-nnX" firstAttribute="top" secondItem="e1P-c1-LvY" secondAttribute="bottom" constant="5" id="6nc-yw-Uph"/>
-                            <constraint firstItem="MeX-Li-WNL" firstAttribute="leading" secondItem="lUx-4M-C9G" secondAttribute="leadingMargin" constant="20" id="FyE-de-HFc"/>
-                            <constraint firstItem="gZh-kG-nnX" firstAttribute="leading" secondItem="lUx-4M-C9G" secondAttribute="leadingMargin" constant="20" id="M7y-7L-5zo"/>
-                            <constraint firstItem="MeX-Li-WNL" firstAttribute="top" secondItem="gZh-kG-nnX" secondAttribute="bottom" constant="5" id="OP4-k4-VED"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e1P-c1-LvY" secondAttribute="trailing" constant="60" id="PUX-Cd-rLc"/>
-                            <constraint firstItem="e1P-c1-LvY" firstAttribute="top" secondItem="d92-9a-8lJ" secondAttribute="bottom" id="Ph0-Qi-wq5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gZh-kG-nnX" secondAttribute="trailing" constant="60" id="cdF-8w-ib0"/>
-                            <constraint firstItem="e1P-c1-LvY" firstAttribute="leading" secondItem="lUx-4M-C9G" secondAttribute="leadingMargin" constant="20" id="sYf-sy-f0T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hL5-BZ-mC8" secondAttribute="trailing" constant="30" id="XFB-ht-mLV"/>
+                            <constraint firstItem="hL5-BZ-mC8" firstAttribute="top" secondItem="d92-9a-8lJ" secondAttribute="bottom" id="k6S-RS-Iip"/>
+                            <constraint firstItem="hL5-BZ-mC8" firstAttribute="leading" secondItem="lUx-4M-C9G" secondAttribute="leadingMargin" id="yie-ZA-cky"/>
+                            <constraint firstItem="mY8-B6-xLy" firstAttribute="top" secondItem="hL5-BZ-mC8" secondAttribute="bottom" constant="385" id="z0Q-44-T5f"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="hL5-BZ-mC8" id="ye3-FS-Jum"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4o-5z-62M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2198" y="-252"/>
         </scene>
-        <!--View Controller-->
+        <!--Intro Slide Two View Controller-->
         <scene sceneID="2ib-f3-odl">
             <objects>
-                <viewController storyboardIdentifier="introTwoViewController" id="yYO-hH-klx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="introTwoViewController" id="yYO-hH-klx" customClass="IntroSlideTwoViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gA6-lu-8dm"/>
                         <viewControllerLayoutGuide type="bottom" id="PNt-aT-9xf"/>
@@ -1028,61 +992,25 @@ Information you enter here is anonymous, and we never ask your name or email add
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odq-sb-VZA">
-                                <rect key="frame" x="40" y="30" width="480" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="7L3-zr-DHy"/>
-                                    <constraint firstAttribute="height" constant="20" id="arC-PN-qad"/>
-                                </constraints>
-                                <string key="text">What will you do?
-
-</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7L3-zr-DHy"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfo-YF-3pE">
-                                <rect key="frame" x="40" y="60" width="480" height="170"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="Jbm-xe-zkt"/>
-                                    <constraint firstAttribute="height" constant="130" id="k8m-3V-kTt"/>
-                                </constraints>
-                                <string key="text">You may want to start mammograms in your 40's or wait until you are 50.
-
-You may want mammograms every year or you may want them every other year.
-
-None of these choices is wrong. One of them will be right for you.</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="k8m-3V-kTt"/>
-                                    </mask>
-                                </variation>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcf-QG-il0">
+                                <rect key="frame" x="20" y="20" width="530" height="195"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yYO-hH-klx" id="LZv-CZ-zSc"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gfo-YF-3pE" firstAttribute="top" secondItem="odq-sb-VZA" secondAttribute="bottom" constant="10" id="1Hg-cs-2o3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gfo-YF-3pE" secondAttribute="trailing" constant="60" id="3oy-TK-yFG"/>
-                            <constraint firstItem="odq-sb-VZA" firstAttribute="top" secondItem="gA6-lu-8dm" secondAttribute="bottom" constant="10" id="7tl-rY-3vL"/>
-                            <constraint firstItem="gfo-YF-3pE" firstAttribute="leading" secondItem="odq-sb-VZA" secondAttribute="trailing" constant="-344" id="JRV-dI-gjm"/>
-                            <constraint firstItem="gfo-YF-3pE" firstAttribute="leading" secondItem="ctR-Oh-J37" secondAttribute="leadingMargin" constant="20" id="eGS-DC-UtG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="odq-sb-VZA" secondAttribute="trailing" constant="60" id="pa6-Mx-QyN"/>
-                            <constraint firstItem="odq-sb-VZA" firstAttribute="leading" secondItem="ctR-Oh-J37" secondAttribute="leadingMargin" constant="20" id="v05-A4-tVz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wcf-QG-il0" secondAttribute="trailing" constant="30" id="4ig-Fc-bEz"/>
+                            <constraint firstItem="wcf-QG-il0" firstAttribute="leading" secondItem="ctR-Oh-J37" secondAttribute="leadingMargin" id="iZj-AP-rbF"/>
+                            <constraint firstItem="wcf-QG-il0" firstAttribute="top" secondItem="gA6-lu-8dm" secondAttribute="bottom" id="rzf-FQ-i7f"/>
+                            <constraint firstItem="PNt-aT-9xf" firstAttribute="top" secondItem="wcf-QG-il0" secondAttribute="bottom" constant="385" id="wwv-sm-koW"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="JRV-dI-gjm"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="wcf-QG-il0" id="HiK-kv-3wq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isJ-pP-g2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1252,10 +1180,59 @@ Most of the time, these symptoms are NOT breast cancer but it's important to see
             </objects>
             <point key="canvasLocation" x="5145" y="804"/>
         </scene>
-        <!--View Controller-->
+        <!--Intro Popup View Controller-->
+        <scene sceneID="lDF-pZ-sRR">
+            <objects>
+                <viewController storyboardIdentifier="introPopupViewController" id="fHy-Zf-2JA" customClass="IntroPopupViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eoT-Rt-Fo3"/>
+                        <viewControllerLayoutGuide type="bottom" id="TYE-BZ-voi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ACR-cL-NOq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOL-tn-nm7">
+                                <rect key="frame" x="20" y="55" width="560" height="545"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fHy-Zf-2JA" id="ulh-Xh-tcL"/>
+                                </connections>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cb9-Hs-IiY">
+                                <rect key="frame" x="541" y="20" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="fBC-Ez-8hT"/>
+                                    <constraint firstAttribute="height" constant="30" id="pUk-Uu-NiF"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closePopup:" destination="fHy-Zf-2JA" eventType="touchUpInside" id="x4o-3Q-kIB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mOL-tn-nm7" firstAttribute="leading" secondItem="ACR-cL-NOq" secondAttribute="leadingMargin" id="0oB-VG-eez"/>
+                            <constraint firstItem="mOL-tn-nm7" firstAttribute="top" secondItem="Cb9-Hs-IiY" secondAttribute="bottom" constant="5" id="47j-UD-yue"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cb9-Hs-IiY" secondAttribute="trailing" id="9dn-bS-4JY"/>
+                            <constraint firstItem="Cb9-Hs-IiY" firstAttribute="top" secondItem="eoT-Rt-Fo3" secondAttribute="bottom" id="SG6-pQ-ERF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mOL-tn-nm7" secondAttribute="trailing" id="URX-S7-3Bt"/>
+                            <constraint firstItem="TYE-BZ-voi" firstAttribute="top" secondItem="mOL-tn-nm7" secondAttribute="bottom" id="zBh-jj-qgP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="mOL-tn-nm7" id="rT1-zO-nVr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ro7-qG-0ST" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884" y="-940"/>
+        </scene>
+        <!--Intro Slide One View Controller-->
         <scene sceneID="Ub9-W0-Iq3">
             <objects>
-                <viewController storyboardIdentifier="introOneViewController" id="sKO-SF-5NZ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="introOneViewController" id="sKO-SF-5NZ" customClass="IntroSlideOneViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="es0-a3-VfV"/>
                         <viewControllerLayoutGuide type="bottom" id="bsg-KB-uop"/>
@@ -1264,96 +1241,25 @@ Most of the time, these symptoms are NOT breast cancer but it's important to see
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For women in their 40's, mammogram decisions are not as simple as they used to be" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKu-w5-aHk">
-                                <rect key="frame" x="40" y="20" width="480" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="p6q-RH-vGY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38g-Fs-k6M">
-                                <rect key="frame" x="40" y="140" width="480" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="2Im-4w-6Io"/>
-                                </constraints>
-                                <string key="text">National guidelines recommend that every woman in her 40's make an individual decision about when to start and how often to have mammograms. Not all medical groups agree with this, adding to the confusion many women feel about the mammogram decision. </string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ny7-Dv-qFH">
-                                <rect key="frame" x="40" y="275" width="78" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1Au-6Y-bV7"/>
-                                    <constraint firstAttribute="width" constant="78" id="dKd-zg-IJK"/>
-                                    <constraint firstAttribute="width" constant="100" id="ios-jl-MsT"/>
-                                </constraints>
-                                <state key="normal" title="Learn more"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ios-jl-MsT"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mP-jI-AUf">
-                                <rect key="frame" x="40" y="105" width="131" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DaA-OL-f1U"/>
-                                    <constraint firstAttribute="width" constant="140" id="akY-iE-s3f"/>
-                                    <constraint firstAttribute="width" constant="131" id="eNS-xJ-xJs"/>
-                                </constraints>
-                                <state key="normal" title="National guidelines"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="akY-iE-s3f"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVI-mZ-6Zf">
-                                <rect key="frame" x="414" y="105" width="106" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lx9-S3-31A"/>
-                                    <constraint firstAttribute="width" constant="106" id="r5J-4n-Srg"/>
-                                    <constraint firstAttribute="width" constant="110" id="xMl-DR-1Bu"/>
-                                </constraints>
-                                <state key="normal" title="Medical groups"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="xMl-DR-1Bu"/>
-                                    </mask>
-                                </variation>
-                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaK-GJ-0uh">
+                                <rect key="frame" x="20" y="20" width="530" height="195"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sKO-SF-5NZ" id="bwK-8C-NIx"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9mP-jI-AUf" firstAttribute="leading" secondItem="YVZ-Iw-suJ" secondAttribute="leadingMargin" constant="20" id="23h-BF-ods"/>
-                            <constraint firstItem="9mP-jI-AUf" firstAttribute="top" secondItem="38g-Fs-k6M" secondAttribute="bottom" constant="5" id="2LB-Bz-SpD"/>
-                            <constraint firstItem="dKu-w5-aHk" firstAttribute="top" secondItem="es0-a3-VfV" secondAttribute="bottom" id="2za-n4-yfg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QVI-mZ-6Zf" secondAttribute="trailing" constant="60" id="BV3-r3-q1Q"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="38g-Fs-k6M" secondAttribute="trailing" constant="60" id="KLY-Zl-3mh"/>
-                            <constraint firstItem="38g-Fs-k6M" firstAttribute="top" secondItem="9mP-jI-AUf" secondAttribute="bottom" constant="5" id="Oz8-gD-RGN"/>
-                            <constraint firstItem="9mP-jI-AUf" firstAttribute="top" secondItem="dKu-w5-aHk" secondAttribute="bottom" constant="5" id="Px2-dF-RKK"/>
-                            <constraint firstItem="Ny7-Dv-qFH" firstAttribute="leading" secondItem="YVZ-Iw-suJ" secondAttribute="leadingMargin" constant="20" id="Riv-QU-9DH"/>
-                            <constraint firstItem="Ny7-Dv-qFH" firstAttribute="top" secondItem="38g-Fs-k6M" secondAttribute="bottom" constant="5" id="SgG-zL-R1Y"/>
-                            <constraint firstItem="dKu-w5-aHk" firstAttribute="leading" secondItem="YVZ-Iw-suJ" secondAttribute="leadingMargin" constant="20" id="Ssr-vc-ocP"/>
-                            <constraint firstItem="QVI-mZ-6Zf" firstAttribute="top" secondItem="38g-Fs-k6M" secondAttribute="bottom" constant="5" id="UeW-4R-QZo"/>
-                            <constraint firstItem="QVI-mZ-6Zf" firstAttribute="top" secondItem="dKu-w5-aHk" secondAttribute="bottom" constant="5" id="d77-jw-K4T"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dKu-w5-aHk" secondAttribute="trailing" constant="60" id="hqq-K4-bSW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QVI-mZ-6Zf" secondAttribute="trailing" constant="60" id="j7c-oY-bcE"/>
-                            <constraint firstItem="QVI-mZ-6Zf" firstAttribute="leading" secondItem="9mP-jI-AUf" secondAttribute="trailing" constant="15" id="uXF-Jl-UZk"/>
-                            <constraint firstItem="38g-Fs-k6M" firstAttribute="leading" secondItem="YVZ-Iw-suJ" secondAttribute="leadingMargin" constant="20" id="wcV-3g-eIt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XaK-GJ-0uh" secondAttribute="trailing" constant="30" id="7YK-Xp-MbL"/>
+                            <constraint firstItem="XaK-GJ-0uh" firstAttribute="top" secondItem="es0-a3-VfV" secondAttribute="bottom" id="WaT-ab-CWO"/>
+                            <constraint firstItem="XaK-GJ-0uh" firstAttribute="leading" secondItem="YVZ-Iw-suJ" secondAttribute="leadingMargin" id="dB5-Wx-cKA"/>
+                            <constraint firstItem="bsg-KB-uop" firstAttribute="top" secondItem="XaK-GJ-0uh" secondAttribute="bottom" constant="385" id="fgH-7w-KVT"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2LB-Bz-SpD"/>
-                                <exclude reference="UeW-4R-QZo"/>
-                                <exclude reference="j7c-oY-bcE"/>
-                                <exclude reference="uXF-Jl-UZk"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="XaK-GJ-0uh" id="Ygz-7c-tyO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jml-UT-C5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
