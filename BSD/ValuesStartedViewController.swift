@@ -11,6 +11,8 @@ import ResearchKit
 
 class ValuesStartedViewController: UIViewController, ORKTaskViewControllerDelegate {
     
+    @IBOutlet weak var htmlContainer: UIWebView!
+    
     let valuesSurveyModel = ServiceManager.get("ValuesSurveyModel") as! ValuesSurveyModel
     
     override func viewDidLoad() {
@@ -25,6 +27,11 @@ class ValuesStartedViewController: UIViewController, ORKTaskViewControllerDelega
         if (valuesSurveyEntity.completed == true) {
             self.parentViewController?.viewDidAppear(false)
         }
+        
+        // Get and load HTML
+        let localfilePath = NSBundle.mainBundle().URLForResource("ValuesStarted", withExtension: "html")
+        let htmlRequest = NSURLRequest(URL: localfilePath!)
+        self.htmlContainer.loadRequest(htmlRequest)
     }
     
     @IBAction func startSurveyAction(sender: AnyObject) {
@@ -40,6 +47,12 @@ class ValuesStartedViewController: UIViewController, ORKTaskViewControllerDelega
     func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         switch reason {
         case .Completed:
+            // Enable tab bar
+            let tabs = self.tabBarController?.tabBar.items
+            let screeningTab = tabs![3]
+            screeningTab.enabled = true
+            
+            
             let taskResult = taskViewController.result
             let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)

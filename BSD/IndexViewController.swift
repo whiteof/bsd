@@ -38,6 +38,10 @@ class IndexViewController: UIViewController {
         super.prepareForSegue(segue, sender: sender)
     }
     
+    @IBAction func unwindToDashboard(segue: UIStoryboardSegue) {
+        toDashboard()
+    }
+    
     func toIntro() {
         performSegueWithIdentifier("toIntro", sender: self)
     }

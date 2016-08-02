@@ -9,19 +9,61 @@
 import UIKit
 import ResearchKit
 
-class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
+class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewControllerDelegate {
 
     
-    @IBOutlet weak var accessButton: UIButton!
-    @IBOutlet weak var viewContainer: UIScrollView!
+    @IBOutlet weak var htmlContainer: UIWebView!
+    @IBOutlet weak var surveyButton: UIButton!
     
     let riskSurveyModel = ServiceManager.get("RiskSurveyModel") as! RiskSurveyModel
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
 
-        // Do any additional setup after loading the view.
-        //self.pieChart.dataSource = pieChartDataSource
+        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+        if (riskSurveyEntity.completed == true) {
+            
+            // Get HTML Chart
+            let chartHtml = self.buildChart(self.htmlContainer.frame.width)
+            let contentHtml = self.buildContent()
+
+            // Get HTML
+            var htmlBody = ""
+            let fileLocation = NSBundle.mainBundle().pathForResource("YourRiskCompleted", ofType: "html")!
+            do {
+                htmlBody = try String(contentsOfFile: fileLocation)
+                htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicImages]", withString: chartHtml)
+                htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicContent]", withString: contentHtml)
+            } catch {
+                htmlBody = ""
+            }
+
+            let basePath = NSBundle.mainBundle().bundlePath
+            let baseUrl = NSURL.fileURLWithPath(basePath)
+            
+            self.htmlContainer.loadHTMLString(htmlBody, baseURL: baseUrl)
+            
+            // Set button title
+            self.surveyButton.setTitle("Resset Selections", forState: UIControlState.Normal)
+
+        }else {
+            
+            // Get and load HTML
+            let localfilePath = NSBundle.mainBundle().URLForResource("YourRiskIndex", withExtension: "html")
+            let htmlRequest = NSURLRequest(URL: localfilePath!)
+            self.htmlContainer.loadRequest(htmlRequest)
+            
+            // Set button title
+            self.surveyButton.setTitle("Access My Risk", forState: UIControlState.Normal)
+            
+            if (riskSurveyEntity.started == false) {
+                //self.startSurvey()
+            }
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,48 +71,7 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func resetAction(sender: UIButton) {
-        self.startSurvey()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
-        if (riskSurveyEntity.completed == true) {
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewCompleted") as! YourRiskCompletedViewController
-            for view in viewController.view.subviews {
-                if view.isKindOfClass(UIButton) {
-                    let button = view as! UIButton
-                    button.addTarget(self, action: #selector(self.resetAction(_:)), forControlEvents: .TouchUpInside)
-                }
-            }
-            viewController.view.frame.size.width = self.viewContainer.frame.size.width
-            viewController.view.frame.size.height = self.viewContainer.frame.size.height
-            addChildViewController(viewController)
-            self.viewContainer.addSubview(viewController.view)
-            viewController.didMoveToParentViewController(self)
-            viewController.buildChart(self.viewContainer.frame.size.width)
-        }else {
-            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("riskViewStarted") as! YourRiskStartedViewController
-            for view in viewController.view.subviews {
-                if view.isKindOfClass(UIButton) {
-                    let button = view as! UIButton
-                    button.addTarget(self, action: #selector(self.restartSurvey(_:)), forControlEvents: .TouchUpInside)
-                }
-            }
-            viewController.view.frame.size.width = self.viewContainer.frame.size.width
-            viewController.view.frame.size.height = self.viewContainer.frame.size.height
-            addChildViewController(viewController)
-            self.viewContainer.addSubview(viewController.view)
-            viewController.didMoveToParentViewController(self)
-            if (riskSurveyEntity.started == false) {
-                self.startSurvey()
-            }
-        }
- 
-    }
-    
-    func restartSurvey(sender: UIButton!) {
+    @IBAction func surveyButtonAction(sender: AnyObject) {
         self.startSurvey()
     }
     
@@ -314,6 +315,14 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         
         switch reason {
         case .Completed:
+
+            // Enable tab bar
+            let tabs = self.tabBarController?.tabBar.items
+            let screeningTab = tabs![1]
+            screeningTab.enabled = true
+            let valuesTab = tabs![2]
+            valuesTab.enabled = true
+            
             let taskResult = taskViewController.result
             let researchKitHelper = ServiceManager.get("ResearchKitHelper") as! ResearchKitHelper
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
@@ -327,4 +336,56 @@ class YourRiskViewController: UIViewController, ORKTaskViewControllerDelegate {
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        if (navigationType == UIWebViewNavigationType.LinkClicked){
+            print(request.URL?.absoluteString)
+            if (request.URL?.absoluteString.rangeOfString("http") != nil) {
+                print("shared")
+                UIApplication.sharedApplication().openURL(request.URL!)
+                return false
+            }else {
+                webView.stopLoading()
+                let popupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("screeningPopupViewController") as! ScreeningPopupViewController
+                popupViewController.modalPresentationStyle = .OverCurrentContext
+                popupViewController.htmlRequest = NSURLRequest(URL: request.URL!)
+                presentViewController(popupViewController, animated: true, completion: nil)
+            }
+        }
+        
+        return true
+    }
+    
+    func buildChart(frameWidth: CGFloat) -> String {
+        // Draw chart
+        var returnHtml = ""
+        
+        //let width = self.pieChart.frame.size.width
+        let width = CGFloat(frameWidth-30.0)
+        let figureWidth = (Float(width)/50)
+        let figureHeight = figureWidth*1.6
+        for j in 0...19 {
+            for i in 0...49 {
+                var image: String!
+                if j == 0 && i < 8 {
+                    image = "<img class=\"figure\" src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px;\">"
+                }else {
+                    image = "<img class=\"figure\" src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px; opacity: 0.5;\">"
+                }
+                returnHtml += image
+            }
+            returnHtml += "<br />"
+        }
+        
+        return returnHtml
+    }
+ 
+    func buildContent() -> String {
+        var returnHtml = ""
+        
+        returnHtml += "<p style=\"font-size: 12px;\">In the next 5 years, <strong>992</strong> will not get breast cancer.</p>"
+        returnHtml += "<p style=\"font-size: 12px; color: #BD1C6E;\">In the next 5 years, <strong style=\"color: #BD1C6E;\">8</strong> will get breast cancer.</p>"
+        
+        return returnHtml
+    }
 }

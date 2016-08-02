@@ -82,8 +82,12 @@
                             <constraint firstItem="k0p-Xj-gih" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.7" id="zKH-D8-JSF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="j1c-Ik-XGC" kind="unwind" identifier="unwindToDashboard" unwindAction="unwindToDashboard:" id="A0m-ZV-C4w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="j1c-Ik-XGC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="194" y="437"/>
         </scene>
@@ -192,7 +196,7 @@
         <!--Screening-->
         <scene sceneID="gZy-mh-hHh">
             <objects>
-                <viewController id="aB6-rh-2HQ" sceneMemberID="viewController">
+                <viewController id="aB6-rh-2HQ" customClass="ScreeningViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ipu-nU-ou2"/>
                         <viewControllerLayoutGuide type="bottom" id="3Uu-4g-jKD"/>
@@ -394,12 +398,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvH-QY-WeF">
+                                <rect key="frame" x="20" y="20" width="560" height="530"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AM-QL-axt">
-                                <rect key="frame" x="258" y="285" width="85" height="30"/>
+                                <rect key="frame" x="225" y="570" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kwu-8v-qOv"/>
-                                    <constraint firstAttribute="width" constant="85" id="qej-Ef-pUL"/>
+                                    <constraint firstAttribute="width" constant="150" id="qej-Ef-pUL"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Start Survey"/>
                                 <connections>
                                     <action selector="startSurveyAction:" destination="Gd3-gB-ZJF" eventType="touchUpInside" id="WgL-TQ-2cl"/>
@@ -408,10 +417,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ncc-sb-Ui3" firstAttribute="top" secondItem="3AM-QL-axt" secondAttribute="bottom" id="E8f-NK-s9p"/>
                             <constraint firstItem="3AM-QL-axt" firstAttribute="centerY" secondItem="EfE-z8-TgR" secondAttribute="centerY" id="KID-Qo-Ecr"/>
-                            <constraint firstItem="3AM-QL-axt" firstAttribute="centerX" secondItem="EfE-z8-TgR" secondAttribute="centerX" id="NlB-9Q-Amn"/>
+                            <constraint firstItem="3AM-QL-axt" firstAttribute="top" secondItem="bvH-QY-WeF" secondAttribute="bottom" constant="20" id="V1a-Lc-JKJ"/>
+                            <constraint firstItem="bvH-QY-WeF" firstAttribute="top" secondItem="x1S-5j-7u5" secondAttribute="bottom" id="d4w-6L-HEB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bvH-QY-WeF" secondAttribute="trailing" id="k48-0k-s70"/>
+                            <constraint firstItem="bvH-QY-WeF" firstAttribute="leading" secondItem="EfE-z8-TgR" secondAttribute="leadingMargin" id="rZQ-uH-nNo"/>
+                            <constraint firstItem="3AM-QL-axt" firstAttribute="centerX" secondItem="EfE-z8-TgR" secondAttribute="centerX" id="yeD-GA-Pbr"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KID-Qo-Ecr"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="bvH-QY-WeF" id="J1E-g3-itM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ee5-rL-zXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -438,125 +460,48 @@
                                 <color key="textColor" red="0.72549019607843135" green="0.11372549019607843" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="To8-Qn-WPw">
-                                <rect key="frame" x="0.0" y="80" width="600" height="471"/>
-                            </scrollView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc8-uO-z7X">
+                                <rect key="frame" x="20" y="75" width="560" height="402"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rA5-om-Zwf" id="MOB-cu-zA5"/>
+                                </connections>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="282-RI-wft">
+                                <rect key="frame" x="210" y="497" width="180" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="I4m-hd-D8y"/>
+                                    <constraint firstAttribute="width" constant="180" id="jjC-9M-0XG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Access My Risk"/>
+                                <connections>
+                                    <action selector="surveyButtonAction:" destination="rA5-om-Zwf" eventType="touchUpInside" id="3Vf-AV-4Ye"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="To8-Qn-WPw" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leading" id="4eD-m0-xsZ"/>
-                            <constraint firstAttribute="trailing" secondItem="To8-Qn-WPw" secondAttribute="trailing" id="Hub-mU-ibI"/>
-                            <constraint firstItem="To8-Qn-WPw" firstAttribute="top" secondItem="GjA-e7-bdh" secondAttribute="bottom" constant="10" id="JK1-kV-Ilr"/>
+                            <constraint firstItem="Wc8-uO-z7X" firstAttribute="top" secondItem="GjA-e7-bdh" secondAttribute="bottom" constant="5" id="4YZ-tl-8Np"/>
+                            <constraint firstItem="282-RI-wft" firstAttribute="top" secondItem="Wc8-uO-z7X" secondAttribute="bottom" constant="20" id="BRL-qy-w5f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wc8-uO-z7X" secondAttribute="trailing" id="MTz-fD-MJr"/>
                             <constraint firstItem="GjA-e7-bdh" firstAttribute="top" secondItem="XdR-br-ZvJ" secondAttribute="bottom" constant="20" id="NDr-dp-O7w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GjA-e7-bdh" secondAttribute="trailing" id="Uk4-Jz-to6"/>
                             <constraint firstItem="GjA-e7-bdh" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="efe-N2-Tim"/>
-                            <constraint firstItem="TIx-Bc-axo" firstAttribute="top" secondItem="To8-Qn-WPw" secondAttribute="bottom" id="sYv-yV-eCS"/>
+                            <constraint firstItem="TIx-Bc-axo" firstAttribute="top" secondItem="282-RI-wft" secondAttribute="bottom" constant="20" id="iwa-qE-Tps"/>
+                            <constraint firstItem="282-RI-wft" firstAttribute="centerX" secondItem="iwA-vE-nEn" secondAttribute="centerX" id="tZp-Db-nF2"/>
+                            <constraint firstItem="Wc8-uO-z7X" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="v9a-YF-a7g"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Your Risk" image="Icon Your Risk" id="u3L-Vs-7X6"/>
                     <connections>
-                        <outlet property="accessButton" destination="994-v2-eta" id="EA8-Gc-oG3"/>
-                        <outlet property="viewContainer" destination="To8-Qn-WPw" id="e1K-SB-LFk"/>
+                        <outlet property="htmlContainer" destination="Wc8-uO-z7X" id="pJ6-Dg-lis"/>
+                        <outlet property="surveyButton" destination="282-RI-wft" id="75Z-Bv-NME"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZZ-Ie-Hd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1005" y="804"/>
-        </scene>
-        <!--Your Risk Completed View Controller-->
-        <scene sceneID="8Dh-tz-feB">
-            <objects>
-                <viewController storyboardIdentifier="riskViewCompleted" id="pqb-OB-tSY" customClass="YourRiskCompletedViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9ZK-F1-kfM"/>
-                        <viewControllerLayoutGuide type="bottom" id="m0g-H2-ant"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="afQ-5P-nSM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are at low to average risk of breast cancer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htV-M8-W7e">
-                                <rect key="frame" x="20" y="20" width="560" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="3At-yR-Z5N"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your risk in the next 5 years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM7-2w-r9F">
-                                <rect key="frame" x="20" y="50" width="560" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Vk4-iV-gX4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-1n-Y3k">
-                                <rect key="frame" x="20" y="80" width="560" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="0uV-GP-nM6"/>
-                                </constraints>
-                                <string key="text">Based on your responses, your chance of developing breast cancer in the next 5 years is 0.8%. That means that out of 1000 women like you, 8 of them will develop breast cancer in the next 5 years. </string>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Of 1,000 women like you: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCz-m6-DnW">
-                                <rect key="frame" x="20" y="185" width="560" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Udf-UX-ZUu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5v-NJ-JHX">
-                                <rect key="frame" x="200" y="550" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1xy-pM-2vz"/>
-                                    <constraint firstAttribute="width" constant="200" id="PQp-JN-Jhj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Resset Selections"/>
-                                <connections>
-                                    <action selector="resetAction:" destination="rA5-om-Zwf" eventType="touchUpInside" id="OXz-nh-nuC"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="pieChart" translatesAutoresizingMaskIntoConstraints="NO" id="Y1b-Rj-fpi">
-                                <rect key="frame" x="20" y="220" width="560" height="310"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Y1b-Rj-fpi" secondAttribute="trailing" id="0M6-92-ywI"/>
-                            <constraint firstItem="m0g-H2-ant" firstAttribute="top" secondItem="z5v-NJ-JHX" secondAttribute="bottom" constant="20" id="5Oc-cW-oLE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="htV-M8-W7e" secondAttribute="trailing" id="8hq-7W-ElP"/>
-                            <constraint firstItem="z5v-NJ-JHX" firstAttribute="centerX" secondItem="afQ-5P-nSM" secondAttribute="centerX" id="9tR-kI-vkS"/>
-                            <constraint firstItem="aM7-2w-r9F" firstAttribute="top" secondItem="htV-M8-W7e" secondAttribute="bottom" constant="10" id="KTr-YU-7br"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="aM7-2w-r9F" secondAttribute="leading" id="LKG-Ow-y8J"/>
-                            <constraint firstItem="XCz-m6-DnW" firstAttribute="top" secondItem="gS2-1n-Y3k" secondAttribute="bottom" constant="5" id="M7A-Pd-guJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aM7-2w-r9F" secondAttribute="trailing" id="N7K-Y3-g9z"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="htV-M8-W7e" secondAttribute="leading" id="NDQ-h9-Lb6"/>
-                            <constraint firstItem="z5v-NJ-JHX" firstAttribute="top" secondItem="Y1b-Rj-fpi" secondAttribute="bottom" constant="20" id="OBa-Uo-vpA"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="XCz-m6-DnW" secondAttribute="leading" id="S6J-e5-5Mf"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="gS2-1n-Y3k" secondAttribute="leading" id="Vdc-MB-F23"/>
-                            <constraint firstItem="htV-M8-W7e" firstAttribute="top" secondItem="9ZK-F1-kfM" secondAttribute="bottom" id="ghP-Pw-DjD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XCz-m6-DnW" secondAttribute="trailing" id="kGy-1g-fxF"/>
-                            <constraint firstItem="Y1b-Rj-fpi" firstAttribute="top" secondItem="XCz-m6-DnW" secondAttribute="bottom" constant="10" id="lN6-uW-uSE"/>
-                            <constraint firstItem="gS2-1n-Y3k" firstAttribute="top" secondItem="aM7-2w-r9F" secondAttribute="bottom" constant="5" id="s3f-jL-KUa"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Y1b-Rj-fpi" secondAttribute="leading" id="u39-BZ-HT7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gS2-1n-Y3k" secondAttribute="trailing" id="xth-Ju-FQi"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="pieChart" destination="Y1b-Rj-fpi" id="vTg-MD-1Fg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YJo-8u-Mcp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1675" y="804"/>
         </scene>
         <!--Screening-->
         <scene sceneID="i73-pH-uuQ">
@@ -657,10 +602,10 @@
             </objects>
             <point key="canvasLocation" x="1351" y="3519"/>
         </scene>
-        <!--View Controller-->
+        <!--Screening Slide One View Controller-->
         <scene sceneID="qvh-g1-Fpd">
             <objects>
-                <viewController storyboardIdentifier="ScreeningSlide1" id="mM2-se-lGU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScreeningSlide1" id="mM2-se-lGU" customClass="ScreeningSlideOneViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RIx-ka-ChZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Nhp-oB-hsy"/>
@@ -669,82 +614,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is a screening mammogram?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76f-n9-Z16">
-                                <rect key="frame" x="20" y="40" width="560" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="2XH-ED-emc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4zd-zW-5cK">
-                                <rect key="frame" x="20" y="340" width="560" height="140"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2u-V4-9Bm">
+                                <rect key="frame" x="20" y="20" width="560" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">A screening mammogram is an x-ray that looks for breast cancer in a healthy woman who has no signs or symptoms of breast cancer.
-
-Screening mammograms do not prevent breast cancer. Their purpose is to detect breast cancer before it is large enough to be felt or cause symptoms. If you have any breast symptoms, you should see your doctor.
-
-A diagnostic mammogram is performed when a woman feels a lump or has breast symptoms or if her screening mammogram is abnormal.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screening" translatesAutoresizingMaskIntoConstraints="NO" id="zYs-Qt-mbp">
-                                <rect key="frame" x="0.0" y="115" width="600" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="ZHj-L2-Mv6"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmD-U7-rqx">
-                                <rect key="frame" x="20" y="270" width="249" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ADf-lY-vbG"/>
-                                    <constraint firstAttribute="width" constant="249" id="T3p-AX-bmx"/>
-                                </constraints>
-                                <state key="normal" title="What is it like to get a mammogram?"/>
                                 <connections>
-                                    <segue destination="TG9-df-PBH" kind="showDetail" id="Rua-NB-FEq"/>
+                                    <outlet property="delegate" destination="mM2-se-lGU" id="ect-Wq-5Ki"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nak-ja-Zp3">
-                                <rect key="frame" x="20" y="300" width="134" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OGD-YG-OM7"/>
-                                    <constraint firstAttribute="width" constant="134" id="bfs-Ml-AgQ"/>
-                                </constraints>
-                                <state key="normal" title="Signs or Symptoms"/>
-                                <connections>
-                                    <segue destination="O8F-3W-FPg" kind="showDetail" id="SBY-v7-07t"/>
-                                </connections>
-                            </button>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="76f-n9-Z16" firstAttribute="top" secondItem="RIx-ka-ChZ" secondAttribute="bottom" constant="20" id="7qk-HX-Qpx"/>
-                            <constraint firstItem="zYs-Qt-mbp" firstAttribute="top" secondItem="76f-n9-Z16" secondAttribute="bottom" constant="5" id="8Sb-eV-bDE"/>
-                            <constraint firstItem="nak-ja-Zp3" firstAttribute="top" secondItem="nmD-U7-rqx" secondAttribute="bottom" id="BGa-bF-9yE"/>
-                            <constraint firstItem="4zd-zW-5cK" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="E8S-vw-Y3B"/>
-                            <constraint firstItem="4zd-zW-5cK" firstAttribute="top" secondItem="nak-ja-Zp3" secondAttribute="bottom" constant="10" id="MLs-vJ-3Iv"/>
-                            <constraint firstItem="nmD-U7-rqx" firstAttribute="top" secondItem="zYs-Qt-mbp" secondAttribute="bottom" constant="5" id="RnL-12-9JH"/>
-                            <constraint firstItem="zYs-Qt-mbp" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leading" id="YDI-9f-Xin"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4zd-zW-5cK" secondAttribute="trailing" id="bYD-xp-mlC"/>
-                            <constraint firstItem="nak-ja-Zp3" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="cRF-e4-ssI"/>
-                            <constraint firstItem="Nhp-oB-hsy" firstAttribute="top" secondItem="4zd-zW-5cK" secondAttribute="bottom" constant="120" id="oG7-yy-fmK"/>
-                            <constraint firstAttribute="trailing" secondItem="zYs-Qt-mbp" secondAttribute="trailing" id="wpi-aa-d00"/>
-                            <constraint firstItem="76f-n9-Z16" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="y5Q-fB-1rO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="76f-n9-Z16" secondAttribute="trailing" id="zJM-gJ-OKt"/>
-                            <constraint firstItem="nmD-U7-rqx" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="zvM-nS-IMY"/>
+                            <constraint firstItem="Nhp-oB-hsy" firstAttribute="top" secondItem="T2u-V4-9Bm" secondAttribute="bottom" constant="120" id="67o-MT-QcZ"/>
+                            <constraint firstItem="T2u-V4-9Bm" firstAttribute="leading" secondItem="Ygj-gk-EGh" secondAttribute="leadingMargin" id="E0w-2g-bXC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T2u-V4-9Bm" secondAttribute="trailing" id="KLG-ZO-qlC"/>
+                            <constraint firstItem="T2u-V4-9Bm" firstAttribute="top" secondItem="RIx-ka-ChZ" secondAttribute="bottom" id="NtY-vz-lVD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="T2u-V4-9Bm" id="USG-v4-cMZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRF-mX-Pzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2333" y="1477"/>
         </scene>
-        <!--View Controller-->
+        <!--Screening Slide Two View Controller-->
         <scene sceneID="4ar-YX-fCw">
             <objects>
-                <viewController storyboardIdentifier="ScreeningSlide2" id="uxk-VK-KA7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScreeningSlide2" id="uxk-VK-KA7" customClass="ScreeningSlideTwoViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ts8-0T-ulP"/>
                         <viewControllerLayoutGuide type="bottom" id="u4o-cN-WyZ"/>
@@ -753,49 +650,25 @@ A diagnostic mammogram is performed when a woman feels a lump or has breast symp
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What else do I need to know?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGd-kP-5G4">
-                                <rect key="frame" x="20" y="40" width="560" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="IXf-mm-fsA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-1K-Q5U">
-                                <rect key="frame" x="20" y="120" width="560" height="360"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-P4-WLh">
+                                <rect key="frame" x="20" y="20" width="560" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">There are benefits and harms of screening mammograms for women at any age.
-Benefits of screening mammograms
-
-    Mammograms reduce the chance of dying from breast cancer. By finding breast cancer at an early stage, mammograms allow for early cancer treatment that can increase the chance of a cure.
-        Mammograms are more effective in older than younger women. Women in their 40's tend to have denser breasts, making it more difficult to find breast cancers in women in this age group compared to older women.
-        Mammograms do not prevent all breast cancer deaths. Some fast-growing breast cancers may have already spread to other parts of the body by the time they are found by a mammogram.
-
-Possible harms of screening mammograms
-
-    False-positive results. A false-positive result occurs when a mammogram is abnormal but there is no cancer. An abnormal mammogram usually requires additional imaging (diagnostic mammogram, ultrasound or MRI) and possibly a breast biopsy. If an abnormal mammogram is not cancer, this additional testing may seem unnecessary, inconvenient and physically uncomfortable.
-    Overdiagnosis and unnecessary treatment. Screening mammograms often find slow-growing breast cancers and non-invasive breast cancers. These cancers have a very small chance of causing death, so treating them - with surgery, chemotherapy and radiation - may seem unnecessary. However, it is very difficult to predict whether a cancer will be life-threatening, so almost all cancers that are found will be treated.
-    False-negative results. A false-negative result occurs when a mammogram is normal but a woman truly has breast cancer. Mammograms are not perfect. Some breast cancers will be missed by screening.
-    Radiation exposure. Mammograms use radiation, but the risk of harm from screening mammograms is extremely low.
-
-
-It's hard to know who will benefit from mammograms and who will experience harm. What we can tell you is how mammograms perform in women like you and how starting screening at different ages may affect a woman's chance of dying from breast cancer. </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <connections>
+                                    <outlet property="delegate" destination="uxk-VK-KA7" id="FLf-nl-cem"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QGd-kP-5G4" firstAttribute="leading" secondItem="dRR-bp-6pF" secondAttribute="leadingMargin" id="1PY-Uy-61C"/>
-                            <constraint firstItem="hrE-1K-Q5U" firstAttribute="top" secondItem="QGd-kP-5G4" secondAttribute="bottom" constant="10" id="69k-f1-96d"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hrE-1K-Q5U" secondAttribute="trailing" id="kht-Yb-aDX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QGd-kP-5G4" secondAttribute="trailing" id="ljh-iL-WPQ"/>
-                            <constraint firstItem="QGd-kP-5G4" firstAttribute="top" secondItem="ts8-0T-ulP" secondAttribute="bottom" constant="20" id="oJC-PZ-v0g"/>
-                            <constraint firstItem="u4o-cN-WyZ" firstAttribute="top" secondItem="hrE-1K-Q5U" secondAttribute="bottom" constant="120" id="wII-B1-9rd"/>
-                            <constraint firstItem="hrE-1K-Q5U" firstAttribute="leading" secondItem="dRR-bp-6pF" secondAttribute="leadingMargin" id="yqA-01-Yqi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d0H-P4-WLh" secondAttribute="trailing" id="4W7-ft-Izf"/>
+                            <constraint firstItem="d0H-P4-WLh" firstAttribute="leading" secondItem="dRR-bp-6pF" secondAttribute="leadingMargin" id="6Lj-ef-SV7"/>
+                            <constraint firstItem="d0H-P4-WLh" firstAttribute="top" secondItem="ts8-0T-ulP" secondAttribute="bottom" id="H0k-Eu-Jnk"/>
+                            <constraint firstItem="u4o-cN-WyZ" firstAttribute="top" secondItem="d0H-P4-WLh" secondAttribute="bottom" constant="120" id="LIZ-xg-rLx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="d0H-P4-WLh" id="wh4-he-Xd6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Axw-I9-oLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -816,6 +689,9 @@ It's hard to know who will benefit from mammograms and who will experience harm.
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOF-L6-TrB">
                                 <rect key="frame" x="20" y="20" width="560" height="460"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8e6-kx-utr" id="SLI-NV-PRv"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -834,10 +710,10 @@ It's hard to know who will benefit from mammograms and who will experience harm.
             </objects>
             <point key="canvasLocation" x="3603" y="1477"/>
         </scene>
-        <!--View Controller-->
+        <!--Screening Slide Four View Controller-->
         <scene sceneID="UCe-Pd-Qvi">
             <objects>
-                <viewController storyboardIdentifier="ScreeningSlide4" id="QpS-aj-M34" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScreeningSlide4" id="QpS-aj-M34" customClass="ScreeningSlideFourViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VB6-87-L4r"/>
                         <viewControllerLayoutGuide type="bottom" id="Alu-t3-Bjc"/>
@@ -846,32 +722,34 @@ It's hard to know who will benefit from mammograms and who will experience harm.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What difference does mammography make?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGU-dW-73n">
-                                <rect key="frame" x="20" y="40" width="560" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="scY-y7-02F"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62V-ky-eIw">
+                                <rect key="frame" x="20" y="20" width="560" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QpS-aj-M34" id="LPL-Zd-g4X"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bGU-dW-73n" firstAttribute="top" secondItem="VB6-87-L4r" secondAttribute="bottom" constant="20" id="Juh-tJ-dQd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bGU-dW-73n" secondAttribute="trailing" id="dtT-hd-EGi"/>
-                            <constraint firstItem="bGU-dW-73n" firstAttribute="leading" secondItem="W5b-da-qXp" secondAttribute="leadingMargin" id="jGf-Sb-fbD"/>
+                            <constraint firstItem="62V-ky-eIw" firstAttribute="top" secondItem="VB6-87-L4r" secondAttribute="bottom" id="V7s-eZ-Vu7"/>
+                            <constraint firstItem="Alu-t3-Bjc" firstAttribute="top" secondItem="62V-ky-eIw" secondAttribute="bottom" constant="120" id="VKA-pI-bX4"/>
+                            <constraint firstItem="62V-ky-eIw" firstAttribute="leading" secondItem="W5b-da-qXp" secondAttribute="leadingMargin" id="iTd-SG-75a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="62V-ky-eIw" secondAttribute="trailing" id="wYO-FU-lPV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="62V-ky-eIw" id="Olz-pb-YGX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hj4-5a-XkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4236" y="1477"/>
         </scene>
-        <!--View Controller-->
+        <!--Screening Slide Five View Controller-->
         <scene sceneID="k0A-IX-gce">
             <objects>
-                <viewController storyboardIdentifier="ScreeningSlide5" id="nPN-0L-dIE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScreeningSlide5" id="nPN-0L-dIE" customClass="ScreeningSlideFiveViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZGl-YP-ZpX"/>
                         <viewControllerLayoutGuide type="bottom" id="S15-VX-PdS"/>
@@ -880,27 +758,78 @@ It's hard to know who will benefit from mammograms and who will experience harm.
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summarizing so far" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPS-aU-GNO">
-                                <rect key="frame" x="20" y="40" width="560" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="hHi-57-bXM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" red="0.72549019609999998" green="0.1137254902" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-wh-lWa">
+                                <rect key="frame" x="20" y="20" width="560" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nPN-0L-dIE" id="U16-Rr-7YY"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GPS-aU-GNO" firstAttribute="leading" secondItem="rIC-CA-nX3" secondAttribute="leadingMargin" id="Fmg-f2-g5V"/>
-                            <constraint firstItem="GPS-aU-GNO" firstAttribute="top" secondItem="ZGl-YP-ZpX" secondAttribute="bottom" constant="20" id="bHd-pd-hIF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GPS-aU-GNO" secondAttribute="trailing" id="q36-SC-uVG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RWb-wh-lWa" secondAttribute="trailing" id="GVB-nI-iSq"/>
+                            <constraint firstItem="RWb-wh-lWa" firstAttribute="top" secondItem="ZGl-YP-ZpX" secondAttribute="bottom" id="MnN-4J-cBW"/>
+                            <constraint firstItem="S15-VX-PdS" firstAttribute="top" secondItem="RWb-wh-lWa" secondAttribute="bottom" constant="120" id="V31-bp-6bi"/>
+                            <constraint firstItem="RWb-wh-lWa" firstAttribute="leading" secondItem="rIC-CA-nX3" secondAttribute="leadingMargin" id="rr3-fa-u2l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="RWb-wh-lWa" id="1iS-j5-ACV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQF-vj-V8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4871" y="1477"/>
+        </scene>
+        <!--Screening Popup View Controller-->
+        <scene sceneID="zgQ-LZ-7ZP">
+            <objects>
+                <viewController storyboardIdentifier="screeningPopupViewController" id="nw3-0c-lB4" customClass="ScreeningPopupViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="37H-9P-6Ek"/>
+                        <viewControllerLayoutGuide type="bottom" id="OJr-lR-lTP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TLd-AO-yCe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cX7-TN-uk4">
+                                <rect key="frame" x="541" y="20" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="nM6-gB-VNY"/>
+                                    <constraint firstAttribute="height" constant="30" id="v5D-31-nto"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closePopup:" destination="nw3-0c-lB4" eventType="touchUpInside" id="oMH-xM-6XY"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EW-2k-gQ1">
+                                <rect key="frame" x="20" y="55" width="560" height="545"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nw3-0c-lB4" id="nEn-LE-C5E"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OJr-lR-lTP" firstAttribute="top" secondItem="0EW-2k-gQ1" secondAttribute="bottom" id="38A-O7-rd6"/>
+                            <constraint firstItem="0EW-2k-gQ1" firstAttribute="top" secondItem="cX7-TN-uk4" secondAttribute="bottom" constant="5" id="7Dm-QN-fl1"/>
+                            <constraint firstItem="cX7-TN-uk4" firstAttribute="top" secondItem="37H-9P-6Ek" secondAttribute="bottom" id="QdI-e1-bh8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0EW-2k-gQ1" secondAttribute="trailing" id="Xe4-79-jhJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cX7-TN-uk4" secondAttribute="trailing" id="kHi-Ns-6n5"/>
+                            <constraint firstItem="0EW-2k-gQ1" firstAttribute="leading" secondItem="TLd-AO-yCe" secondAttribute="leadingMargin" id="xz0-Mk-wLg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="htmlContainer" destination="0EW-2k-gQ1" id="ioj-Yj-IbX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fio-5G-Am8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5555" y="1477"/>
         </scene>
         <!--Index View Controller-->
         <scene sceneID="9aD-kH-SDH">
@@ -1016,170 +945,6 @@ It's hard to know who will benefit from mammograms and who will experience harm.
             </objects>
             <point key="canvasLocation" x="1542" y="-252"/>
         </scene>
-        <!--Your Risk Started View Controller-->
-        <scene sceneID="DQd-s4-Vg1">
-            <objects>
-                <viewController storyboardIdentifier="riskViewStarted" id="XDo-UJ-cAm" customClass="YourRiskStartedViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9Nj-7w-AOp"/>
-                        <viewControllerLayoutGuide type="bottom" id="jPn-J4-1Om"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Be3-F9-rec">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="994-v2-eta">
-                                <rect key="frame" x="247" y="285" width="107" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2PH-Il-UDy"/>
-                                    <constraint firstAttribute="width" constant="107" id="kk4-mI-h4g"/>
-                                </constraints>
-                                <state key="normal" title="Access My Risk"/>
-                                <connections>
-                                    <action selector="accessAction:" destination="XDo-UJ-cAm" eventType="touchUpInside" id="CsJ-mW-nDr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="994-v2-eta" firstAttribute="centerY" secondItem="Be3-F9-rec" secondAttribute="centerY" id="QzX-Aa-elV"/>
-                            <constraint firstItem="994-v2-eta" firstAttribute="centerX" secondItem="Be3-F9-rec" secondAttribute="centerX" id="Zzs-ov-ogM"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jLD-MD-WoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2325" y="804"/>
-        </scene>
-        <!--Pop Up View Controller-->
-        <scene sceneID="sOz-gA-2aA">
-            <objects>
-                <viewController storyboardIdentifier="popupWindow" id="TG9-df-PBH" customClass="PopUpViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="T6K-gZ-pCC"/>
-                        <viewControllerLayoutGuide type="bottom" id="DXx-r5-hKd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tYv-mq-CFP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOT-wQ-YVA">
-                                <rect key="frame" x="541" y="20" width="39" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="554-8I-eM5"/>
-                                    <constraint firstAttribute="height" constant="30" id="aqx-JO-OU7"/>
-                                </constraints>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeWindow:" destination="TG9-df-PBH" eventType="touchUpInside" id="d7a-ZX-6jF"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Is It Like To Get A Mammogram?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmZ-eZ-07X">
-                                <rect key="frame" x="20" y="60" width="560" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Okv-sU-iRq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wxc-59-Sj0">
-                                <rect key="frame" x="20" y="110" width="560" height="470"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">You will be asked to undress from the waist up. An x-ray technician will escort you to the mammogram machine. While you are standing, the technician will place your breasts, one at a time, between two plates - an x-ray plate and a plastic plate. These plates are used to flatten the breast tissue so that the image will be of good quality. This may feel uncomfortable, and for some women, painful - but it will only take a few seconds. Usually, two x-rays are taken of each breast from different angles. Having a mammogram takes about 20 minutes.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="zOT-wQ-YVA" secondAttribute="trailing" id="C9j-jf-3uc"/>
-                            <constraint firstItem="Wxc-59-Sj0" firstAttribute="leading" secondItem="tYv-mq-CFP" secondAttribute="leadingMargin" id="HME-Qz-DCG"/>
-                            <constraint firstItem="YmZ-eZ-07X" firstAttribute="top" secondItem="zOT-wQ-YVA" secondAttribute="bottom" constant="10" id="Pfy-Cw-hqP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Wxc-59-Sj0" secondAttribute="trailing" id="V8Q-c4-ZSA"/>
-                            <constraint firstItem="zOT-wQ-YVA" firstAttribute="top" secondItem="T6K-gZ-pCC" secondAttribute="bottom" id="cDA-P3-yBp"/>
-                            <constraint firstItem="YmZ-eZ-07X" firstAttribute="leading" secondItem="tYv-mq-CFP" secondAttribute="leadingMargin" id="ujo-EF-0oE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YmZ-eZ-07X" secondAttribute="trailing" id="vaI-9E-TSG"/>
-                            <constraint firstItem="DXx-r5-hKd" firstAttribute="top" secondItem="Wxc-59-Sj0" secondAttribute="bottom" constant="20" id="viS-NQ-v6n"/>
-                            <constraint firstItem="Wxc-59-Sj0" firstAttribute="top" secondItem="YmZ-eZ-07X" secondAttribute="bottom" constant="20" id="wdT-2Q-h1l"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="windowText" destination="Wxc-59-Sj0" id="LFA-ih-qWi"/>
-                        <outlet property="windowTitle" destination="YmZ-eZ-07X" id="Khb-AB-fhi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLI-1G-noF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4471" y="804"/>
-        </scene>
-        <!--Pop Up View Controller-->
-        <scene sceneID="xOl-Ac-gx2">
-            <objects>
-                <viewController id="O8F-3W-FPg" customClass="PopUpViewController" customModule="BSD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fPP-8U-wPh"/>
-                        <viewControllerLayoutGuide type="bottom" id="BAQ-up-BkM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z16-3a-DGq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvr-cb-CQ0">
-                                <rect key="frame" x="541" y="28" width="39" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1a9-qc-EzP"/>
-                                    <constraint firstAttribute="width" constant="39" id="1p1-KP-8Jx"/>
-                                </constraints>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeWindow:" destination="TG9-df-PBH" eventType="touchUpInside" id="8Zc-2t-M9n"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signs &amp; Symptoms of Breast Cancer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6Z-TM-FS0">
-                                <rect key="frame" x="20" y="68" width="560" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="tKv-96-VxQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-xj-VgF">
-                                <rect key="frame" x="20" y="118" width="560" height="470"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">    Breast lump or thickening
-    Clear or bloody nipple discharge
-    Breast changes such as skin dimpling or a newly inverted nipple
-    Redness and thickening of the skin over the breast
-    Peeling, flaking or crusting of the nipple
-    Swelling or lump in the armpit
-    Breast pain
-
-Most of the time, these symptoms are NOT breast cancer but it's important to see your doctor to be sure.
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="trailing" secondItem="hbx-xj-VgF" secondAttribute="trailing" id="1Ay-AD-cmr"/>
-                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="top" secondItem="yvr-cb-CQ0" secondAttribute="bottom" constant="10" id="FIv-M5-Npo"/>
-                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="leading" secondItem="z16-3a-DGq" secondAttribute="leadingMargin" id="IcT-cM-xUV"/>
-                            <constraint firstItem="hbx-xj-VgF" firstAttribute="top" secondItem="M6Z-TM-FS0" secondAttribute="bottom" constant="20" id="NgR-E8-oDn"/>
-                            <constraint firstItem="M6Z-TM-FS0" firstAttribute="leading" secondItem="hbx-xj-VgF" secondAttribute="leading" id="UnD-LP-c03"/>
-                            <constraint firstItem="yvr-cb-CQ0" firstAttribute="trailing" secondItem="M6Z-TM-FS0" secondAttribute="trailing" id="cJ9-DM-1fE"/>
-                            <constraint firstItem="yvr-cb-CQ0" firstAttribute="trailing" secondItem="z16-3a-DGq" secondAttribute="trailingMargin" id="cnn-I0-HmJ"/>
-                            <constraint firstItem="BAQ-up-BkM" firstAttribute="top" secondItem="hbx-xj-VgF" secondAttribute="bottom" constant="12" id="gpk-eV-dRN"/>
-                            <constraint firstItem="yvr-cb-CQ0" firstAttribute="top" secondItem="fPP-8U-wPh" secondAttribute="bottom" constant="8" symbolic="YES" id="ks8-jr-70X"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vOi-iU-2xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5145" y="804"/>
-        </scene>
         <!--Intro Popup View Controller-->
         <scene sceneID="lDF-pZ-sRR">
             <objects>
@@ -1272,6 +1037,5 @@ Most of the time, these symptoms are NOT breast cancer but it's important to see
         <image name="Icon Summary" width="24" height="24"/>
         <image name="Icon Values" width="23" height="23"/>
         <image name="Icon Your Risk" width="29" height="21"/>
-        <image name="Screening" width="631" height="425"/>
     </resources>
 </document>

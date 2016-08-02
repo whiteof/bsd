@@ -8,11 +8,17 @@
 
 import UIKit
 
-class ScreeningSlideThreeViewController: UIViewController {
+class ScreeningSlideThreeViewController: UIViewController, UIWebViewDelegate {
 
     
     @IBOutlet weak var htmlContainer: UIWebView!
     
+    let baseUrl: NSURL = {
+        let path = NSBundle.mainBundle().bundlePath
+        let url = NSURL.fileURLWithPath(path)
+        return url
+    }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,14 +57,8 @@ class ScreeningSlideThreeViewController: UIViewController {
         }
         
         htmlString = htmlHeader + htmlBody + htmlFooter
-        do {
-            try htmlString.writeToFile(fileLocation, atomically: false, encoding: NSUTF8StringEncoding)
-        } catch {
-            print("ERROR!!!")
-        }
-        let localfilePath = NSBundle.mainBundle().URLForResource("screeningPage3", withExtension: "html");
-        let myRequest = NSURLRequest(URL: localfilePath!);
-        self.htmlContainer.loadRequest(myRequest);
+        
+        self.htmlContainer.loadHTMLString(htmlString, baseURL: self.baseUrl)
         
     }
 
@@ -79,9 +79,9 @@ class ScreeningSlideThreeViewController: UIViewController {
             for i in 0...49 {
                 var image: String!
                 if j == 0 && i < 8 {
-                    image = "<img src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px;\">"
+                    image = "<img class=\"figure\" src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px;\">"
                 }else {
-                    image = "<img src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px; opacity: 0.5;\">"
+                    image = "<img class=\"figure\" src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px; opacity: 0.5;\">"
                 }
                 returnHtml += image
             }
@@ -91,4 +91,16 @@ class ScreeningSlideThreeViewController: UIViewController {
         return returnHtml
     }
     
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        if (navigationType == UIWebViewNavigationType.LinkClicked){
+            webView.stopLoading()
+            let popupViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("screeningPopupViewController") as! ScreeningPopupViewController
+            popupViewController.modalPresentationStyle = .OverCurrentContext
+            popupViewController.htmlRequest = NSURLRequest(URL: request.URL!)
+            presentViewController(popupViewController, animated: true, completion: nil)
+        }
+        
+        return true
+    }
 }

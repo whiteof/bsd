@@ -19,7 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return window?.rootViewController as? IndexViewController
     }
     
+    func removeAllUserData() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey("RiskSurvey")
+        defaults.removeObjectForKey("UserData")
+        defaults.removeObjectForKey("ValuesSurvey")
+        defaults.synchronize()
+        ORKPasscodeViewController.removePasscodeFromKeychain()
+    }
+    
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
+        //self.removeAllUserData()
+        
         let standardDefaults = NSUserDefaults.standardUserDefaults()
         if standardDefaults.objectForKey("ORKSampleFirstRun") == nil {
             ORKPasscodeViewController.removePasscodeFromKeychain()
@@ -40,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         if ORKPasscodeViewController.isPasscodeStoredInKeychain() {
             // Hide content so it doesn't appear in the app switcher.
-            containerViewController?.contentHidden = true
+            
+            //containerViewController?.contentHidden = true
         }
     }
     
@@ -58,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let passcodeViewController = ORKPasscodeViewController.passcodeAuthenticationViewControllerWithText("Welcome back to Breast Screening Decisions!", delegate: self) as! ORKPasscodeViewController
-        print("test")
+        passcodeViewController.modalPresentationStyle = .OverCurrentContext
         containerViewController?.presentViewController(passcodeViewController, animated: false, completion: nil)
     }
 

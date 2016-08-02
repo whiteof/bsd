@@ -11,8 +11,6 @@
 		577435041D0F999500980850 /* ScreeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435031D0F999500980850 /* ScreeningViewController.swift */; };
 		577435061D0F99E000980850 /* ValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435051D0F99E000980850 /* ValuesViewController.swift */; };
 		577435081D0F9CDF00980850 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577435071D0F9CDF00980850 /* SummaryViewController.swift */; };
-		5798C3751D1CD3980061DAFE /* YourRiskCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5798C3741D1CD3980061DAFE /* YourRiskCompletedViewController.swift */; };
-		5798C3771D1CD5A40061DAFE /* YourRiskStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5798C3761D1CD5A40061DAFE /* YourRiskStartedViewController.swift */; };
 		57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D32CEE1D074B2B00AC0FA2 /* IntroSlidesViewController.swift */; };
 		9152DF96F75BAE50F974FB4C /* Pods_BSDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722273229EC9686F857022C /* Pods_BSDUITests.framework */; };
 		A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802A0721D05CB8100F663FA /* IntroViewController.swift */; };
@@ -52,6 +50,32 @@
 		A89036431D1DC1400007447D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036421D1DC1400007447D /* MainTabBarController.swift */; };
 		A89036451D1DCD640007447D /* ValuesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036441D1DCD640007447D /* ValuesPageViewController.swift */; };
 		A89036471D1DD2BA0007447D /* ValuesSurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */; };
+		A891AC161D50EF830034F39F /* YourRiskCompleted.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC151D50EF830034F39F /* YourRiskCompleted.html */; };
+		A891AC181D50F19D0034F39F /* ScreeningSlideOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891AC171D50F19D0034F39F /* ScreeningSlideOneViewController.swift */; };
+		A891AC1A1D50F1B40034F39F /* ScreeningSlideTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891AC191D50F1B40034F39F /* ScreeningSlideTwoViewController.swift */; };
+		A891AC1C1D50F1C20034F39F /* ScreeningSlideFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891AC1B1D50F1C20034F39F /* ScreeningSlideFourViewController.swift */; };
+		A891AC1E1D50F1D00034F39F /* ScreeningSlideFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891AC1D1D50F1D00034F39F /* ScreeningSlideFiveViewController.swift */; };
+		A891AC201D50F3060034F39F /* screeningPage1.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC1F1D50F3060034F39F /* screeningPage1.html */; };
+		A891AC221D50F3810034F39F /* screeningPopupSings.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC211D50F3810034F39F /* screeningPopupSings.html */; };
+		A891AC241D50F3F40034F39F /* screening.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A891AC231D50F3F40034F39F /* screening.jpg */; };
+		A891AC261D50F4900034F39F /* ScreeningPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A891AC251D50F4900034F39F /* ScreeningPopupViewController.swift */; };
+		A891AC281D50F7AD0034F39F /* screeningPopupMammogram.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC271D50F7AD0034F39F /* screeningPopupMammogram.html */; };
+		A891AC2A1D50F82B0034F39F /* screeningPage2.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC291D50F82B0034F39F /* screeningPage2.html */; };
+		A891AC2C1D50F9FF0034F39F /* screeningPopupDenser.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC2B1D50F9FF0034F39F /* screeningPopupDenser.html */; };
+		A891AC2E1D50FA6B0034F39F /* screeningPopupDiagnostic.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC2D1D50FA6B0034F39F /* screeningPopupDiagnostic.html */; };
+		A891AC301D50FABB0034F39F /* screeningPopupUltrasound.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC2F1D50FABB0034F39F /* screeningPopupUltrasound.html */; };
+		A891AC321D50FAC90034F39F /* screeningPopupMri.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC311D50FAC90034F39F /* screeningPopupMri.html */; };
+		A891AC341D50FC130034F39F /* screeningPopupBiopsy.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC331D50FC130034F39F /* screeningPopupBiopsy.html */; };
+		A891AC361D50FC1F0034F39F /* screeningPopupNonInvasive.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC351D50FC1F0034F39F /* screeningPopupNonInvasive.html */; };
+		A891AC381D50FC2C0034F39F /* screeningPopupHarm.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC371D50FC2C0034F39F /* screeningPopupHarm.html */; };
+		A891AC3A1D51074E0034F39F /* small_figure_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A891AC391D51074E0034F39F /* small_figure_active.png */; };
+		A891AC3C1D510F380034F39F /* screeningPopupFalsePositive.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC3B1D510F380034F39F /* screeningPopupFalsePositive.html */; };
+		A891AC3E1D510F450034F39F /* screeningPopupFalseNegative.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC3D1D510F450034F39F /* screeningPopupFalseNegative.html */; };
+		A891AC421D5114390034F39F /* ValuesStarted.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC411D5114390034F39F /* ValuesStarted.html */; };
+		A891AC441D5116FD0034F39F /* YourRiskPopupCalculate.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC431D5116FD0034F39F /* YourRiskPopupCalculate.html */; };
+		A891AC461D511C4A0034F39F /* screeningPage4.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC451D511C4A0034F39F /* screeningPage4.html */; };
+		A891AC481D511E800034F39F /* screeningPage5.html in Resources */ = {isa = PBXBuildFile; fileRef = A891AC471D511E800034F39F /* screeningPage5.html */; };
+		A891AC4A1D511EB60034F39F /* summary.gif in Resources */ = {isa = PBXBuildFile; fileRef = A891AC491D511EB60034F39F /* summary.gif */; };
 		A89A4C4C1D1048E7008FF06B /* PieChartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */; };
 		A89F1E921D46903100F83AFE /* ValuesStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89F1E911D46903100F83AFE /* ValuesStartedViewController.swift */; };
 		A89F1E951D47CB9600F83AFE /* screeningPage3.html in Resources */ = {isa = PBXBuildFile; fileRef = A89F1E941D47CB9600F83AFE /* screeningPage3.html */; };
@@ -61,6 +85,7 @@
 		A8A7A7D91D1491D500DA5298 /* ValuesSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7D31D1491D500DA5298 /* ValuesSurvey.swift */; };
 		A8A7A7DB1D1491D500DA5298 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7D51D1491D500DA5298 /* UserData.swift */; };
 		A8A7A7DD1D1491D500DA5298 /* RiskSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A7A7D71D1491D500DA5298 /* RiskSurvey.swift */; };
+		A8C22EF11D50DE0E00B60948 /* YourRiskIndex.html in Resources */ = {isa = PBXBuildFile; fileRef = A8C22EF01D50DE0E00B60948 /* YourRiskIndex.html */; };
 		A8EDA6AF1D108D920027178B /* ScreeningSlidesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EDA6AE1D108D920027178B /* ScreeningSlidesPageViewController.swift */; };
 		DEA1E88AE501F33B5675A9DA /* Pods_BSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C8B95A4824AF82461A49C9 /* Pods_BSD.framework */; };
 		FDA3AD2BA5C32795643F201A /* Pods_BSDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6103AA771E757FE09E209D94 /* Pods_BSDTests.framework */; };
@@ -91,8 +116,6 @@
 		577435031D0F999500980850 /* ScreeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningViewController.swift; sourceTree = "<group>"; };
 		577435051D0F99E000980850 /* ValuesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesViewController.swift; sourceTree = "<group>"; };
 		577435071D0F9CDF00980850 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
-		5798C3741D1CD3980061DAFE /* YourRiskCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRiskCompletedViewController.swift; sourceTree = "<group>"; };
-		5798C3761D1CD5A40061DAFE /* YourRiskStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourRiskStartedViewController.swift; sourceTree = "<group>"; };
 		57D32CEE1D074B2B00AC0FA2 /* IntroSlidesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroSlidesViewController.swift; sourceTree = "<group>"; };
 		6103AA771E757FE09E209D94 /* Pods_BSDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BC192845FEB0C0A34B47715 /* Pods-BSD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSD.release.xcconfig"; path = "Pods/Target Support Files/Pods-BSD/Pods-BSD.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +166,32 @@
 		A89036421D1DC1400007447D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A89036441D1DCD640007447D /* ValuesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesPageViewController.swift; sourceTree = "<group>"; };
 		A89036461D1DD2BA0007447D /* ValuesSurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesSurveyTask.swift; sourceTree = "<group>"; };
+		A891AC151D50EF830034F39F /* YourRiskCompleted.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YourRiskCompleted.html; sourceTree = "<group>"; };
+		A891AC171D50F19D0034F39F /* ScreeningSlideOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningSlideOneViewController.swift; sourceTree = "<group>"; };
+		A891AC191D50F1B40034F39F /* ScreeningSlideTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningSlideTwoViewController.swift; sourceTree = "<group>"; };
+		A891AC1B1D50F1C20034F39F /* ScreeningSlideFourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningSlideFourViewController.swift; sourceTree = "<group>"; };
+		A891AC1D1D50F1D00034F39F /* ScreeningSlideFiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningSlideFiveViewController.swift; sourceTree = "<group>"; };
+		A891AC1F1D50F3060034F39F /* screeningPage1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPage1.html; sourceTree = "<group>"; };
+		A891AC211D50F3810034F39F /* screeningPopupSings.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupSings.html; sourceTree = "<group>"; };
+		A891AC231D50F3F40034F39F /* screening.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = screening.jpg; path = Assets.xcassets/Screening.imageset/screening.jpg; sourceTree = "<group>"; };
+		A891AC251D50F4900034F39F /* ScreeningPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningPopupViewController.swift; sourceTree = "<group>"; };
+		A891AC271D50F7AD0034F39F /* screeningPopupMammogram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupMammogram.html; sourceTree = "<group>"; };
+		A891AC291D50F82B0034F39F /* screeningPage2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPage2.html; sourceTree = "<group>"; };
+		A891AC2B1D50F9FF0034F39F /* screeningPopupDenser.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupDenser.html; sourceTree = "<group>"; };
+		A891AC2D1D50FA6B0034F39F /* screeningPopupDiagnostic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupDiagnostic.html; sourceTree = "<group>"; };
+		A891AC2F1D50FABB0034F39F /* screeningPopupUltrasound.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupUltrasound.html; sourceTree = "<group>"; };
+		A891AC311D50FAC90034F39F /* screeningPopupMri.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupMri.html; sourceTree = "<group>"; };
+		A891AC331D50FC130034F39F /* screeningPopupBiopsy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupBiopsy.html; sourceTree = "<group>"; };
+		A891AC351D50FC1F0034F39F /* screeningPopupNonInvasive.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupNonInvasive.html; sourceTree = "<group>"; };
+		A891AC371D50FC2C0034F39F /* screeningPopupHarm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupHarm.html; sourceTree = "<group>"; };
+		A891AC391D51074E0034F39F /* small_figure_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_figure_active.png; sourceTree = "<group>"; };
+		A891AC3B1D510F380034F39F /* screeningPopupFalsePositive.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupFalsePositive.html; sourceTree = "<group>"; };
+		A891AC3D1D510F450034F39F /* screeningPopupFalseNegative.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPopupFalseNegative.html; sourceTree = "<group>"; };
+		A891AC411D5114390034F39F /* ValuesStarted.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ValuesStarted.html; sourceTree = "<group>"; };
+		A891AC431D5116FD0034F39F /* YourRiskPopupCalculate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YourRiskPopupCalculate.html; sourceTree = "<group>"; };
+		A891AC451D511C4A0034F39F /* screeningPage4.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPage4.html; sourceTree = "<group>"; };
+		A891AC471D511E800034F39F /* screeningPage5.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPage5.html; sourceTree = "<group>"; };
+		A891AC491D511EB60034F39F /* summary.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = summary.gif; sourceTree = "<group>"; };
 		A89A4C4B1D1048E7008FF06B /* PieChartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartDataSource.swift; sourceTree = "<group>"; };
 		A89F1E911D46903100F83AFE /* ValuesStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesStartedViewController.swift; sourceTree = "<group>"; };
 		A89F1E941D47CB9600F83AFE /* screeningPage3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = screeningPage3.html; sourceTree = "<group>"; };
@@ -152,6 +201,7 @@
 		A8A7A7D31D1491D500DA5298 /* ValuesSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuesSurvey.swift; sourceTree = "<group>"; };
 		A8A7A7D51D1491D500DA5298 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		A8A7A7D71D1491D500DA5298 /* RiskSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskSurvey.swift; sourceTree = "<group>"; };
+		A8C22EF01D50DE0E00B60948 /* YourRiskIndex.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YourRiskIndex.html; sourceTree = "<group>"; };
 		A8EDA6AE1D108D920027178B /* ScreeningSlidesPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreeningSlidesPageViewController.swift; sourceTree = "<group>"; };
 		BEFDC44D71F92DA9476BB4B8 /* Pods-BSD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BSD/Pods-BSD.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,11 +266,14 @@
 				A82F2C031D4FEB3800F7D02A /* IntroSlideThreeViewController.swift */,
 				A82F2BFF1D4FDDBC00F7D02A /* IntroPopupViewController.swift */,
 				577435011D0F95AA00980850 /* YourRiskViewController.swift */,
-				5798C3741D1CD3980061DAFE /* YourRiskCompletedViewController.swift */,
-				5798C3761D1CD5A40061DAFE /* YourRiskStartedViewController.swift */,
 				577435031D0F999500980850 /* ScreeningViewController.swift */,
 				A8EDA6AE1D108D920027178B /* ScreeningSlidesPageViewController.swift */,
+				A891AC171D50F19D0034F39F /* ScreeningSlideOneViewController.swift */,
+				A891AC191D50F1B40034F39F /* ScreeningSlideTwoViewController.swift */,
 				A89F1E961D47CC2D00F83AFE /* ScreeningSlideThreeViewController.swift */,
+				A891AC1B1D50F1C20034F39F /* ScreeningSlideFourViewController.swift */,
+				A891AC1D1D50F1D00034F39F /* ScreeningSlideFiveViewController.swift */,
+				A891AC251D50F4900034F39F /* ScreeningPopupViewController.swift */,
 				577435051D0F99E000980850 /* ValuesViewController.swift */,
 				A89036441D1DCD640007447D /* ValuesPageViewController.swift */,
 				A890363E1D1DB5480007447D /* ValuesCompletedViewController.swift */,
@@ -320,8 +373,26 @@
 			children = (
 				A82F2BEB1D4FCF7D00F7D02A /* screeningHeader.html */,
 				A82F2BED1D4FCF8C00F7D02A /* screeningFooter.html */,
+				A891AC1F1D50F3060034F39F /* screeningPage1.html */,
+				A891AC291D50F82B0034F39F /* screeningPage2.html */,
 				A89F1E941D47CB9600F83AFE /* screeningPage3.html */,
+				A891AC451D511C4A0034F39F /* screeningPage4.html */,
+				A891AC471D511E800034F39F /* screeningPage5.html */,
+				A891AC211D50F3810034F39F /* screeningPopupSings.html */,
+				A891AC271D50F7AD0034F39F /* screeningPopupMammogram.html */,
+				A891AC2B1D50F9FF0034F39F /* screeningPopupDenser.html */,
+				A891AC2D1D50FA6B0034F39F /* screeningPopupDiagnostic.html */,
+				A891AC2F1D50FABB0034F39F /* screeningPopupUltrasound.html */,
+				A891AC311D50FAC90034F39F /* screeningPopupMri.html */,
+				A891AC331D50FC130034F39F /* screeningPopupBiopsy.html */,
+				A891AC351D50FC1F0034F39F /* screeningPopupNonInvasive.html */,
+				A891AC371D50FC2C0034F39F /* screeningPopupHarm.html */,
+				A891AC3B1D510F380034F39F /* screeningPopupFalsePositive.html */,
+				A891AC3D1D510F450034F39F /* screeningPopupFalseNegative.html */,
 				A82F2BE91D4FC1E300F7D02A /* small_figure.png */,
+				A891AC391D51074E0034F39F /* small_figure_active.png */,
+				A891AC231D50F3F40034F39F /* screening.jpg */,
+				A891AC491D511EB60034F39F /* summary.gif */,
 				A82F2BF31D4FD5C000F7D02A /* IntroHeader.html */,
 				A82F2BF51D4FD5D500F7D02A /* IntroFooter.html */,
 				A82F2BF11D4FD5B300F7D02A /* IntroPage1.html */,
@@ -329,6 +400,10 @@
 				A82F2BF91D4FD60100F7D02A /* IntroPage3.html */,
 				A82F2BFB1D4FDC5300F7D02A /* IntroPopup_NationalGuidelines.html */,
 				A82F2BFD1D4FDC9900F7D02A /* IntroPopup_MedicalGroups.html */,
+				A8C22EF01D50DE0E00B60948 /* YourRiskIndex.html */,
+				A891AC151D50EF830034F39F /* YourRiskCompleted.html */,
+				A891AC431D5116FD0034F39F /* YourRiskPopupCalculate.html */,
+				A891AC411D5114390034F39F /* ValuesStarted.html */,
 			);
 			name = HTML;
 			sourceTree = "<group>";
@@ -432,7 +507,7 @@
 				TargetAttributes = {
 					A859BE401D02117E00C1DBD3 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = XBKZT86CV4;
+						DevelopmentTeam = N7T323633C;
 					};
 					A859BE571D02117E00C1DBD3 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -469,20 +544,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A891AC3A1D51074E0034F39F /* small_figure_active.png in Resources */,
+				A891AC341D50FC130034F39F /* screeningPopupBiopsy.html in Resources */,
 				A82F2BF61D4FD5D500F7D02A /* IntroFooter.html in Resources */,
 				A89F1E951D47CB9600F83AFE /* screeningPage3.html in Resources */,
 				A82F2BF41D4FD5C000F7D02A /* IntroHeader.html in Resources */,
+				A891AC301D50FABB0034F39F /* screeningPopupUltrasound.html in Resources */,
+				A891AC321D50FAC90034F39F /* screeningPopupMri.html in Resources */,
+				A8C22EF11D50DE0E00B60948 /* YourRiskIndex.html in Resources */,
 				A859BE521D02117E00C1DBD3 /* LaunchScreen.storyboard in Resources */,
+				A891AC2A1D50F82B0034F39F /* screeningPage2.html in Resources */,
+				A891AC2E1D50FA6B0034F39F /* screeningPopupDiagnostic.html in Resources */,
 				A859BE4F1D02117E00C1DBD3 /* Assets.xcassets in Resources */,
+				A891AC361D50FC1F0034F39F /* screeningPopupNonInvasive.html in Resources */,
 				A82F2BEE1D4FCF8C00F7D02A /* screeningFooter.html in Resources */,
+				A891AC3E1D510F450034F39F /* screeningPopupFalseNegative.html in Resources */,
 				A82F2BFA1D4FD60100F7D02A /* IntroPage3.html in Resources */,
 				A82F2BF81D4FD5F200F7D02A /* IntroPage2.html in Resources */,
+				A891AC201D50F3060034F39F /* screeningPage1.html in Resources */,
+				A891AC481D511E800034F39F /* screeningPage5.html in Resources */,
+				A891AC441D5116FD0034F39F /* YourRiskPopupCalculate.html in Resources */,
 				A82F2BF21D4FD5B300F7D02A /* IntroPage1.html in Resources */,
+				A891AC281D50F7AD0034F39F /* screeningPopupMammogram.html in Resources */,
+				A891AC221D50F3810034F39F /* screeningPopupSings.html in Resources */,
+				A891AC241D50F3F40034F39F /* screening.jpg in Resources */,
+				A891AC461D511C4A0034F39F /* screeningPage4.html in Resources */,
 				A82F2BFC1D4FDC5300F7D02A /* IntroPopup_NationalGuidelines.html in Resources */,
 				A82F2BEA1D4FC1E300F7D02A /* small_figure.png in Resources */,
 				A82F2BEC1D4FCF7D00F7D02A /* screeningHeader.html in Resources */,
 				A82F2BFE1D4FDC9900F7D02A /* IntroPopup_MedicalGroups.html in Resources */,
+				A891AC381D50FC2C0034F39F /* screeningPopupHarm.html in Resources */,
+				A891AC161D50EF830034F39F /* YourRiskCompleted.html in Resources */,
+				A891AC421D5114390034F39F /* ValuesStarted.html in Resources */,
 				A859BE4A1D02117E00C1DBD3 /* Main.storyboard in Resources */,
+				A891AC4A1D511EB60034F39F /* summary.gif in Resources */,
+				A891AC3C1D510F380034F39F /* screeningPopupFalsePositive.html in Resources */,
+				A891AC2C1D50F9FF0034F39F /* screeningPopupDenser.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,12 +736,15 @@
 				A89F1E971D47CC2D00F83AFE /* ScreeningSlideThreeViewController.swift in Sources */,
 				A8747CA11D18326000622088 /* CoreDataHelper.swift in Sources */,
 				A8747CAB1D1853E500622088 /* ResearchKitHelper.swift in Sources */,
+				A891AC1E1D50F1D00034F39F /* ScreeningSlideFiveViewController.swift in Sources */,
 				577435061D0F99E000980850 /* ValuesViewController.swift in Sources */,
 				A8294FE11D1978C90094A196 /* IndexSegue.swift in Sources */,
 				57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */,
 				A82F2C041D4FEB3800F7D02A /* IntroSlideThreeViewController.swift in Sources */,
 				A86BE8BD1D08B60F007461E6 /* Settings.swift in Sources */,
 				A8A7A7D91D1491D500DA5298 /* ValuesSurvey.swift in Sources */,
+				A891AC261D50F4900034F39F /* ScreeningPopupViewController.swift in Sources */,
+				A891AC181D50F19D0034F39F /* ScreeningSlideOneViewController.swift in Sources */,
 				A859BE451D02117E00C1DBD3 /* AppDelegate.swift in Sources */,
 				577435081D0F9CDF00980850 /* SummaryViewController.swift in Sources */,
 				A82F2BF01D4FD58B00F7D02A /* IntroSlideOneViewController.swift in Sources */,
@@ -652,13 +752,12 @@
 				A82F2C021D4FEA5100F7D02A /* IntroSlideTwoViewController.swift in Sources */,
 				A859BE4D1D02117E00C1DBD3 /* BSD.xcdatamodeld in Sources */,
 				577435041D0F999500980850 /* ScreeningViewController.swift in Sources */,
-				5798C3771D1CD5A40061DAFE /* YourRiskStartedViewController.swift in Sources */,
+				A891AC1A1D50F1B40034F39F /* ScreeningSlideTwoViewController.swift in Sources */,
 				A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */,
 				A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */,
 				A8A7A7DB1D1491D500DA5298 /* UserData.swift in Sources */,
 				A890363F1D1DB5480007447D /* ValuesCompletedViewController.swift in Sources */,
 				577435021D0F95AA00980850 /* YourRiskViewController.swift in Sources */,
-				5798C3751D1CD3980061DAFE /* YourRiskCompletedViewController.swift in Sources */,
 				A89036411D1DB6760007447D /* ValuesSurveyModel.swift in Sources */,
 				A8294FDF1D1978290094A196 /* IndexViewController.swift in Sources */,
 				A8747CA71D184AE000622088 /* ORKQuestionType.swift in Sources */,
@@ -667,6 +766,7 @@
 				A82F2C001D4FDDBC00F7D02A /* IntroPopupViewController.swift in Sources */,
 				A89A4C4C1D1048E7008FF06B /* PieChartDataSource.swift in Sources */,
 				A8747CAD1D18716200622088 /* UserDataModel.swift in Sources */,
+				A891AC1C1D50F1C20034F39F /* ScreeningSlideFourViewController.swift in Sources */,
 				A8747C9E1D18322B00622088 /* ServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,7 +915,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BSD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcmcits.BSD;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.weill.BSD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BSD/ResearchKit-Bridging-Header.h";
 			};
@@ -829,7 +929,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BSD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wcmcits.BSD;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cornell.weill.BSD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "./BSD/ResearchKit-Bridging-Header.h";
 			};

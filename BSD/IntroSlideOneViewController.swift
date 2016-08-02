@@ -11,7 +11,13 @@ import UIKit
 class IntroSlideOneViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var htmlContainer: UIWebView!
-
+    
+    let baseUrl: NSURL = {
+        let path = NSBundle.mainBundle().bundlePath
+        let url = NSURL.fileURLWithPath(path)
+        return url
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -50,14 +56,9 @@ class IntroSlideOneViewController: UIViewController, UIWebViewDelegate {
         }
         
         htmlString = htmlHeader + htmlBody + htmlFooter
-        do {
-            try htmlString.writeToFile(fileLocation, atomically: false, encoding: NSUTF8StringEncoding)
-        } catch {
-            print("ERROR!!!")
-        }
-        let localfilePath = NSBundle.mainBundle().URLForResource("IntroPage1", withExtension: "html");
-        let myRequest = NSURLRequest(URL: localfilePath!)
-        self.htmlContainer.loadRequest(myRequest);
+        
+        self.htmlContainer.loadHTMLString(htmlString, baseURL: self.baseUrl)
+        
     }
 
     override func didReceiveMemoryWarning() {

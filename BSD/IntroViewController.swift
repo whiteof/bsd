@@ -25,20 +25,14 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
         
     }
     
-    func taskViewController(taskViewController: ORKTaskViewController,
-                            didFinishWithReason reason: ORKTaskViewControllerFinishReason,
-                                                error: NSError?) {
-        let taskResult = taskViewController.result
-        print(taskResult)
-        /*
+    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
+        //let taskResult = taskViewController.result
         switch reason {
         case .Completed:
-            
+            performSegueWithIdentifier("unwindToDashboard", sender: self)
         case .Discarded, .Failed, .Saved:
             dismissViewControllerAnimated(true, completion: nil)
         }
-        */
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func enterAction(sender: AnyObject) {
@@ -68,6 +62,7 @@ class IntroViewController: UIViewController, ORKTaskViewControllerDelegate {
         //let orderedTask = ORKOrderedTask(identifier: "Join", steps: [consentStep, reviewConsentStep, healthDataStep, passcodeStep, completionStep])
         let orderedTask = ORKOrderedTask(identifier: "Join", steps: [consentStep, passcodeStep, completionStep])
         let taskViewController = ORKTaskViewController(task: orderedTask, taskRunUUID: nil)
+        taskViewController.modalPresentationStyle = .OverCurrentContext
         taskViewController.delegate = self
         
         presentViewController(taskViewController, animated: true, completion: nil)

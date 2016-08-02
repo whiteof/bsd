@@ -52,7 +52,13 @@ class ValuesSurveyTask {
         scaleStep = ORKQuestionStep(identifier: "question8", title: "How concerned are you about the possible harms of screening mammograms?", answer: scaleFormat)
         scaleSteps += [scaleStep]
         
-        let task = ORKOrderedTask(identifier: "task", steps: scaleSteps)
+        var finalSteps = [ORKStep]()
+        for step in scaleSteps {
+            step.optional = false
+            finalSteps += [step]
+        }
+        
+        let task = ORKOrderedTask(identifier: "task", steps: finalSteps)
         let taskViewController = ORKTaskViewController(task: task, taskRunUUID: nil)
         taskViewController.modalPresentationStyle = .OverCurrentContext
         
