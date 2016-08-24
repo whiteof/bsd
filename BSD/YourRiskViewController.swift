@@ -11,18 +11,40 @@ import ResearchKit
 
 class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewControllerDelegate {
 
-    
     @IBOutlet weak var htmlContainer: UIWebView!
     @IBOutlet weak var surveyButton: UIButton!
     
     let riskSurveyModel = ServiceManager.get("RiskSurveyModel") as! RiskSurveyModel
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let json = [
+            "age":40,
+            "ageFirstMenstrualPeriod":"7-11",
+            "ageFirstLiveBirth":"<20",
+            "anyChildren":"YES",
+            "anyfirstDegreeRelativesBreastCancerUnder50":"",
+            "everDiagnosedBRCA1BRCA2":"NO",
+            "everDiagnosedBreastCancer":"NO",
+            "everDiagnosedDCISLCIS":"NO",
+            "everHadBreastBiopsy":"NO",
+            "everHadHyperplasia":"NO",
+            "everHadRadiationTherapy":"NO",
+            "firstDegreeRelativesBreastCancer":"0",
+            "firstDegreeRelativesOvarian":"NO",
+            "howManyBreastBiopsy":"",
+            "race":"WHITE",
+            "raceAPI":"",
+            "raceProcessed":"WHITE",
+            "ageFirstLiveBirthProcessed":"<20",
+            "howManyBreastBiopsyProcessed":"NA"
+        ]
+        //let result = self.getRiskAssessed(json)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-
         let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
         if (riskSurveyEntity.completed == true) {
             
@@ -285,7 +307,6 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         step.formItems = [item]
         steps += [step]
         
-        
         textChoices = [
             NSLocalizedString("Yes", comment: ""),
             NSLocalizedString("No", comment: ""),
@@ -328,6 +349,30 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
             let taskResultDict = researchKitHelper.dictFromTaskResult(taskResult)
             self.riskSurveyModel.saveTaskResult(taskResultDict!)
             self.viewDidAppear(false)
+            
+            let json = [
+                "age":40,
+                "ageFirstMenstrualPeriod":"7-11",
+                "ageFirstLiveBirth":"<20",
+                "anyChildren":"YES",
+                "anyfirstDegreeRelativesBreastCancerUnder50":"",
+                "everDiagnosedBRCA1BRCA2":"NO",
+                "everDiagnosedBreastCancer":"NO",
+                "everDiagnosedDCISLCIS":"NO",
+                "everHadBreastBiopsy":"NO",
+                "everHadHyperplasia":"NO",
+                "everHadRadiationTherapy":"NO",
+                "firstDegreeRelativesBreastCancer":"0",
+                "firstDegreeRelativesOvarian":"NO",
+                "howManyBreastBiopsy":"",
+                "race":"WHITE",
+                "raceAPI":"",
+                "raceProcessed":"WHITE",
+                "ageFirstLiveBirthProcessed":"<20",
+                "howManyBreastBiopsyProcessed":"NA"
+            ]
+            let result = self.getRiskAssessed(json)
+            print(result)
         default:
             print("Not completed!")
         }
@@ -388,4 +433,47 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         
         return returnHtml
     }
+    
+    func getRiskAssessed(json: [String: NSObject]) -> Any? {
+        
+        do {
+            
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+            
+            // create post request
+            let url = NSURL(string: "http://140.251.10.20/get-risk/index.cfm")!
+            let request = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            
+            // insert json data to the request
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
+                if error != nil{
+                    //print("Error -> \(error)")
+                    return
+                }
+                do {
+                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                    //print("Result -> \(result)")
+                } catch {
+                    //print("Error -> \(error)")
+                }
+            }
+            
+            task.resume()
+
+            //print("***************************")
+            //print(task)
+            //print("***************************")
+            
+        } catch {
+            //print(error)
+        }
+        
+        
+        return nil
+    }
+    
 }

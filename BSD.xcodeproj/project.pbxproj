@@ -14,6 +14,8 @@
 		57D32CEF1D074B2B00AC0FA2 /* IntroSlidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D32CEE1D074B2B00AC0FA2 /* IntroSlidesViewController.swift */; };
 		9152DF96F75BAE50F974FB4C /* Pods_BSDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A722273229EC9686F857022C /* Pods_BSDUITests.framework */; };
 		A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802A0721D05CB8100F663FA /* IntroViewController.swift */; };
+		A80E77CC1D6E37E90040EDF3 /* RiskResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80E77CB1D6E37E90040EDF3 /* RiskResult.swift */; };
+		A80E77CE1D6E3A5C0040EDF3 /* RiskResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80E77CD1D6E3A5C0040EDF3 /* RiskResultModel.swift */; };
 		A8294FDF1D1978290094A196 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8294FDE1D1978290094A196 /* IndexViewController.swift */; };
 		A8294FE11D1978C90094A196 /* IndexSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8294FE01D1978C90094A196 /* IndexSegue.swift */; };
 		A82F2BEA1D4FC1E300F7D02A /* small_figure.png in Resources */ = {isa = PBXBuildFile; fileRef = A82F2BE91D4FC1E300F7D02A /* small_figure.png */; };
@@ -124,6 +126,8 @@
 		A722273229EC9686F857022C /* Pods_BSDUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSDUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A802A06C1D02141C00F663FA /* ResearchKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ResearchKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		A802A0721D05CB8100F663FA /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		A80E77CB1D6E37E90040EDF3 /* RiskResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskResult.swift; sourceTree = "<group>"; };
+		A80E77CD1D6E3A5C0040EDF3 /* RiskResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskResultModel.swift; sourceTree = "<group>"; };
 		A8294FDE1D1978290094A196 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		A8294FE01D1978C90094A196 /* IndexSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexSegue.swift; sourceTree = "<group>"; };
 		A82F2BE91D4FC1E300F7D02A /* small_figure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_figure.png; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 				A8747CA31D18343900622088 /* RiskSurveyModel.swift */,
 				A8747CAC1D18716200622088 /* UserDataModel.swift */,
 				A89036401D1DB6760007447D /* ValuesSurveyModel.swift */,
+				A80E77CD1D6E3A5C0040EDF3 /* RiskResultModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				A8A7A7D31D1491D500DA5298 /* ValuesSurvey.swift */,
 				A8A7A7D51D1491D500DA5298 /* UserData.swift */,
 				A8A7A7D71D1491D500DA5298 /* RiskSurvey.swift */,
+				A80E77CB1D6E37E90040EDF3 /* RiskResult.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -754,12 +760,14 @@
 				577435041D0F999500980850 /* ScreeningViewController.swift in Sources */,
 				A891AC1A1D50F1B40034F39F /* ScreeningSlideTwoViewController.swift in Sources */,
 				A802A0731D05CB8100F663FA /* IntroViewController.swift in Sources */,
+				A80E77CC1D6E37E90040EDF3 /* RiskResult.swift in Sources */,
 				A8A7A7861D147E4400DA5298 /* PopUpViewController.swift in Sources */,
 				A8A7A7DB1D1491D500DA5298 /* UserData.swift in Sources */,
 				A890363F1D1DB5480007447D /* ValuesCompletedViewController.swift in Sources */,
 				577435021D0F95AA00980850 /* YourRiskViewController.swift in Sources */,
 				A89036411D1DB6760007447D /* ValuesSurveyModel.swift in Sources */,
 				A8294FDF1D1978290094A196 /* IndexViewController.swift in Sources */,
+				A80E77CE1D6E3A5C0040EDF3 /* RiskResultModel.swift in Sources */,
 				A8747CA71D184AE000622088 /* ORKQuestionType.swift in Sources */,
 				A8EDA6AF1D108D920027178B /* ScreeningSlidesPageViewController.swift in Sources */,
 				A8747CA91D184B9C00622088 /* ORKQuestionResult.swift in Sources */,
