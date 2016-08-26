@@ -10,7 +10,16 @@ import Foundation
 
 class RiskResult {
     
-    var absrisk5yearperc: Float!
+    var absrisk5yearperc: Float! {
+        willSet(newVal) {
+            
+        }
+        didSet(oldVal) {
+            if(oldVal != nil) {
+                
+            }
+        }
+    }
     var avgrisk5yearperc: Float!
     var absrisklifeperc: Float!
     var avgrisklifeperc: Float!

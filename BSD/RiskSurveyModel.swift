@@ -12,9 +12,22 @@ import CoreData
 class RiskSurveyModel {
     
     let defaults = NSUserDefaults.standardUserDefaults()
+    let answers = [
+        "question2": ["[choice_1]": "WHITE", "[choice_2]": "AFRICAN AMERICAN", "[choice_3]": "HISPANIC", "[choice_4]": "ASIAN OR PACIFIC ISLANDER", "[choice_5]": "AMERICAN INDIAN OR ALASKAN NATIVE", "[choice_6]": "UNKNOWN"],
+        "question3": ["[choice_1]": "7-11", "[choice_2]": "12-13", "[choice_3]": ">=14", "[choice_4]": "DoNotKnow"],
+        "question4": ["[choice_1]": "YES", "[choice_2]": "NO"],
+        "question5": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"],
+        "question6": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"],
+        "question7": ["[choice_1]": "0", "[choice_2]": "1", "[choice_3]": "MORE THAN 1", "[choice_4]": "DoNotKnow"],
+        "question8": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"],
+        "question9": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"],
+        "question10": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"],
+        "question11": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"],
+        "question12": ["[choice_1]": "YES", "[choice_2]": "NO", "[choice_3]": "UNKNOWN"]
+    ]
     
     func setRiskSurvey(riskSurveyEntity: RiskSurvey) {
-        var ruskSurveyDict = [String: Int]()
+        var ruskSurveyDict = [String: String]()
         ruskSurveyDict["question1"] = riskSurveyEntity.question1
         ruskSurveyDict["question2"] = riskSurveyEntity.question2
         ruskSurveyDict["question3"] = riskSurveyEntity.question3
@@ -28,14 +41,14 @@ class RiskSurveyModel {
         ruskSurveyDict["question11"] = riskSurveyEntity.question11
         ruskSurveyDict["question12"] = riskSurveyEntity.question12
         if(riskSurveyEntity.started == true) {
-            ruskSurveyDict["started"] = 1
+            ruskSurveyDict["started"] = "1"
         }else {
-            ruskSurveyDict["started"] = 0
+            ruskSurveyDict["started"] = "0"
         }
         if(riskSurveyEntity.completed == true) {
-            ruskSurveyDict["completed"] = 1
+            ruskSurveyDict["completed"] = "1"
         }else {
-            ruskSurveyDict["completed"] = 0
+            ruskSurveyDict["completed"] = "0"
         }
         self.defaults.setObject(ruskSurveyDict, forKey: "RiskSurvey")
     }
@@ -43,7 +56,7 @@ class RiskSurveyModel {
     func getRiskSurvey() -> RiskSurvey {
         let returnObject = RiskSurvey()
         if let anyObject = self.defaults.objectForKey("RiskSurvey") {
-            let riskSurveyDict = anyObject as! [String:Int]
+            let riskSurveyDict = anyObject as! [String:String]
             returnObject.question1 = riskSurveyDict["question1"]
             returnObject.question2 = riskSurveyDict["question2"]
             returnObject.question3 = riskSurveyDict["question3"]
@@ -56,12 +69,12 @@ class RiskSurveyModel {
             returnObject.question10 = riskSurveyDict["question10"]
             returnObject.question11 = riskSurveyDict["question11"]
             returnObject.question12 = riskSurveyDict["question12"]
-            if(riskSurveyDict["started"] == 1) {
+            if(riskSurveyDict["started"] == "1") {
                 returnObject.started = true
             }else {
                 returnObject.started = false
             }
-            if(riskSurveyDict["completed"] == 1) {
+            if(riskSurveyDict["completed"] == "1") {
                 returnObject.completed = true
             }else {
                 returnObject.completed = false
@@ -76,51 +89,51 @@ class RiskSurveyModel {
         let result = dict["task"]!
         
         var questionResult = result["question1"]!
-        var value = Int(questionResult!["value"] as! String)
+        var value = questionResult!["value"] as! String
         riskSurveyEntity.question1 = value
 
         questionResult = result["question2"]!
-        value = Int(questionResult!["value"] as! String)
-        riskSurveyEntity.question2 = value
+        let index = questionResult!["value"] as! String
+        riskSurveyEntity.question2 = self.answers["question2"]![index]
         
         questionResult = result["question3"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question3 = value
 
         questionResult = result["question4"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question4 = value
 
         questionResult = result["question5"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question5 = value
 
         questionResult = result["question6"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question6 = value
 
         questionResult = result["question7"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question7 = value
 
         questionResult = result["question8"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question8 = value
 
         questionResult = result["question9"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question9 = value
 
         questionResult = result["question10"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question10 = value
 
         questionResult = result["question11"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question11 = value
 
         questionResult = result["question12"]!
-        value = Int(questionResult!["value"] as! String)
+        value = questionResult!["value"] as! String
         riskSurveyEntity.question12 = value
         
         riskSurveyEntity.completed = true

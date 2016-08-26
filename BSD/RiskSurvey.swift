@@ -10,18 +10,18 @@ import Foundation
 
 class RiskSurvey {
     
-    var question1: Int!
-    var question2: Int!
-    var question3: Int!
-    var question4: Int!
-    var question5: Int!
-    var question6: Int!
-    var question7: Int!
-    var question8: Int!
-    var question9: Int!
-    var question10: Int!
-    var question11: Int!
-    var question12: Int!
+    var question1: String!
+    var question2: String!
+    var question3: String!
+    var question4: String!
+    var question5: String!
+    var question6: String!
+    var question7: String!
+    var question8: String!
+    var question9: String!
+    var question10: String!
+    var question11: String!
+    var question12: String!
     var started: Bool = false
     var completed: Bool = false
 

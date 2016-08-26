@@ -13,8 +13,10 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
 
     @IBOutlet weak var htmlContainer: UIWebView!
     @IBOutlet weak var surveyButton: UIButton!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     
     let riskSurveyModel = ServiceManager.get("RiskSurveyModel") as! RiskSurveyModel
+    var needLoadView = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,48 +44,83 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         ]
         //let result = self.getRiskAssessed(json)
         
+        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+        
+        if (riskSurveyEntity.completed == true) {
+            if(riskSurveyEntity.question1 != nil) {
+                print(riskSurveyEntity.question1)
+            }
+            if(riskSurveyEntity.question2 != nil) {
+                print(riskSurveyEntity.question2)
+            }
+            if(riskSurveyEntity.question3 != nil) {
+                print(riskSurveyEntity.question3)
+            }
+            if(riskSurveyEntity.question4 != nil) {
+                print(riskSurveyEntity.question4)
+            }
+            if(riskSurveyEntity.question5 != nil) {
+                print(riskSurveyEntity.question5)
+            }
+        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
-        if (riskSurveyEntity.completed == true) {
+        
+        if(self.needLoadView) {
             
-            // Get HTML Chart
-            let chartHtml = self.buildChart(self.htmlContainer.frame.width)
-            let contentHtml = self.buildContent()
-
-            // Get HTML
-            var htmlBody = ""
-            let fileLocation = NSBundle.mainBundle().pathForResource("YourRiskCompleted", ofType: "html")!
-            do {
-                htmlBody = try String(contentsOfFile: fileLocation)
-                htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicImages]", withString: chartHtml)
-                htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicContent]", withString: contentHtml)
-            } catch {
-                htmlBody = ""
+            self.needLoadView = false
+            
+            self.htmlContainer.hidden = true
+            self.loader.startAnimating()
+            self.loader.hidden = false
+            
+            let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+            if (riskSurveyEntity.completed == true) {
+                
+                // Get HTML Chart
+                let chartHtml = self.buildChart(self.htmlContainer.frame.width)
+                let contentHtml = self.buildContent()
+                
+                // Get HTML
+                var htmlBody = ""
+                let fileLocation = NSBundle.mainBundle().pathForResource("YourRiskCompleted", ofType: "html")!
+                do {
+                    htmlBody = try String(contentsOfFile: fileLocation)
+                    htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicImages]", withString: chartHtml)
+                    htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicContent]", withString: contentHtml)
+                } catch {
+                    htmlBody = ""
+                }
+                
+                let basePath = NSBundle.mainBundle().bundlePath
+                let baseUrl = NSURL.fileURLWithPath(basePath)
+                
+                self.htmlContainer.loadHTMLString(htmlBody, baseURL: baseUrl)
+                
+                // Set button title
+                self.surveyButton.setTitle("Resset Selections", forState: UIControlState.Normal)
+                
+            }else {
+                
+                // Get and load HTML
+                let localfilePath = NSBundle.mainBundle().URLForResource("YourRiskIndex", withExtension: "html")
+                let htmlRequest = NSURLRequest(URL: localfilePath!)
+                self.htmlContainer.loadRequest(htmlRequest)
+                
+                // Set button title
+                self.surveyButton.setTitle("Access My Risk", forState: UIControlState.Normal)
+                
+                if (riskSurveyEntity.started == false) {
+                    //self.startSurvey()
+                }
             }
-
-            let basePath = NSBundle.mainBundle().bundlePath
-            let baseUrl = NSURL.fileURLWithPath(basePath)
             
-            self.htmlContainer.loadHTMLString(htmlBody, baseURL: baseUrl)
+            self.loader.stopAnimating()
+            self.loader.hidden = true
+            self.htmlContainer.hidden = false
             
-            // Set button title
-            self.surveyButton.setTitle("Resset Selections", forState: UIControlState.Normal)
-
-        }else {
-            
-            // Get and load HTML
-            let localfilePath = NSBundle.mainBundle().URLForResource("YourRiskIndex", withExtension: "html")
-            let htmlRequest = NSURLRequest(URL: localfilePath!)
-            self.htmlContainer.loadRequest(htmlRequest)
-            
-            // Set button title
-            self.surveyButton.setTitle("Access My Risk", forState: UIControlState.Normal)
-            
-            if (riskSurveyEntity.started == false) {
-                //self.startSurvey()
-            }
         }
         
     }
@@ -350,29 +387,8 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
             self.riskSurveyModel.saveTaskResult(taskResultDict!)
             self.viewDidAppear(false)
             
-            let json = [
-                "age":40,
-                "ageFirstMenstrualPeriod":"7-11",
-                "ageFirstLiveBirth":"<20",
-                "anyChildren":"YES",
-                "anyfirstDegreeRelativesBreastCancerUnder50":"",
-                "everDiagnosedBRCA1BRCA2":"NO",
-                "everDiagnosedBreastCancer":"NO",
-                "everDiagnosedDCISLCIS":"NO",
-                "everHadBreastBiopsy":"NO",
-                "everHadHyperplasia":"NO",
-                "everHadRadiationTherapy":"NO",
-                "firstDegreeRelativesBreastCancer":"0",
-                "firstDegreeRelativesOvarian":"NO",
-                "howManyBreastBiopsy":"",
-                "race":"WHITE",
-                "raceAPI":"",
-                "raceProcessed":"WHITE",
-                "ageFirstLiveBirthProcessed":"<20",
-                "howManyBreastBiopsyProcessed":"NA"
-            ]
-            let result = self.getRiskAssessed(json)
-            print(result)
+            let result = self.getRiskAssessed()
+            print(taskResultDict)
         default:
             print("Not completed!")
         }
@@ -434,10 +450,33 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         return returnHtml
     }
     
-    func getRiskAssessed(json: [String: NSObject]) -> Any? {
+    func getRiskAssessed() -> Any? {
+        
+        let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
+        
+        let json = [
+            "age": riskSurveyEntity.question1,
+            "ageFirstMenstrualPeriod": "7-11",
+            "ageFirstLiveBirth":"<20",
+            "anyChildren":"YES",
+            "anyfirstDegreeRelativesBreastCancerUnder50":"",
+            "everDiagnosedBRCA1BRCA2":"NO",
+            "everDiagnosedBreastCancer":"NO",
+            "everDiagnosedDCISLCIS":"NO",
+            "everHadBreastBiopsy":"NO",
+            "everHadHyperplasia":"NO",
+            "everHadRadiationTherapy":"NO",
+            "firstDegreeRelativesBreastCancer":"0",
+            "firstDegreeRelativesOvarian":"NO",
+            "howManyBreastBiopsy":"",
+            "race":"WHITE",
+            "raceAPI":"",
+            "raceProcessed":"WHITE",
+            "ageFirstLiveBirthProcessed":"<20",
+            "howManyBreastBiopsyProcessed":"NA"
+        ]
         
         do {
-            
             let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
             
             // create post request
@@ -461,17 +500,10 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
                     //print("Error -> \(error)")
                 }
             }
-            
             task.resume()
-
-            //print("***************************")
-            //print(task)
-            //print("***************************")
-            
         } catch {
             //print(error)
         }
-        
         
         return nil
     }

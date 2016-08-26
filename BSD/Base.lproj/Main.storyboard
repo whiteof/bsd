@@ -460,13 +460,6 @@
                                 <color key="textColor" red="0.72549019607843135" green="0.11372549019607843" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc8-uO-z7X">
-                                <rect key="frame" x="20" y="75" width="560" height="402"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="rA5-om-Zwf" id="MOB-cu-zA5"/>
-                                </connections>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="282-RI-wft">
                                 <rect key="frame" x="210" y="497" width="180" height="34"/>
                                 <constraints>
@@ -479,6 +472,20 @@
                                     <action selector="surveyButtonAction:" destination="rA5-om-Zwf" eventType="touchUpInside" id="3Vf-AV-4Ye"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aut-Qw-2nK">
+                                <rect key="frame" x="270" y="246" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Au8-gk-Umk"/>
+                                    <constraint firstAttribute="height" constant="60" id="RIh-iC-XFE"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc8-uO-z7X">
+                                <rect key="frame" x="20" y="75" width="560" height="402"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rA5-om-Zwf" id="MOB-cu-zA5"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -489,13 +496,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="GjA-e7-bdh" secondAttribute="trailing" id="Uk4-Jz-to6"/>
                             <constraint firstItem="GjA-e7-bdh" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="efe-N2-Tim"/>
                             <constraint firstItem="TIx-Bc-axo" firstAttribute="top" secondItem="282-RI-wft" secondAttribute="bottom" constant="20" id="iwa-qE-Tps"/>
+                            <constraint firstItem="aut-Qw-2nK" firstAttribute="centerY" secondItem="Wc8-uO-z7X" secondAttribute="centerY" id="kh5-OL-Dlc"/>
                             <constraint firstItem="282-RI-wft" firstAttribute="centerX" secondItem="iwA-vE-nEn" secondAttribute="centerX" id="tZp-Db-nF2"/>
                             <constraint firstItem="Wc8-uO-z7X" firstAttribute="leading" secondItem="iwA-vE-nEn" secondAttribute="leadingMargin" id="v9a-YF-a7g"/>
+                            <constraint firstItem="aut-Qw-2nK" firstAttribute="centerX" secondItem="iwA-vE-nEn" secondAttribute="centerX" id="zeW-QC-p0h"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Your Risk" image="Icon Your Risk" id="u3L-Vs-7X6"/>
                     <connections>
                         <outlet property="htmlContainer" destination="Wc8-uO-z7X" id="pJ6-Dg-lis"/>
+                        <outlet property="loader" destination="aut-Qw-2nK" id="FBN-Od-wen"/>
                         <outlet property="surveyButton" destination="282-RI-wft" id="75Z-Bv-NME"/>
                     </connections>
                 </viewController>
