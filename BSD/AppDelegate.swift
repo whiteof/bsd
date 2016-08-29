@@ -32,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //self.removeAllUserData()
         
+        // Enable page controller
+        let pageController = UIPageControl.appearance()
+        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
+        pageController.backgroundColor = UIColor.whiteColor()        
+        
         let standardDefaults = NSUserDefaults.standardUserDefaults()
         if standardDefaults.objectForKey("ORKSampleFirstRun") == nil {
             ORKPasscodeViewController.removePasscodeFromKeychain()

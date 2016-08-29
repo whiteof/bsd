@@ -89,52 +89,52 @@ class RiskSurveyModel {
         let result = dict["task"]!
         
         var questionResult = result["question1"]!
-        var value = questionResult!["value"] as! String
+        let value = questionResult!["value"] as! String
         riskSurveyEntity.question1 = value
 
         questionResult = result["question2"]!
-        let index = questionResult!["value"] as! String
+        var index = questionResult!["value"] as! String
         riskSurveyEntity.question2 = self.answers["question2"]![index]
         
         questionResult = result["question3"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question3 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question3 = self.answers["question3"]![index]
 
         questionResult = result["question4"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question4 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question4 = self.answers["question4"]![index]
 
         questionResult = result["question5"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question5 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question5 = self.answers["question5"]![index]
 
         questionResult = result["question6"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question6 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question6 = self.answers["question6"]![index]
 
         questionResult = result["question7"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question7 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question7 = self.answers["question7"]![index]
 
         questionResult = result["question8"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question8 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question8 = self.answers["question8"]![index]
 
         questionResult = result["question9"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question9 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question9 = self.answers["question9"]![index]
 
         questionResult = result["question10"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question10 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question10 = self.answers["question10"]![index]
 
         questionResult = result["question11"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question11 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question11 = self.answers["question11"]![index]
 
         questionResult = result["question12"]!
-        value = questionResult!["value"] as! String
-        riskSurveyEntity.question12 = value
+        index = questionResult!["value"] as! String
+        riskSurveyEntity.question12 = self.answers["question12"]![index]
         
         riskSurveyEntity.completed = true
         

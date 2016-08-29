@@ -80,7 +80,7 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
             if (riskSurveyEntity.completed == true) {
                 
                 // Get HTML Chart
-                let chartHtml = self.buildChart(self.htmlContainer.frame.width)
+                let chartHtml = self.buildChart(self.htmlContainer.frame.width, percent: 2)
                 let contentHtml = self.buildContent()
                 
                 // Get HTML
@@ -387,8 +387,8 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
             self.riskSurveyModel.saveTaskResult(taskResultDict!)
             self.viewDidAppear(false)
             
-            let result = self.getRiskAssessed()
-            print(taskResultDict)
+            self.getRiskAssessed()
+            
         default:
             print("Not completed!")
         }
@@ -417,7 +417,7 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         return true
     }
     
-    func buildChart(frameWidth: CGFloat) -> String {
+    func buildChart(frameWidth: CGFloat, percent: Int) -> String {
         // Draw chart
         var returnHtml = ""
         
@@ -428,7 +428,7 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         for j in 0...19 {
             for i in 0...49 {
                 var image: String!
-                if j == 0 && i < 8 {
+                if j == 0 && i < percent {
                     image = "<img class=\"figure\" src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px;\">"
                 }else {
                     image = "<img class=\"figure\" src=\"small_figure.png\" style=\"width: \(Int(figureWidth-1.0))px; height: \(Int(figureHeight))px; opacity: 0.5;\">"
@@ -450,30 +450,36 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
         return returnHtml
     }
     
-    func getRiskAssessed() -> Any? {
+    func getRiskAssessed() {
+        
+        self.htmlContainer.hidden = true
+        self.loader.startAnimating()
+        self.loader.hidden = false
+        
         
         let riskSurveyEntity = self.riskSurveyModel.getRiskSurvey()
         
         let json = [
-            "age": riskSurveyEntity.question1,
-            "ageFirstMenstrualPeriod": "7-11",
-            "ageFirstLiveBirth":"<20",
-            "anyChildren":"YES",
+            "age":riskSurveyEntity.question1,
+            "race":riskSurveyEntity.question2,
+            "ageFirstMenstrualPeriod":riskSurveyEntity.question3,
+            "anyChildren":riskSurveyEntity.question4,
+            "everHadBreastBiopsy":riskSurveyEntity.question5,
+            "everHadHyperplasia":riskSurveyEntity.question6,
+            "firstDegreeRelativesBreastCancer":riskSurveyEntity.question7,
+            "firstDegreeRelativesOvarian":riskSurveyEntity.question8,
+            "everDiagnosedBreastCancer":riskSurveyEntity.question9,
+            "everDiagnosedDCISLCIS":riskSurveyEntity.question10,
+            "everDiagnosedBRCA1BRCA2":riskSurveyEntity.question11,
+            "everHadRadiationTherapy":riskSurveyEntity.question12,
+            
+            "ageFirstLiveBirth":"",
             "anyfirstDegreeRelativesBreastCancerUnder50":"",
-            "everDiagnosedBRCA1BRCA2":"NO",
-            "everDiagnosedBreastCancer":"NO",
-            "everDiagnosedDCISLCIS":"NO",
-            "everHadBreastBiopsy":"NO",
-            "everHadHyperplasia":"NO",
-            "everHadRadiationTherapy":"NO",
-            "firstDegreeRelativesBreastCancer":"0",
-            "firstDegreeRelativesOvarian":"NO",
             "howManyBreastBiopsy":"",
-            "race":"WHITE",
             "raceAPI":"",
             "raceProcessed":"WHITE",
-            "ageFirstLiveBirthProcessed":"<20",
-            "howManyBreastBiopsyProcessed":"NA"
+            "ageFirstLiveBirthProcessed":"",
+            "howManyBreastBiopsyProcessed":""
         ]
         
         do {
@@ -491,10 +497,39 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
                 if error != nil{
                     //print("Error -> \(error)")
-                    return
                 }
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                    
+                    
+                    // Get HTML Chart
+                    let chartHtml = self.buildChart(self.htmlContainer.frame.width, percent: Int(Double(result!["absrisk5yearperc"] as! String)!*10))
+                    let contentHtml = self.buildContent()
+                    
+                    // Get HTML
+                    var htmlBody = ""
+                    let fileLocation = NSBundle.mainBundle().pathForResource("YourRiskCompleted", ofType: "html")!
+                    do {
+                        htmlBody = try String(contentsOfFile: fileLocation)
+                        htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicImages]", withString: chartHtml)
+                        htmlBody = htmlBody.stringByReplacingOccurrencesOfString("[dynamicContent]", withString: contentHtml)
+                    } catch {
+                        htmlBody = ""
+                    }
+                    
+                    let basePath = NSBundle.mainBundle().bundlePath
+                    let baseUrl = NSURL.fileURLWithPath(basePath)
+                    
+                    self.htmlContainer.loadHTMLString(htmlBody, baseURL: baseUrl)
+                    
+                    
+                    
+                    
+                    print(result!["absrisk5yearperc"])
+                    self.loader.stopAnimating()
+                    self.loader.hidden = true
+                    self.htmlContainer.hidden = false
+                    
                     //print("Result -> \(result)")
                 } catch {
                     //print("Error -> \(error)")
@@ -505,7 +540,6 @@ class YourRiskViewController: UIViewController, UIWebViewDelegate, ORKTaskViewCo
             //print(error)
         }
         
-        return nil
     }
     
 }

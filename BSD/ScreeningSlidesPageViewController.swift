@@ -26,20 +26,6 @@ class ScreeningSlidesPageViewController: UIPageViewController, UIPageViewControl
         setViewControllers([pageViewControllers[0]], direction: .Forward, animated: false, completion: nil)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        for view in self.view.subviews {
-            if view.isKindOfClass(UIScrollView) {
-                view.frame = UIScreen.mainScreen().bounds
-            } else if view.isKindOfClass(UIPageControl) {
-                let pageControl = view as! UIPageControl
-                pageControl.pageIndicatorTintColor = UIColor.grayColor()
-                pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-                view.backgroundColor = UIColor.clearColor()
-            }
-        }
-    }
-    
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let index = pageViewControllers.indexOf(viewController)!
         
